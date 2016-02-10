@@ -1,0 +1,59 @@
+%footer.footer
+  .footer-nav
+    .container
+      .row
+        .col-xs-12.col-sm-6.col-md-3.footer-nav-col
+          .ft-about-us
+            %h4.ft-col-title DF Aqui
+            .text-block
+              %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus congue est nisi, non tristique eros scelerisque vitae. Ut sed dolor ornare, ullamcorper eros sit amet, accumsan risus.
+              %p Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        .col-xs-12.col-sm-6.col-md-3.footer-nav-col
+          .ft-featured-properties
+            %h4.ft-col-title Imóveis Destaques
+            .featured-property
+              %ul
+        .col-xs-12.col-sm-6.col-md-3.footer-nav-col
+          .ft-useful-links
+            %h4.ft-col-title Links Úteis
+            %nav.useful-links-menu{:role => "navigation"}
+              %ul
+                %li.menu-item
+                  %a{:href => "#"} Termos de Uso
+                %li.menu-item
+                  %a{:href => "#"} Política de Uso
+                %li.menu-item
+                  %a{:href => "#"} Contato
+                %li.menu-item
+                  %a{:href => "#"} Trabalhe Conosco
+                %li.menu-item
+                  %a{:href => "#"} Quem Somos
+                %li.menu-item
+                  %a{:href => "#"} FAQs
+        .col-xs-12.col-sm-6.col-md-3.footer-nav-col
+          .ft-contact-info
+            %h4.ft-col-title Anuncie
+            %ul.detail-contact-info
+              %li
+                %i.fa.fa-map-marker>
+                 Brasília
+              %li
+                %i.fa.fa-envelope-o>
+                %a{:href => "mailto:dfaqui@dfaqui.com"} df@dfaqui.com
+  .copyright
+    .container
+      .row
+        .col-xs-12.col-sm-6.text-block
+          © 2014 DFaqui. Todos os direitos reservados.
+          %br/
+          %span
+            Powered by
+            = succeed "." do
+              %a{:href => "http://www.geekninjas.com/", :target => "_blank", :title => "Geekninjas"} Geekninjas.com.br
+          %br/
+        .col-xs-12.col-sm-6.logo-block
+          .logo-image
+            %a{:href => "index.html"}
+              %img{:alt => "DFaqui", :src => "/images/logo/logo-footer.png"}/
+    #back-to-top.back-to-top
+      %i.fa.fa-angle-up
