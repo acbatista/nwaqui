@@ -1,16 +1,12 @@
 require_dependency 'admin/application_controller'
 
 module Admin
-  class Sessions < ApplicationController
+  class AttributesController < ApplicationController 
     
+    def index
+    end
+
     def new
-    end
-
-    def create
-    end
-
-
-    def logout
     end
     
   end

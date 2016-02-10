@@ -1,6 +1,6 @@
 module Admin
   class ApplicationController < ActionController::Base
-    before_filter :validate_session!
+    #before_filter :validate_session!
 
     private
 
