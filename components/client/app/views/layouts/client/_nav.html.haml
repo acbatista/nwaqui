@@ -1,0 +1,47 @@
+%nav.navbar.navbar-default
+  .container
+    / Brand and toggle get grouped for better mobile display
+    .navbar-header
+      %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand{:href => "#{admin.root_path}"} 
+        = image_tag '/images/logo/logo.png', width: 135
+    / Collect the nav links, forms, and other content for toggling
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+      %ul.nav.navbar-nav
+        %li.dropdown
+          %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+            Meus imóveis
+            %span.caret
+          %ul.dropdown-menu
+            %li
+              %a{:href => "#{new_property_path}"} Novo imóveis
+            %li
+              %a{:href => "#{properties_path}"} Imóveis
+            %li
+              %a{:href => "#{properties_path}"} Mensagens
+
+        %li.dropdown
+          %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+            Meus empreendimentos
+            %span.caret
+          %ul.dropdown-menu
+            %li
+              %a{:href => "#{new_project_path}"} Novo empreendimento
+            %li
+              %a{:href => "#{projects_path}"} Empreendimentos
+      %ul.nav.navbar-nav.navbar-right
+        %li.dropdown
+          %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+            Nome do usuário
+            %span.caret
+          %ul.dropdown-menu
+            %li
+              %a{:href => "#{user_path(1)}"} Meu perfil
+            %li
+              %a{:href => "#{edit_password_path(1)}"} Trocar minha senha 
+            %li
+              %a{:href => "#{logout_sessions_path}"} Sair 

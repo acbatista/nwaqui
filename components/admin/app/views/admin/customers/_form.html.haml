@@ -44,7 +44,7 @@
   .row
     .col-md-12
       = f.submit "Salvar cliente", class: 'btn btn-success', data: { disable_with: t(:disable_button)}
-      = link_to "Voltar para listagem", customers_path
+      = link_to "Voltar para listagem", customers_path, class: 'btn btn-default', data: { disable_with: t(:disable_button)}
 
 :javascript
   $(document).ready(function(){

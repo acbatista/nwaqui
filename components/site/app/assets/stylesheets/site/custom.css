@@ -1,0 +1,29 @@
+.gsearch .gsearch-wrap .gsearch-content .gsearch-field {
+  width: 90% !important;
+}
+
+.gsearch .gsearch-wrap .gsearch-content .gsearch-action .gsubmit .btn {
+  padding: 8px 10px !important;
+  background-color: #014B6C;
+}
+.gsearch .gsearch-wrap .gsearch-content .gsearch-field .form-group select {
+  background-color: #ECECEC;
+  font-weight: bold;
+}
+
+img {
+  max-width: none !important;
+  height: none !important;
+}
+
+.fav-button {
+  font-weight: bold;
+}
+
+.fav-buttons {
+  padding-top: 25px;
+}
+
+.fav-buttons a {
+  margin-left: 25px;
+}

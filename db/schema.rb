@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 20160203154217) do
   add_index "messages", ["client_id"], name: "index_messages_on_client_id"
 
   create_table "projects", force: :cascade do |t|
-    t.integer  "client_id"
+    t.integer  "customer_id"
     t.string   "image_path"
     t.string   "name"
     t.string   "description"
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 20160203154217) do
     t.datetime "updated_at",                 null: false
   end
 
-  add_index "projects", ["client_id"], name: "index_projects_on_client_id"
+  add_index "projects", ["customer_id"], name: "index_projects_on_customer_id"
 
   create_table "properties", force: :cascade do |t|
     t.integer  "situation",                 default: 0

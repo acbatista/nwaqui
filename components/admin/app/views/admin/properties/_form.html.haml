@@ -1,7 +1,7 @@
 = simple_form_for @property do |f|
   .row
     .col-md-4
-      = f.association :customer, include_blank: "selecione..."
+      = f.association :customer, label_method: :label_name, include_blank: "selecione..."
       = f.hint link_to "gerenciar clientes", customers_path
     .col-md-4
       = f.association :project, include_blank: "selecione..."

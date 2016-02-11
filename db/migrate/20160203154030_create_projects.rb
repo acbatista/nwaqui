@@ -2,9 +2,10 @@ class CreateProjects < ActiveRecord::Migration
   def change
     create_table :projects do |t|
       
-      t.references :client, index: true
+      t.references :customer, index: true
 
       t.string :image_path
+      
       t.string :name 
       t.string :description
       t.boolean :status, default: true

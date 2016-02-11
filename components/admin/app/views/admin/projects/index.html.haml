@@ -1,0 +1,31 @@
+.panel-heading
+  %h3
+    %b Listagem de empreendimentos
+    %br
+    %small 
+      Lista de empreendimentos cadastros
+%hr/
+.panel-body
+  .row  
+    .col-md-12
+      %table.table.table-striped.table-hover.table-bordered
+        %thead 
+          %tr
+            %th Cod.
+            %th Nome
+            %th Cliente
+            %th Logo
+            %th Situação
+            %th Ação
+        %tbody
+          - @projects.each do |project|
+            %tr
+              %td.col-md-1= project.id
+              %td.col-md-5= project.name
+              %td.col-md-2= project.customer.label_name if project.customer.present?
+              %td.col-md-2= project.image_path
+              %td.col-md-1= project.status ? "ativo" : "inativo"
+              %td.col-md-1
+                = link_to "", edit_project_path(project), class: 'btn btn-success btn-xs glyphicon glyphicon-pencil'
+                = link_to "", project_path(project), method: :delete, class: 'btn btn-danger btn-xs glyphicon glyphicon-remove', data: { confirm: t(:confirm)}
+

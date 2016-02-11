@@ -1,1 +1,22 @@
-
+.noo-wrapper
+  %section#search-box.wrap.search-box
+    .gsearch
+      .container
+        .gsearch-info
+          %br/
+          %br/
+          %br/
+          %br/
+          %br/
+          .gsearch-info-content
+        .gsearch-wrap
+          = simple_form_for url_for, method: :get do |f|
+            .gsearch-content
+              .gsearch-field
+                = f.input :by_situation, as: :select, label: false, collection: Property.type_properties.map { |k,v| [k.humanize, k]}, include_blank: "Você procura por"
+                = f.input :by_situation, as: :select, label: false, collection: Property.type_properties.map { |k,v| [k.humanize, k]}, include_blank: "Tipo de imóvel"
+                = f.input :by_situation, as: :select, label: false, collection: Property.type_properties.map { |k,v| [k.humanize, k]}, include_blank: "Detalhe"
+                = f.input :by_situation, as: :select, label: false, collection: Property.type_properties.map { |k,v| [k.humanize, k]}, include_blank: "Valor"
+              .gsearch-action
+                .gsubmit
+                  %input.btn.btn-deault{type: 'submit', value: 'Buscar'}

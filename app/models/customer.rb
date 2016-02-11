@@ -12,6 +12,9 @@ class Customer < ActiveRecord::Base
   validates :cnpj, cnpj: true, presence: true, if: :is_cnpj?
   validates :social_reason, presence: true, if: :is_cnpj?
 
+  def label_name
+    "#{self.id} - #{self.fantasy_name}"
+  end
 
 
   private
