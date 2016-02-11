@@ -11,6 +11,11 @@ gem 'turbolinks'
 gem 'simple_form'
 gem 'haml-rails'
 
+gem 'validates_cpf_cnpj'
+gem 'validates_timeliness'
+gem 'email_validator'
+
+
 path 'components' do 
   gem 'site'
   gem 'client'

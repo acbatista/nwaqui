@@ -1,0 +1,4 @@
+pt-BR:
+  disable_button: "Processando, aguarde..."
+  success: "Operação realizada com sucesso!"
+  confirm: "Tem certeza que deseja excluir?"

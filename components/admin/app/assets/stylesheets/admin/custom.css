@@ -8,6 +8,10 @@ body {
   }
 
 }
+
+.navbar-brand {
+  padding: 10px 15px !important;
+}
 .navbar-default {
   border-color: rgba(128, 128, 128, 0.3) !important;
   background-color: white !important;

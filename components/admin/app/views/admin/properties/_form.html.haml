@@ -1,0 +1,67 @@
+= simple_form_for @property do |f|
+  .row
+    .col-md-4
+      = f.association :customer, include_blank: "selecione..."
+      = f.hint link_to "gerenciar clientes", customers_path
+    .col-md-4
+      = f.association :project, include_blank: "selecione..."
+      = f.hint link_to "gerenciar empreendimentos", projects_path
+  %hr/
+  .row
+    .col-md-4
+      = f.input :situation, as: :select, include_blank: false, collection: Property.situations.map {|k,v| [k.humanize, k]}
+    .col-md-4
+      = f.input :type_property, as: :select, include_blank: false, collection: Property.type_properties.map {|k,v| [k.humanize, k]}
+    .col-md-4
+      = f.input :status, as: :select, include_blank: false
+  .row
+    .col-md-12
+      = f.input :name
+  .row
+    .col-md-12
+      = f.input :description
+  %hr/
+  .row
+    .col-md-2
+      = f.input :rooms
+    .col-md-2
+      = f.input :unit
+    .col-md-2
+      = f.input :value
+    .col-md-2
+      = f.input :suit
+    .col-md-2
+      = f.input :value_m2
+    .col-md-2
+      = f.input :area
+  .row
+    .col-md-2
+      = f.input :parking_spaces
+    .col-md-2
+      = f.input :floor
+    .col-md-2
+      = f.input :sun_position
+    .col-md-2
+      = f.input :value_rent
+  .row
+    .col-md-4
+      = f.input :link_tour
+    .col-md-4
+      = f.association :construction_companies, as: :select
+    .col-md-4
+      = f.association :sellers, as: :select
+  .row
+    .col-md-12
+  %hr/
+  .row
+    .col-md-3
+      = f.input :commercial, as: :select, include_blank: false
+    .col-md-3
+      = f.input :elevator, as: :select, include_blank: false
+    .col-md-3
+      = f.input :coverage, as: :select, include_blank: false
+  %hr/
+  .row
+    .col-md-12
+      = f.submit "Cadastrar imóvel", class: 'btn btn-success', data: { disable_with: t(:disable_button)}
+      = link_to "Voltar para listagem", properties_path, class: 'btn btn-inverse'

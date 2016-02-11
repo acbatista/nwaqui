@@ -14,3 +14,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require admin/bootstrap.min
+//= require admin/jquery.mask.min
+//= require admin/jquery.maskmoney.min
+//= require admin/custom

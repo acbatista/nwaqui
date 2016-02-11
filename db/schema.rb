@@ -96,7 +96,7 @@ ActiveRecord::Schema.define(version: 20160203154217) do
     t.string   "sun_position"
     t.string   "link_tour"
     t.float    "value_rent",                default: 0.0
-    t.integer  "client_id"
+    t.integer  "customer_id"
     t.integer  "project_id"
     t.integer  "attribute_id"
     t.integer  "construction_companies_id"
@@ -109,7 +109,7 @@ ActiveRecord::Schema.define(version: 20160203154217) do
     t.datetime "updated_at",                                null: false
   end
 
-  add_index "properties", ["client_id"], name: "index_properties_on_client_id"
+  add_index "properties", ["customer_id"], name: "index_properties_on_customer_id"
   add_index "properties", ["project_id"], name: "index_properties_on_project_id"
   add_index "properties", ["situation"], name: "index_properties_on_situation"
   add_index "properties", ["type_property"], name: "index_properties_on_type_property"

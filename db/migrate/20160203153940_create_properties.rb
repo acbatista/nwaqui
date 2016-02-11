@@ -36,7 +36,7 @@ class CreateProperties < ActiveRecord::Migration
       t.string :link_tour
       t.float :value_rent, default: 0.00
 
-      t.references :client, index:true
+      t.references :customer, index:true
       t.references :project, index: true
       
       t.references :attribute, array: true, default: []
@@ -49,7 +49,6 @@ class CreateProperties < ActiveRecord::Migration
       t.boolean :elevator,    default: false
       t.boolean :coverage,    default: false
 
-      t.timestamps null: false
       t.timestamps null: false
     end
   end

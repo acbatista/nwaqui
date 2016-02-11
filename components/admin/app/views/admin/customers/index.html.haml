@@ -1,0 +1,34 @@
+.panel-heading
+  %h3
+    %b Listagem de clientes
+    %br
+    %small 
+      Lista de clientes cadastros
+%hr/
+.panel-body
+  .row  
+    .col-md-12
+      %table.table.table-striped.table-hover
+        %thead 
+          %tr
+            %th Cod.
+            %th Nome
+            %th CPF/CNPJ
+            %th E-mail de contato
+            %th Responsável
+            %th Telefone
+            %th Ação
+        %tbody
+          - @customers.each do |customer|
+            %tr
+              %td.col-md-1= customer.id
+              %td.col-md-3= customer.fantasy_name
+              %td.col-md-1= (customer.pessoa_jurídica?) ? customer.cnpj : customer.cpf
+              %td.col-md-1= customer.contact_email
+              %td.col-md-1= customer.responsible_name
+              %td.col-md-1= customer.responsible_telephone
+              %td
+                = link_to "", customer_path(customer), class: 'btn btn-info btn-xs glyphicon glyphicon-share-alt'
+                = link_to "", edit_customer_path(customer), class: 'btn btn-success btn-xs glyphicon glyphicon-pencil'
+                = link_to "", customer_path(customer), method: :delete, class: 'btn btn-danger btn-xs glyphicon glyphicon-remove', data: { confirm: t(:confirm)}
+
