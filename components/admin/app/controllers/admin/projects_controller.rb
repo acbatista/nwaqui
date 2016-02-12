@@ -4,8 +4,16 @@ module Admin
   class ProjectsController < ApplicationController 
     before_action :set_project, only: [:show, :edit, :update, :destroy]
 
+    has_scope :by_customer
+    has_scope :by_status, type: :boolean
+
     def index
-      @projects = Project.all
+      @projects = apply_scopes(Project).all.order(:name)
+
+      respond_to do |format|
+        format.html { @projects }
+        format.json { render json: @projects }
+      end
     end
 
     def new

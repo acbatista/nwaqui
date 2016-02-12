@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20160203154217) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "attributes", force: :cascade do |t|
     t.string   "name"
     t.boolean  "status",     default: true
@@ -51,7 +54,7 @@ ActiveRecord::Schema.define(version: 20160203154217) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "messages", ["client_id"], name: "index_messages_on_client_id"
+  add_index "messages", ["client_id"], name: "index_messages_on_client_id", using: :btree
 
   create_table "projects", force: :cascade do |t|
     t.integer  "customer_id"
@@ -63,7 +66,7 @@ ActiveRecord::Schema.define(version: 20160203154217) do
     t.datetime "updated_at",                 null: false
   end
 
-  add_index "projects", ["customer_id"], name: "index_projects_on_customer_id"
+  add_index "projects", ["customer_id"], name: "index_projects_on_customer_id", using: :btree
 
   create_table "properties", force: :cascade do |t|
     t.integer  "situation",                 default: 0
@@ -98,9 +101,9 @@ ActiveRecord::Schema.define(version: 20160203154217) do
     t.float    "value_rent",                default: 0.0
     t.integer  "customer_id"
     t.integer  "project_id"
-    t.integer  "attribute_id"
-    t.integer  "construction_companies_id"
-    t.integer  "sellers_id"
+    t.integer  "property_attributes_id",    default: [],                 array: true
+    t.integer  "construction_companies_id", default: [],                 array: true
+    t.integer  "sellers_id",                default: [],                 array: true
     t.text     "description"
     t.boolean  "commercial",                default: false
     t.boolean  "elevator",                  default: false
@@ -109,10 +112,10 @@ ActiveRecord::Schema.define(version: 20160203154217) do
     t.datetime "updated_at",                                null: false
   end
 
-  add_index "properties", ["customer_id"], name: "index_properties_on_customer_id"
-  add_index "properties", ["project_id"], name: "index_properties_on_project_id"
-  add_index "properties", ["situation"], name: "index_properties_on_situation"
-  add_index "properties", ["type_property"], name: "index_properties_on_type_property"
+  add_index "properties", ["customer_id"], name: "index_properties_on_customer_id", using: :btree
+  add_index "properties", ["project_id"], name: "index_properties_on_project_id", using: :btree
+  add_index "properties", ["situation"], name: "index_properties_on_situation", using: :btree
+  add_index "properties", ["type_property"], name: "index_properties_on_type_property", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -131,6 +134,6 @@ ActiveRecord::Schema.define(version: 20160203154217) do
     t.datetime "updated_at",                  null: false
   end
 
-  add_index "users", ["username"], name: "index_users_on_username", unique: true
+  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
 end

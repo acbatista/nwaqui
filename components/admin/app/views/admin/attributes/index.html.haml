@@ -1,0 +1,26 @@
+.panel-heading
+  %h3
+    %b Listagem de atributos
+    %br
+    %small 
+      Lista de atributos cadastrados
+%hr/
+.panel-body
+  .row    
+    .col-md-12
+      %table.table.table-striped.table-hover.table-bordered
+        %thead 
+          %tr
+            %th Cod.
+            %th Nome
+            %th Situação
+            %th Ação
+        %tbody 
+          - @attributes.each do |attribute|
+            %tr 
+              %td.col-md-1= attribute.id 
+              %td= attribute.name 
+              %td.col-md-1= attribute.status ? "ativo" : "inativo"
+              %td.col-md-1
+                = link_to "", edit_attribute_path(attribute), class: 'btn btn-success glyphicon glyphicon-pencil btn-xs'
+                = link_to "", attribute_path(attribute), method: :delete, class: 'btn btn-danger glyphicon glyphicon-remove btn-xs', data: { confirm: t(:confirm)}

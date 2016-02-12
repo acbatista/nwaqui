@@ -8,6 +8,16 @@
 .panel-body
   .row  
     .col-md-12
+      .row
+        = simple_form_for url_for, method: :get do |f|
+          .col-md-3
+            = f.input :by_customer, label: 'Cliente', as: :select, collection: Customer.all.order(:id), label_method: :label_name, input_html: { name: 'by_customer'}, include_blank: "Todos", selected: params[:by_customer]
+          .col-md-3
+            = f.submit "Filtrar lista", name: nil, class: 'btn btn-primary', style: "margin-top: 24px"
+
+  %hr/ 
+  .row  
+    .col-md-12
       %table.table.table-striped.table-hover.table-bordered
         %thead 
           %tr
@@ -21,8 +31,8 @@
           - @projects.each do |project|
             %tr
               %td.col-md-1= project.id
-              %td.col-md-5= project.name
-              %td.col-md-2= project.customer.label_name if project.customer.present?
+              %td.col-md-3= project.name
+              %td.col-md-3= project.customer.label_name if project.customer.present?
               %td.col-md-2= project.image_path
               %td.col-md-1= project.status ? "ativo" : "inativo"
               %td.col-md-1

@@ -5,7 +5,7 @@ default: &default
 
 development:
   <<: *default
-  database: "nwaqui_development"
+  database: "nwimoveis_development"
   username: "postgres"
   password: "123456789"
   host: "localhost"
@@ -13,14 +13,14 @@ development:
 
 production:
   <<: *default
-  database: nwaqui_production
+  database: nwimoveis_production
   username: "username"
   password: "password"
   host: "host"
 
 test:
   <<: *default
-  database: nwaqui_test
+  database: nwimoveis_test
   username: "postgres"
   password: "123456789"
   host: "localhost"

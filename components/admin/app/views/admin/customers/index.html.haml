@@ -15,19 +15,17 @@
             %th Nome
             %th CPF/CNPJ
             %th E-mail de contato
-            %th Responsável
             %th Telefone
             %th Ação
         %tbody
-          - @customers.each do |customer|
+          - @customers.order('id DESC').each do |customer|
             %tr
               %td.col-md-1= customer.id
-              %td.col-md-3= customer.fantasy_name
+              %td.col-md-3= customer.fantasy_name.downcase
               %td.col-md-1= (customer.pessoa_jurídica?) ? customer.cnpj : customer.cpf
               %td.col-md-1= customer.contact_email
-              %td.col-md-1= customer.responsible_name
               %td.col-md-1= customer.responsible_telephone
-              %td
+              %td.col-md-2
                 = link_to "", customer_path(customer), class: 'btn btn-info btn-xs glyphicon glyphicon-share-alt'
                 = link_to "", edit_customer_path(customer), class: 'btn btn-success btn-xs glyphicon glyphicon-pencil'
                 = link_to "", customer_path(customer), method: :delete, class: 'btn btn-danger btn-xs glyphicon glyphicon-remove', data: { confirm: t(:confirm)}

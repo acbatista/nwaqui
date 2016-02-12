@@ -74,6 +74,9 @@ GEM
       haml (>= 4.0.6, < 5.0)
       html2haml (>= 1.0.1)
       railties (>= 4.0.1)
+    has_scope (0.6.0)
+      actionpack (>= 3.2, < 5)
+      activesupport (>= 3.2, < 5)
     html2haml (2.0.0)
       erubis (~> 2.7.0)
       haml (~> 4.0.0)
@@ -178,6 +181,7 @@ DEPENDENCIES
   client!
   email_validator
   haml-rails
+  has_scope
   jquery-rails
   pg
   rails (= 4.2.5.1)

@@ -1,0 +1,10 @@
+pt-BR:
+  activerecord:
+    project: "Empreendimento"
+    attributes:
+      project: 
+        customer: "Cliente"
+        name: "Nome"
+        description: "Descrição"
+        status: "Ativo?"
+

@@ -39,7 +39,7 @@ class CreateProperties < ActiveRecord::Migration
       t.references :customer, index:true
       t.references :project, index: true
       
-      t.references :attribute, array: true, default: []
+      t.references :property_attributes, array: true, default: []
       t.references :construction_companies, array: true, default: []
       t.references :sellers, array: true, default: []
 

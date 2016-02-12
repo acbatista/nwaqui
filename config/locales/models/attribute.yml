@@ -1,0 +1,7 @@
+pt-BR:
+  activerecord:
+    attribute: "Atributo"
+    attributes:
+      attribute: 
+        name: "Nome"
+        status: "Ativo?"

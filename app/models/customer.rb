@@ -1,5 +1,7 @@
 class Customer < ActiveRecord::Base
   
+  has_many :projects
+    
   validates :type_client, presence: true 
 
   validates :cep, :uf, :city, :address, :fantasy_name, :responsible_name, presence: true
@@ -13,7 +15,7 @@ class Customer < ActiveRecord::Base
   validates :social_reason, presence: true, if: :is_cnpj?
 
   def label_name
-    "#{self.id} - #{self.fantasy_name}"
+    "#{self.id} - #{self.fantasy_name.downcase}"
   end
 
 
