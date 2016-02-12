@@ -19,6 +19,9 @@ class CreateUsers < ActiveRecord::Migration
       t.boolean :status, default: true
 
       t.integer :user_type, default: 0 #[admin: 0, customer: 1, simple_user: 2]
+     
+      t.references :customer, array: true, default: []
+      
       t.timestamps null: false
     end
 

@@ -1,0 +1,15 @@
+pt-BR:
+  activerecord:
+    'admin/admin_user': "Usuário cliente"
+    attributes:
+        'admin/admin_user': 
+            name: "Nome"
+            bio: "Bio"
+            email: "E-mail"
+            telephone: "Telefone"
+            avatar: "Avatar"
+            username: "Credencial"
+            password: "Senha"
+            password_confirmation: "Confirmação de senha"
+            status: "Ativo?"
+            customer: "Quais clientes administra?"

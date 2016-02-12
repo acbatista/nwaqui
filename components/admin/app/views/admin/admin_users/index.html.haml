@@ -26,5 +26,9 @@
               %td= admin.username
               %td.col-md-1= admin.status ? "ativo" : "inativo"
               %td.col-md-2
-                = link_to "", edit_admin_user_path(admin), class: 'btn btn-success btn-xs glyphicon glyphicon-pencil'
-                = link_to "", admin_user_path(admin), method: :delete, data: { confirm: t(:confirm)}, class: 'btn btn-danger btn-xs glyphicon glyphicon-remove'
+                - if admin.id != current_user.id
+                  = link_to "", edit_admin_user_path(admin), class: 'btn btn-success btn-xs glyphicon glyphicon-pencil'
+                  = link_to "", admin_user_path(admin), method: :delete, data: { confirm: t(:confirm)}, class: 'btn btn-danger btn-xs glyphicon glyphicon-remove'
+                - else
+                  %span.label.label-primary
+                    Você

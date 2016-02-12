@@ -11,7 +11,10 @@ Client::Engine.routes.draw do
       get 'logout'
     end
   end
-  
+
+  get   'edit_password',  to: 'passwords#edit', as: 'edit_password'
+  post  'update_password', to: 'passwords#update', as: 'update_password'
+
   resources :users, only: [:show, :update, :edit] do 
     collection do 
       resources :passwords, only: [:edit, :update]

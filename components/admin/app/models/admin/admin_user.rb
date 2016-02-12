@@ -1,5 +1,5 @@
 module Admin
-  class AdminUser < User 
+  class AdminUser < ::User 
 
     default_scope { where(user_type: 0)}
     

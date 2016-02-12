@@ -49,11 +49,11 @@ module Admin
     
     def set_params
       params.require(:admin_user).permit(:name, :bio, :email, :telephone, :avatar, :username, 
-                                         :password, :password_confirmation)
+                                         :password, :password_confirmation, :status)
     end
 
     def set_update_params
-      params.require(:admin_user).permit(:name, :bio, :email, :telephone, :avatar, :username) 
+      params.require(:admin_user).permit(:name, :bio, :email, :telephone, :avatar, :username, :status) 
     end
   end
 end

@@ -130,6 +130,7 @@ ActiveRecord::Schema.define(version: 20160203154217) do
     t.date     "last_signed"
     t.boolean  "status",       default: true
     t.integer  "user_type",    default: 0
+    t.integer  "customer_id",  default: [],                array: true
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
   end

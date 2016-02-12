@@ -1,0 +1,134 @@
+= simple_form_for @property do |f|
+  .row
+    .col-md-4
+      = f.association :customer, collection: Customer.where(id: current_user.customer_id), label_method: :label_name, include_blank: "selecione..."
+    .col-md-4
+      = f.association :project, collection: f.object.customer.present? ? f.object.customer.projects : {}, include_blank: "selecione..."
+      = f.hint link_to "gerenciar empreendimentos", projects_path
+  %hr/
+  .row
+    .col-md-12
+      %h4 
+        %b Informações
+  %br/
+  .row
+    .col-md-4
+      = f.input :situation, as: :select, include_blank: false, collection: Property.situations.map {|k,v| [k.humanize, k]}
+    .col-md-4
+      = f.input :type_property, as: :select, include_blank: false, collection: Property.type_properties.map {|k,v| [k.humanize, k]}
+    .col-md-4
+      = f.input :status, as: :select, include_blank: false
+  .row
+    .col-md-12
+      = f.input :name, input_html: { placeholder: "Informe o nome do imóvel"}
+  .row
+    .col-md-12
+      = f.input :description, input_html: { placeholder: "Descreva o imóvel"}
+  %hr/
+  .row
+    .col-md-12
+      %h4 
+        %b Endereço
+  %br/
+  .row
+    .col-md-4
+      = f.input :city, input_html: { placeholder: "Informe a cidade"}
+    .col-md-2
+      = f.input :region, input_html: { placeholder: "Informe a região"}
+    .col-md-2
+      = f.input :district, input_html: { placeholder: "Informe o bairro"}
+    .col-md-2
+      = f.input :group, input_html: { placeholder: "Informe a quadra"}
+    .col-md-2
+      = f.input :block, input_html: { placeholder: "Informe o bloco"}
+  .row
+    .col-md-4
+      = f.input :address, input_html: { placeholder: "Digite o endereço completo"}
+    .col-md-4
+      = f.input :complement, input_html: { placeholder: "Digite o complemento (se houver)"}
+    .col-md-1
+      = f.input :number
+    .col-md-3
+      = f.input :reference_point
+  .row
+    .col-md-2
+
+  %hr/
+  .row
+    .col-md-12
+      %h4 
+        %b Detalhes
+  %br/
+  .row
+    .col-md-2
+      = f.input :rooms, as: :string, input_html: {value: f.object.rooms.present?  ? f.object.rooms : 0}
+    .col-md-2
+      = f.input :unit
+    .col-md-2
+      = f.input :value,as: :string, input_html: { class: 'coin_mask'}
+    .col-md-2
+      = f.input :suit, as: :string, input_html: {value: f.object.rooms.present?  ? f.object.suit : 0}
+    .col-md-2
+      = f.input :value_m2
+    .col-md-2
+      = f.input :area
+  .row
+    .col-md-2
+      = f.input :parking_spaces, as: :string, input_html: {value: f.object.rooms.present?  ? f.object.parking_spaces : 0}
+    .col-md-2
+      = f.input :floor, as: :string, input_html: {value: f.object.rooms.present? ? f.object.floor : 0}
+    .col-md-2
+      = f.input :sun_position
+    .col-md-2
+      = f.input :value_rent,as: :string, input_html: { class: 'coin_mask'}
+  .row
+    .col-md-4
+      = f.input :link_tour
+    .col-md-4
+      = f.association :construction_companies, as: :select, label_method: :label_name, input_html: {  class: "chosen-select",multiple: true}
+    .col-md-4
+      = f.association :sellers, as: :select, label_method: :label_name, input_html: {  class: "chosen-select",multiple: true}
+  .row
+    .col-md-12
+  %hr/
+  .row
+    .col-md-2
+      = f.input :commercial, as: :select, include_blank: false
+    .col-md-2
+      = f.input :elevator, as: :select, include_blank: false
+    .col-md-2
+      = f.input :coverage, as: :select, include_blank: false
+    .col-md-3
+      = f.input :address_link_visible, as: :select, include_blank: false
+    .col-md-3
+      = f.input :complement_link_visible, as: :select, include_blank: false
+  %hr/
+  .row
+    .col-md-12
+      %h4 
+        %b Atributos
+  %br/
+  .row
+    .col-md-12
+      = f.association :property_attributes, as: :check_boxes, label_method: lambda { |property_attribute| property_attribute.name.downcase}, label: false, item_wrapper_class: 'col-md-2'
+     
+  %hr/
+  .row
+    .col-md-12
+      = f.submit "Cadastrar imóvel", class: 'btn btn-success', data: { disable_with: t(:disable_button)}
+      = link_to "Voltar para listagem", properties_path, class: 'btn btn-default', input_html: { name: 'property[property_attribute_id][]'}
+
+
+:javascript
+  $(document).ready(function() {
+    $("#property_customer_id").on('change', function() {
+      $.getJSON("#{projects_path}.json?by_customer="+$(this).val(), function(data) {
+        var items = [];
+        $.each(data, function(key, val) {
+          items.push( "<option value='" + val.id + "'>" + val.name + "</option>");
+        });
+       
+        $("#property_project_id").html(items)
+      });
+    });
+  })

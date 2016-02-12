@@ -8,22 +8,14 @@ Admin::Engine.routes.draw do
     end
   end
 
-  resources :users, only: [:show, :update, :edit] do 
-    collection do 
-      resources :passwords, only: [:edit, :update]
-    end
-  end
+  get   'edit_password',  to: 'passwords#edit', as: 'edit_password'
+  post  'update_password', to: 'passwords#update', as: 'update_password'
 
   resources :properties
-  
-  resources :projects do 
-    resources :properties
-  end
-  
-  resources :customers do 
-    resources :projects
-    resources :properties
-  end
+  resources :buttons
+
+  resources :projects
+  resources :customers
 
   resources :customer_users
   resources :admin_users

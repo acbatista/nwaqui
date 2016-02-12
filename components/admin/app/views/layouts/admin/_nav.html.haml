@@ -42,7 +42,7 @@
               %a{:href => "#{customers_path}"} Clientes
         %li.dropdown
           %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-            Gestão de usuários
+            Gestão de acessos
             %span.caret
           %ul.dropdown-menu
             %li
@@ -54,15 +54,21 @@
               %a{:href => "#{new_customer_user_path}"} Novo cliente
             %li
               %a{:href => "#{customer_users_path}"} Clientes
-      %ul.nav.navbar-nav.navbar-right
         %li.dropdown
           %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-            Nome do usuário
+            Gestão geral
             %span.caret
           %ul.dropdown-menu
             %li
-              %a{:href => "#{user_path(1)}"} Meu perfil
+              %a{:href => "#{new_button_path}"} Novo publicitário
+              %a{:href => "#{buttons_path}"} Botões publicitários
+      %ul.nav.navbar-nav.navbar-right
+        %li.dropdown
+          %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+            = current_user.email
+            %span.caret
+          %ul.dropdown-menu
             %li
-              %a{:href => "#{edit_password_path(1)}"} Trocar minha senha 
+              %a{:href => "#{edit_password_path}"} Trocar minha senha 
             %li
               %a{:href => "#{logout_sessions_path}"} Sair 

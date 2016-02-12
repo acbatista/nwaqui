@@ -1,0 +1,12 @@
+= simple_form_for @user, url: update_password_path, method: :post do |f|
+  .row
+    .col-md-3
+      = f.input :password, input_html: {placeholder: 'Digite sua nova senha'}
+    .col-md-3
+      = f.input :password_confirmation, input_html: {placeholder: 'Repita sua senha'}
+    .col-md-3
+      = f.input :current_password, input_html: {placeholder: 'Digite sua senha atual'}
+  %hr/
+  .row
+    .col-md-3
+      = f.submit "Atualizar minha senha", class: 'btn btn-primary', data: { disable_with: t(:disable_with)}

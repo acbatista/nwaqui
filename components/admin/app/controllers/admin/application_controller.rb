@@ -1,7 +1,12 @@
+require_dependency 'admin/session_helper'
+
 module Admin
   class ApplicationController < ActionController::Base
-    #before_filter :validate_session!
+    before_filter :validate_session!
 
+    helper SessionHelper
+    include SessionHelper
+    
     private
 
     def validate_session!
@@ -11,6 +16,7 @@ module Admin
     end
 
     def session_controller?
+      controller_name == "sessions"
     end
   end
 end
