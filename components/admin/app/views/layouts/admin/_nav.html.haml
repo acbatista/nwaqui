@@ -46,7 +46,12 @@
             %span.caret
           %ul.dropdown-menu
             %li
+              %a{:href => "#{new_admin_user_path}"} Novo administrador
+            %li
               %a{:href => "#{admin_users_path}"} Administradores
+            %li.divider
+            %li
+              %a{:href => "#{new_customer_user_path}"} Novo cliente
             %li
               %a{:href => "#{customer_users_path}"} Clientes
       %ul.nav.navbar-nav.navbar-right

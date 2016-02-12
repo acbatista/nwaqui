@@ -4,7 +4,8 @@ Site::Engine.routes.draw do
   resources :pages
   
   resources :sessions, only: [:new, :create]
-
+  resources :external_users
+  
   resources :bookmark_users, only: [:new, :create]
   resources :bookmarks
 

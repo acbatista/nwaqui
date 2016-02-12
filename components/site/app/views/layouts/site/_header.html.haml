@@ -6,6 +6,6 @@
       .col-md-4.col-md-offset-6
         .fav-buttons
           %i.glyphicon.glyphicon-star
-          = link_to "Meus favoritos", "#", class: 'fav-button'
+          = link_to "Meus favoritos", new_session_path,  remote: true, class: 'fav-button'
 
-          = link_to "Acessar", "#", class: 'btn btn-primary'
+          = link_to "Realizar cadastro", new_external_user_path, remote: true,  class: 'btn btn-primary'
