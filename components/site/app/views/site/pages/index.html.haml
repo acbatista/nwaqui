@@ -1,0 +1,25 @@
+.container
+  .row
+    .col-md-12
+      / area do banner
+  .row
+    - 6.times do
+      .col-md-2
+        .panel
+          .panel-body
+            imagem
+  
+  %hr/
+  .row
+    .col-md-12
+      %h1.title Imóveis destaque
+  .row
+    - 8.times do 
+      .col-md-3
+        imóvel
+.container-fluid{style:'text-align: center; background-color: #669FBD;'}
+  = image_tag '/images/page_index_banner.jpg'
+  %br/
+.row
+  .col-md-12{style:'text-align: center; margin: 25px 0 25px 0'}
+    = image_tag '/images/mobile_icons.jpg'

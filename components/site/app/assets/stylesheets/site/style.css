@@ -917,7 +917,7 @@ ul.social-top > li a i {
 /* === 4.1. FOOTER NAVIGATION === */
 .footer .footer-nav {
 	position: relative;
-	background: url("/images/background/footer-nav-bg.png") no-repeat scroll 0 center transparent;
+	background-color: #004969;
 	padding: 7% 0 3%;
 }
 
