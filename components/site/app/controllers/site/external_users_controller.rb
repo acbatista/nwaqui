@@ -15,6 +15,7 @@ module Site
     private
 
     def set_params
+      params.require(:external_user).permit(:email, :password, :username, :password_confirmation)
     end
     
   end

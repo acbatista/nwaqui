@@ -1,0 +1,16 @@
+.modal-header
+  %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+    %span{"aria-hidden" => "true"} &times;
+  %h4.modal-title
+    %b Cadastro realizado com sucesso!
+.modal-body
+  %h5
+    Você pode acessar seus favoritos usando o e-mail informado e sua senha no menu superior 
+    %b Meus Favoritos.
+  %hr/
+  %h5{style:'text-align: center'}
+    %i Para favoritar um imóvel clique em cima da estrela ao canto de qualquer imóvel e ele será favoritado.
+    = image_tag '/images/fav_tuto.png', style: 'margin-top: 35px; padding-left: 15%;', class: 'img-circle'
+
+
+

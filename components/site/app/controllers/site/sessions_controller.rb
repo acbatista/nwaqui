@@ -1,7 +1,9 @@
+require_dependency 'site/application_controller'
+
 module Site
   class SessionsController < ApplicationController
     
-    def new
+    def new 
     end
 
     def create
