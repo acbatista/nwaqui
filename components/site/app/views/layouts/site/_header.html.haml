@@ -7,7 +7,8 @@
         .fav-buttons
           
           - if bookmark_user.present?
-            = link_to "<i class='glyphicon glyphicon-star'></i> Meus favoritos".html_safe, bookmarks_path,  remote: true, class: 'fav-button'
+            = link_to "<i class='glyphicon glyphicon-star'></i> Meus favoritos".html_safe, bookmarks_path, class: 'fav-button'
+            = link_to "<b>Encerrar acesso</b>".html_safe, logout_sessions_path
           - else
             = link_to "<i class='glyphicon glyphicon-star'></i> Meus favoritos".html_safe, new_session_path,  remote: true, class: 'fav-button'
             = link_to "Realizar cadastro", new_external_user_path, remote: true,  class: 'btn btn-primary'

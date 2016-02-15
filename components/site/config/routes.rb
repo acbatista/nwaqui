@@ -3,7 +3,11 @@ Site::Engine.routes.draw do
 
   resources :pages
   
-  resources :sessions, only: [:new, :create]
+  resources :sessions, only: [:new, :create, :logout] do 
+    collection do 
+      get 'logout'
+    end
+  end
   resources :external_users
   
   resources :bookmark_users, only: [:new, :create]

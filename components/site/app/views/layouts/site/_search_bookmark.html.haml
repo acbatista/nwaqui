@@ -1,0 +1,75 @@
+.noo-wrapper
+  %section#search-box.wrap.search-box
+    .gsearch
+      .container
+        .gsearch-info
+          %br/
+          %br/
+          %br/
+          %br/
+          %br/
+          .gsearch-info-content
+
+
+:javascript
+
+  $(document).ready(function() {
+    $("#by_type").on('change', function() {
+      if($("#by_situation").val() == "") {
+        alert('Selecione a situação do imóvel...')
+      } else {
+        var situation = $("#by_situation").val();
+        var type = $(this).val();
+
+
+        if((situation == '0' || situation == '1') && type == '0') {
+          html_one = "<option value> Nº de Quartos</option>"
+          html_one += "<option value='1'>1</option>"
+          html_one += "<option value='2'>2</option>"
+          html_one += "<option value='3'>3</option>"
+          html_one += "<option value='4'>4 ou +</option>"
+          $("#empty_one").html(html_one)
+
+          html_two = "<option value> Quadra</option>"
+          $("#empty_two").html(html_two)
+        }
+
+        if((situation == '0' || situation == '1') && type == '1') {
+          html_two = "<option value>Área (m²)</option>"
+          html_two += "<option value='50'>0 - 50</option>"
+          html_two += "<option value='70'>51 - 70</option>"
+          html_two += "<option value='100'>71 - 100</option>"
+          html_two += "<option value='101'>100 ou +</option>"
+          $("#empty_one").html(html_two)
+
+          html_two = "<option value> Quadra</option>"
+          $("#empty_two").html(html_two)
+        }
+
+        if(situation == '2' && type == '0') {
+          html_one = "<option value> Nº de Quartos</option>"
+          html_one += "<option value='1'>1</option>"
+          html_one += "<option value='2'>2</option>"
+          html_one += "<option value='3'>3</option>"
+          html_one += "<option value='4'>4 ou +</option>"
+          $("#empty_one").html(html_one)
+
+          html_two = "<option value> Valor</option>"
+          $("#empty_two").html(html_two)
+        }
+
+        if(situation == '2' && type == '1') {
+          html_one = "<option value>Área (m²)</option>"
+          html_one += "<option value='50'>0 - 50</option>"
+          html_one += "<option value='70'>51 - 70</option>"
+          html_one += "<option value='100'>71 - 100</option>"
+          html_one += "<option value='101'>100 ou +</option>"
+          $("#empty_one").html(html_two)
+
+
+          html_two = "<option value> Valor</option>"
+          $("#empty_two").html(html_two)
+        }
+      }
+    });
+  });

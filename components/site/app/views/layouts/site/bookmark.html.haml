@@ -1,0 +1,20 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Nw Aqui
+    = stylesheet_link_tag 'site/application', media: 'all'
+    %link{:href => "http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,300italic,400italic", :rel => "stylesheet", :type => "text/css"}/
+
+    %script{:src => "http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true&libraries=places", :type => "text/javascript"}
+    = javascript_include_tag 'site/application'
+    = csrf_meta_tags
+  %body{class: (controller.action_name == 'show') ? 'page-right-sidebar' : 'home page-fullwidth' }
+    .site
+      = render 'layouts/site/header'
+      = render 'layouts/site/search_bookmark'
+      = yield
+      = render 'layouts/site/footer'
+    #modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "modal", :role => "dialog", :tabindex => "-1"}
+      .modal-dialog
+        .modal-content
