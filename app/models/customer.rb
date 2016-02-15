@@ -14,6 +14,15 @@ class Customer < ActiveRecord::Base
   validates :cnpj, cnpj: true, presence: true, if: :is_cnpj?
   validates :social_reason, presence: true, if: :is_cnpj?
 
+
+  validates :logo_path, file_size: { less_than_or_equal_to: 10.megabytes.to_i,
+                                 message: "Arquivo não pode exceder 10 MB" }
+
+  validates :logo_path, file_content_type: { allow: ['image/jpeg', 'image/png'],
+                                         message: 'Somente arquivos .jpg ou .png' }
+
+  mount_uploader :logo_path, ::ImageUploader 
+
   def label_name
     "#{self.id} - #{self.fantasy_name.downcase}"
   end

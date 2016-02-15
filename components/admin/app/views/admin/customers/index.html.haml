@@ -11,6 +11,7 @@
       %table.table.table-striped.table-hover.table-bordered
         %thead 
           %tr
+            %th Logo
             %th Cod.
             %th Nome
             %th CPF/CNPJ
@@ -20,6 +21,7 @@
         %tbody
           - @customers.order('id DESC').each do |customer|
             %tr
+              %td.col-md-1= image_tag customer.logo_path, width: 35
               %td.col-md-1= customer.id
               %td.col-md-3= customer.fantasy_name.downcase
               %td.col-md-1= (customer.pessoa_jurídica?) ? customer.cnpj : customer.cpf

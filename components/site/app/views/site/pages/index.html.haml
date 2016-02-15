@@ -23,24 +23,24 @@
           %ul
             %li
               .property-row
-                - 8.times do 
+                - Property.where(status:true).order('id DESC').limit(8).each do |property|
                   %article.hentry.has-featured.mod1_home
                     .property-featured
-                      %a.content-thumb{:href => "/imoveis/163"}
+                      %a.content-thumb{:href => "#{property_path(property)}"}
                         %img.attachment-property-thumb.featured-thumb-home{:alt => "", :src => "https://nwaqui.s3.amazonaws.com/uploads/c0f5d31336b1d3c5c450cefebd261156.jpg"}/
                       %span.property-category.new_name
                         %a{:href => "/imoveis/163"}
-                          Residencial Real Evolution
+                          = property.name
                       .property-detail.mod-detail
                         .size
                           %span
                             105
                         .bedrooms
                           %span
-                            2
+                            = property.rooms
                         .bathrooms
                           %span
-                            2
+                            = property.suit
                         .size
                           /= link_to "", "#", class: 'glyphicon glyphicon-star', style: 'font-size: 25px'
                           = link_to "", "#", class: 'glyphicon glyphicon-star-empty', style: 'font-size: 25px'

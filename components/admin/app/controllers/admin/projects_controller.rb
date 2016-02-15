@@ -52,7 +52,7 @@ module Admin
     private
 
     def set_params
-      params.require(:project).permit(:customer_id, :name, :description, :status, :logo_path)
+      params.require(:project).permit(:customer_id, :name, :description, :status, :image_path)
     end
 
     def set_project

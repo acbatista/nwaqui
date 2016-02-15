@@ -7,6 +7,7 @@ module Site
     end
     
     def show
+      @property = Property.where(status: true).find(params[:id])
     end
 
   end
