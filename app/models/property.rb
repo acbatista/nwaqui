@@ -13,6 +13,10 @@ class Property < ActiveRecord::Base
   
   scope :attributes, -> {Attribute.all.order(:name) }
 
+  attr_accessor :type_search_property
+
+  enum type_search_property: ['residencial','comercial']
+  
   enum situation: ['breve_lançamento', 
                    'na_planta',
                    'em_construção',

@@ -13,10 +13,75 @@
           = simple_form_for url_for, method: :get do |f|
             .gsearch-content
               .gsearch-field
-                = f.input :by_situation, as: :select, label: false, collection: Property.type_properties.map { |k,v| [k.humanize, k]}, include_blank: "Você procura por"
-                = f.input :by_situation, as: :select, label: false, collection: Property.type_properties.map { |k,v| [k.humanize, k]}, include_blank: "Tipo de imóvel"
-                = f.input :by_situation, as: :select, label: false, collection: Property.type_properties.map { |k,v| [k.humanize, k]}, include_blank: "Detalhe"
-                = f.input :by_situation, as: :select, label: false, collection: Property.type_properties.map { |k,v| [k.humanize, k]}, include_blank: "Valor"
+                = f.input :by_situation, as: :select, label: false, collection: Property.type_properties.map { |k,v| [k.humanize, v]}, include_blank: "Você procura por", input_html: { name: 'by_situation', id: 'by_situation'}
+                = f.input :by_type, as: :select, label: false, collection: Property.type_search_properties.map { |k,v| [k.humanize, v]}, include_blank: "Tipo de imóvel", input_html: { name: 'by_type', id: 'by_type'}
+                = f.input :empty,label: false, as: :select, include_blank: "selecione...",collection: [], input_html: { id: 'empty_one'}
+
+                = f.input :empty,label: false, as: :select, include_blank: "selecione...",collection: [], input_html: { id: 'empty_two'}
+
               .gsearch-action
                 .gsubmit
                   %input.btn.btn-deault{type: 'submit', value: 'Buscar'}
+
+:javascript
+
+  $(document).ready(function() {
+    $("#by_type").on('change', function() {
+      if($("#by_situation").val() == "") {
+        alert('Selecione a situação do imóvel...')
+      } else {
+        var situation = $("#by_situation").val();
+        var type = $(this).val();
+
+
+        if((situation == '0' || situation == '1') && type == '0') {
+          html_one = "<option value> Nº de Quartos</option>"
+          html_one += "<option value='1'>1</option>"
+          html_one += "<option value='2'>2</option>"
+          html_one += "<option value='3'>3</option>"
+          html_one += "<option value='4'>4 ou +</option>"
+          $("#empty_one").html(html_one)
+
+          html_two = "<option value> Quadra</option>"
+          $("#empty_two").html(html_two)
+        }
+
+        if((situation == '0' || situation == '1') && type == '1') {
+          html_two = "<option value>Área (m²)</option>"
+          html_two += "<option value='50'>0 - 50</option>"
+          html_two += "<option value='70'>51 - 70</option>"
+          html_two += "<option value='100'>71 - 100</option>"
+          html_two += "<option value='101'>100 ou +</option>"
+          $("#empty_one").html(html_two)
+
+          html_two = "<option value> Quadra</option>"
+          $("#empty_two").html(html_two)
+        }
+
+        if(situation == '2' && type == '0') {
+          html_one = "<option value> Nº de Quartos</option>"
+          html_one += "<option value='1'>1</option>"
+          html_one += "<option value='2'>2</option>"
+          html_one += "<option value='3'>3</option>"
+          html_one += "<option value='4'>4 ou +</option>"
+          $("#empty_one").html(html_one)
+
+          html_two = "<option value> Valor</option>"
+          $("#empty_two").html(html_two)
+        }
+
+        if(situation == '2' && type == '1') {
+          html_one = "<option value>Área (m²)</option>"
+          html_one += "<option value='50'>0 - 50</option>"
+          html_one += "<option value='70'>51 - 70</option>"
+          html_one += "<option value='100'>71 - 100</option>"
+          html_one += "<option value='101'>100 ou +</option>"
+          $("#empty_one").html(html_two)
+
+
+          html_two = "<option value> Valor</option>"
+          $("#empty_two").html(html_two)
+        }
+      }
+    });
+  });
