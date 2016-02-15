@@ -7,5 +7,6 @@
  *= require site/shortcode
  *= require site/home
  *= require site/citilights-shortcode
+ *= require site/color-custom
  *= require site/custom
  */

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160203154217) do
+ActiveRecord::Schema.define(version: 20160215025040) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,16 @@ ActiveRecord::Schema.define(version: 20160203154217) do
     t.boolean  "status",     default: true
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+  end
+
+  create_table "buttons", force: :cascade do |t|
+    t.integer  "order"
+    t.string   "image"
+    t.string   "name"
+    t.boolean  "publish"
+    t.string   "link"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "customers", force: :cascade do |t|
@@ -116,6 +126,18 @@ ActiveRecord::Schema.define(version: 20160203154217) do
   add_index "properties", ["project_id"], name: "index_properties_on_project_id", using: :btree
   add_index "properties", ["situation"], name: "index_properties_on_situation", using: :btree
   add_index "properties", ["type_property"], name: "index_properties_on_type_property", using: :btree
+
+  create_table "property_images", force: :cascade do |t|
+    t.integer  "property_id"
+    t.string   "image"
+    t.integer  "order"
+    t.string   "name"
+    t.boolean  "publish"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "property_images", ["property_id"], name: "index_property_images_on_property_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name"

@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.remotipart
 //= require turbolinks
 //= require admin/bootstrap.min
 //= require admin/jquery.mask.min

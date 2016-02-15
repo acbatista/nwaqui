@@ -2,21 +2,50 @@
   .row
     .col-md-12
       / area do banner
-  .row
-    - 6.times do
+  %br/
+  %section
+    .container
+      .section-title
+        %h3 Busca Exclusiva
+    - Button.where(publish: true).each do |button| 
       .col-md-2
-        .panel
-          .panel-body
-            imagem
+        = image_tag button.image
   
-  %hr/
-  .row
-    .col-md-12
-      %h1.title Imóveis destaque
-  .row
-    - 8.times do 
-      .col-md-3
-        imóvel
+  %section#recent-.wrap.recent-properties
+    .container
+      .recent-properties-inner
+        .section-title
+          %br/
+          %br/
+          %br/
+          %h3 Imóveis Destaques
+        .recent-properties-content
+          %ul
+            %li
+              .property-row
+                - 8.times do 
+                  %article.hentry.has-featured.mod1_home
+                    .property-featured
+                      %a.content-thumb{:href => "/imoveis/163"}
+                        %img.attachment-property-thumb.featured-thumb-home{:alt => "", :src => "https://nwaqui.s3.amazonaws.com/uploads/c0f5d31336b1d3c5c450cefebd261156.jpg"}/
+                      %span.property-category.new_name
+                        %a{:href => "/imoveis/163"}
+                          Residencial Real Evolution
+                      .property-detail.mod-detail
+                        .size
+                          %span
+                            105
+                        .bedrooms
+                          %span
+                            2
+                        .bathrooms
+                          %span
+                            2
+                        .size
+                          /= link_to "", "#", class: 'glyphicon glyphicon-star', style: 'font-size: 25px'
+                          = link_to "", "#", class: 'glyphicon glyphicon-star-empty', style: 'font-size: 25px'
+%br/
+%br/
 .container-fluid{style:'text-align: center; background-color: #669FBD;'}
   = image_tag '/images/page_index_banner.jpg'
   %br/

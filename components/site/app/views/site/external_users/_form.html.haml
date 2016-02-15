@@ -1,16 +1,19 @@
 = simple_form_for @user, remote: true do |f|
   .row
     .col-md-12
-      = f.input :email, input_html: { placeholder: "Digite seu e-mail"}
+      %label
+        %b E-mail
+      = f.input :email,label: false, input_html: { placeholder: "Digite seu e-mail"}
   .row
     .col-md-12
-      = f.input :username, input_html: { placeholder: "Digite uma credencial de acesso"}
+      %label 
+        %b Senha
+      = f.input :password, label: false, input_html: { placeholder: "Digite uma senha entre 6 e 20 dígitos"}
   .row
     .col-md-12
-      = f.input :password, input_html: { placeholder: "Digite uma senha entre 6 e 20 dígitos"}
-  .row
-    .col-md-12
-      = f.input :password_confirmation, input_html: { placeholder: "Repita sua senha"}
+      %lable
+        %b Repita sua senha
+      = f.input :password_confirmation,label: false,  input_html: { placeholder: "Repita sua senha"}
   %hr/
   .row
     .col-md-12

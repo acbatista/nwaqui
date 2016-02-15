@@ -11,11 +11,7 @@ Site::Engine.routes.draw do
 
   get '/bookmark/:key', to: 'bookmarks#public_share'
 
-  resources :properties do 
-    collection do 
-      resources :bookmarks
-    end
-  end
+  resources :properties, path: 'imoveis'
 
 end
 

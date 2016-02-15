@@ -3,20 +3,30 @@
     %b Listagem de botões publicitários
     %br
     %small 
-      Lista de botões
+      Gestão de botões publicitários
 %hr/
 .panel-body
-  .row  
+  .row
+    .col-md-12
+      %h4= link_to "+ adicionar botão", new_button_path, remote: true
+  %br/
+  .row
     .col-md-12
       %table.table.table-striped.table-hover.table-bordered
         %thead 
-          %tr
-            %th Cod.
-            %th Título
-            %th Página
-            %th Ordem
-            %th Link
-            %th Imagem
-            %th Status
-            %th Ação
-        %tbody
+          %tr 
+            %td Ordem
+            %td Nome
+            %td Imagem
+            %td Publicado?
+            %td Ações
+        %tbody 
+          - @buttons.order(:order).each do |image|
+            %tr 
+              %td.col-md-1= "#{image.order} º"
+              %td.col-md-8= image.name
+              %td.col-md-l=link_to "visualizar", image.image.to_s, target: '_blank'
+              %td.col-md-l= image.publish ? "Sim" : "Não"
+              %td.col-md-2
+                = link_to "editar", edit_button_path(image), remote: true, class: 'btn btn-success btn-xs'
+                = link_to "excluir", button_path(image), method: :delete, data: {confirm: t(:confirm)}, class: 'btn btn-danger btn-xs'

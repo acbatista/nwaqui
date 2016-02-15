@@ -6,6 +6,8 @@ class Property < ActiveRecord::Base
   belongs_to :customer
   belongs_to :project
 
+  has_many :images, class_name: "PropertyImage"
+  
   scope :by_customer, -> customer {where(customer_id: customer)}
   scope :by_project, -> project {where(project_id: project)}
   

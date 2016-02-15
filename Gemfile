@@ -15,8 +15,13 @@ gem 'haml-rails'
 gem 'validates_cpf_cnpj'
 gem 'validates_timeliness'
 gem 'email_validator'
+gem 'file_validators'
 
 gem 'has_scope'
+gem 'remotipart', '~> 1.2'
+
+gem 'fog'
+gem 'carrierwave',  '~> 0.10.0'
 
 path 'components' do 
   gem 'site'

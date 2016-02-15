@@ -798,15 +798,13 @@
 
 .recent-properties .recent-properties-content .property-row .hentry .property-detail {
 	position: absolute;
-	left: 15px;
-	right: 15px;
 	bottom: 15px;
 	background: rgba(255,255,255,0.85);
 	opacity: 0;
 	filter: alpha(opacity=0);
 	display: table;
 	visibility: hidden;
-	width: 90%;
+	width: 100%;
 	-webkit-transition: all .3s ease-in-out;
 	-o-transition: all .3s ease-in-out;
 	transition: all .3s ease-in-out;

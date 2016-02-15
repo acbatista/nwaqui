@@ -11,7 +11,10 @@ Admin::Engine.routes.draw do
   get   'edit_password',  to: 'passwords#edit', as: 'edit_password'
   post  'update_password', to: 'passwords#update', as: 'update_password'
 
-  resources :properties
+  resources :properties do 
+    resources :property_images
+  end
+
   resources :buttons
 
   resources :projects

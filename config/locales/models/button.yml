@@ -1,0 +1,11 @@
+pt-BR:
+  activerecord:
+    button: "Botão"
+    attributes:
+      button: 
+        name: "Nome"
+        order: "Ordem"
+        image: "Arquivo de imagem"
+        publish: "Ativo?"
+        link: "URL"
+
