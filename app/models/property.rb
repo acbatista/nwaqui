@@ -11,6 +11,10 @@ class Property < ActiveRecord::Base
   scope :by_customer, -> customer {where(customer_id: customer)}
   scope :by_project, -> project {where(project_id: project)}
   
+  scope :by_situation, -> situation {where(situation: situation)}
+  scope :by_type,      -> commecial {where(commercial: commecial)}
+
+
   scope :attributes, -> {Attribute.all.order(:name) }
 
   attr_accessor :type_search_property

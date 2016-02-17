@@ -48,6 +48,7 @@ class CreateProperties < ActiveRecord::Migration
       t.boolean :commercial,  default: false
       t.boolean :elevator,    default: false
       t.boolean :coverage,    default: false
+      t.boolean :special,     default: false
 
       t.timestamps null: false
     end

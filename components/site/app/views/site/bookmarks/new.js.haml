@@ -1,0 +1,3 @@
+- if @bookmark.present? && !@bookmark.errors.any?
+  $(".starfav_#{@property.id}").html("#{escape_javascript(render 'helper', property: @property.id)}")
+  

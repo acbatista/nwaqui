@@ -11,10 +11,5 @@
     = csrf_meta_tags
   %body{class: (controller.action_name == 'show') ? 'page-right-sidebar' : 'home page-fullwidth' }
     .site
-      = render 'layouts/site/header'
-      = render 'layouts/site/search'
+      = render 'layouts/site/public_header'
       = yield
-      = render 'layouts/site/footer'
-    #modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "modal", :role => "dialog", :tabindex => "-1", :style => 'z-index: 9999;'}
-      .modal-dialog
-        .modal-content

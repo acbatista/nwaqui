@@ -41,9 +41,8 @@
                         .bathrooms
                           %span
                             = property.suit
-                        .size
-                          /= link_to "", "#", class: 'glyphicon glyphicon-star', style: 'font-size: 25px'
-                          = link_to "", "#", class: 'glyphicon glyphicon-star-empty', style: 'font-size: 25px'
+                        .size{class: "starfav_#{property.id}"}
+                          = star_fav(property)
 %br/
 %br/
 .container-fluid{style:'text-align: center; background-color: #669FBD;'}

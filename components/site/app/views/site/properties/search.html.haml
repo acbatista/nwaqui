@@ -1,0 +1,90 @@
+.container.noo-mainbody
+  .noo-mainbody-inner
+    .row.clearfix
+      .noo-content.col-xs-12
+        .recent-properties
+          .properties.list
+            .properties-header
+              .col-md-4{style: 'padding-top: 20px;'}
+                %h1.page-title Imóveis
+              .col-md-3
+                %div
+                  %span{style: 'color: #004869; font-size: 35px; font-weight: bold; margin-top: 10px'}= @properties.count
+                  %span Imóveis encontrados
+              .col-md-4{style: 'padding-top: 20px;'}
+                %span.label.label-primary{style: 'margin-top: 10px; font-size: 100%'}
+                  Ordenar por
+            %br
+            %br
+            %br
+            %br
+            .properties-content
+              - @properties.each do |property|
+                %article.hentry
+                  .property-featured
+                    %a.content-thumb{:href => "#{property_path(property)}"}
+                      - if property.images.present?
+                        %img.thumb-list{:alt => "", :src => "#{property.images.first.image}"}/
+                      - else
+                        %img.thumb-list{:alt => "", :src => "/images/icon/image404.png"}/
+                    %span.property-label
+                      Lançamento
+                    %span.property-category
+                      %a{:href => "#{property_path(property)}"}
+                        = property.name
+                  .property-wrap
+                    %h2.property-title
+                      %a{:href => "#{property_path(property)}", :title => "#{property.name}"}
+                        = "#{property.address} - #{property.number}"
+                    .property-excerpt
+                      %p
+                        = property.description
+                      %p.property-fullwidth-excerpt
+                        = property.description
+                    .property-summary
+                      .property-detail
+                        .size
+                          %span
+                            198.0
+                            M²
+                        .bedrooms
+                          %span
+                            4
+                        .bathrooms
+                          %span
+                            4
+                      .property-info
+                        .property-price
+                          %span
+                            %span.amount
+                              R$ 0,00
+                        .property-action
+                          .property-links
+                            %a{:href => "#{property_path(property)}"} Mais Detalhes
+                          .property-links
+                            %a{:href => "#{property.link_tour}", :target => "_blank"}
+                              %span.glyphicon.glyphicon-map-marker
+                              Tour 360
+                      .property-info.property-fullwidth-info
+                        .property-price
+                          %span
+                            %span.amount
+                              = number_to_currency property.value
+                        .size
+                          %span
+                            = property.area
+                            M²
+                        .bedrooms
+                          %span
+                            = property.rooms
+                        .bathrooms
+                          %span
+                            = property.suit
+                        .size{class: "starfav_#{property.id}"}
+                          = star_fav(property.id)
+                  .property-action.property-fullwidth-action
+                    .property-links
+                      %a{:href => "#{property_path(property)}"} Mais Detalhes
+                    .property-links.property-invese-link-mod
+                      %a{:href => "#{property.link_tour}"}
+                        %img{:alt => "", :src => "/images/icon/icon-360.png"}/

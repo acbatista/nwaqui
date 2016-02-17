@@ -5,14 +5,23 @@
         .section-title
           %br/
           %h3 Meus favoritos
+          = link_to "compartilhar meus favoritos", public_bookmarks_path, class: 'btn btn-primary btn-xs'
       %hr/
-      %table.table.table-striped.table-hover
+      %table.table.table-striped.table-hover.table-bordered
         %thead
           %tr
-            %th Número
+            %th #
             %th Nome
             %th Endereço
             %th Link
             %th Ação
         %tbody
+          - bookmark_user.bookmarks.each_with_index do |bookmark, index|
+            %tr
+              %td.col-md-1= index + 1
+              %td.col-md-5= bookmark.property.name if bookmark.property.present?
+              %td.col-md-3= bookmark.property.address if bookmark.property.present?
+              %td.col-md-1= link_to "Acessar", property_path(bookmark.property), target: '_blank' if bookmark.property.present?
+              %td.col-md-2
+                = link_to "remover", bookmark_path(bookmark), method: :delete
           
