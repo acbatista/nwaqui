@@ -52,7 +52,7 @@ module Admin
 
     def set_params
       params.require(:customer).permit(:logo_path, :social_reason, :fantasy_name,
-                                       :cnpj, :cpf, :type_client, :address, :cep, :uf,
+                                       :cnpj, :cpf, :type_client, :burgh, :address, :cep, :uf,
                                        :city, :contact_email, :cadastre_email, :telephone,
                                        :celphone, :responsible_telephone, :responsible_name)
     end

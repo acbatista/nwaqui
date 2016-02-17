@@ -19,8 +19,10 @@
       = f.input :cep, input_html: { placeholder: "00000-000", class: 'cep'}
     .col-md-1
       = f.input :uf, input_html: { placeholder: "UF", maxLength: 2}
-    .col-md-9
+    .col-md-7
       = f.input :city, input_html: { placeholder: "Digite o nome da cidade"}
+    .col-md-2
+      = f.input :burgh, input_html: { placeholder: "Digite o bairro"}
   .row
     .col-md-12
       = f.input :address, input_html: { placeholder: "Digite o endereço"}

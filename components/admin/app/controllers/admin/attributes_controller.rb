@@ -5,6 +5,7 @@ module Admin
     before_action :set_attribute, only: [:edit, :update, :destroy]
     
     def index
+      @attribute = Attribute.new
       @attributes = Attribute.all.order(:id)
     end
 
@@ -14,13 +15,15 @@ module Admin
 
     def create
       @attribute = Attribute.new(set_params)
+      @attributes = Attribute.all.order(:id)
       
       if @attribute.save 
         flash[:success] = t :success
         redirect_to action: :index
       else
-        render action: :new
+        render action: :index
       end
+      
     end
     
     def update

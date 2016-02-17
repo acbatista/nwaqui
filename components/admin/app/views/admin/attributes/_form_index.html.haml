@@ -1,13 +1,11 @@
 = simple_form_for @attribute do |f|
   .row
-    .col-md-12
+    .col-md-8
       = f.input :name
-  .row
     .col-md-2
       = f.input :status, as: :select, include_blank: false
-  
-  %hr/
-  .row
-    .col-md-12
+    .col-md-2{style: 'margin-top: 24px'}
       = f.submit "Salvar atributo", class: 'btn btn-success', data: { disable_with: t(:disable_button)}
-      = link_to "Voltar para listagem", attributes_path, class: 'btn btn-default'
+    
+    
+

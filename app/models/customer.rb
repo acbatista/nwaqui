@@ -4,7 +4,7 @@ class Customer < ActiveRecord::Base
     
   validates :type_client, presence: true 
 
-  validates :cep, :uf, :city, :address, :fantasy_name, :responsible_name, presence: true
+  validates :cep, :uf, :city, :address, :burgh, :fantasy_name, :responsible_name, presence: true
   validates :telephone, :responsible_telephone, numericality: true, presence: true
   validates :celphone, numericality: true, allow_blank: true
   validates :uf, length: {maximum: 2, minimum: 2}

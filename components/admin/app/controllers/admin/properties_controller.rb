@@ -6,6 +6,7 @@ module Admin
 
     has_scope :by_customer
     has_scope :by_project
+    
     def index
       @properties = apply_scopes(Property).all.order('id DESC')
     end
@@ -57,7 +58,7 @@ module Admin
                                        :unit, :value, :suit, :value_m2, :area, :parking_spaces, :floor, :sun_position, :value_rent,
                                        :link_tour, :commercial, :elevator, :coverage,:name,
                                        :city, :region, :district, :group, :block, :address, :complement, :number, :reference_point, 
-                                       :address_link_visible, :complement_link_visible,
+                                       :address_link_visible, :complement_link_visible, :special,
                                        property_attributes_id: [],  construction_companies_id: [], sellers_id: [],
                                        property_attribute_id: [])
     end
