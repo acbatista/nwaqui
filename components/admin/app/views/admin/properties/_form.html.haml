@@ -1,11 +1,10 @@
 = simple_form_for @property do |f|
   .row
     .col-md-4
-      = f.association :customer, label_method: :label_name, include_blank: "selecione..."
-      = f.hint link_to "gerenciar clientes", customers_path
+      = f.input :address_base, as: :select, include_blank: 'selecione...', collection: Address.all.order(:name)
     .col-md-4
-      = f.association :project, collection: f.object.customer.present? ? f.object.customer.projects : {}, include_blank: "selecione..."
-      = f.hint link_to "gerenciar empreendimentos", projects_path
+      = f.input :group_base, as: :select, include_blank: 'selecione...', collection: (f.object.address_base.present?) ? Group.where(address_id: f.object.address_base).order(:name) : ''
+    .col-md-4
   %hr/
   .row
     .col-md-12
@@ -16,9 +15,10 @@
     .col-md-4
       = f.input :situation, as: :select, include_blank: false, collection: Property.situations.map {|k,v| [k.humanize, k]}
     .col-md-4
-      = f.input :type_property, as: :select, include_blank: false, collection: Property.type_properties.map {|k,v| [k.humanize, k]}
+      = f.input :commercial_situation, as: :select, include_blank: false, collection: Property.comercial_situations.map {|k,v| [k.humanize, k]}
+   
     .col-md-4
-      = f.input :status, as: :select, include_blank: false
+      = f.input :type_property, as: :select, include_blank: false, collection: Property.type_properties.map {|k,v| [k.humanize, k]}
   .row
     .col-md-12
       = f.input :name, input_html: { placeholder: "Informe o nome do imóvel"}
@@ -36,8 +36,6 @@
       = f.input :city, input_html: { placeholder: "Informe a cidade"}
     .col-md-2
       = f.input :region, input_html: { placeholder: "Informe a região"}
-    .col-md-2
-      = f.input :district, input_html: { placeholder: "Informe o bairro"}
     .col-md-2
       = f.input :group, input_html: { placeholder: "Informe a quadra"}
     .col-md-2
@@ -83,30 +81,15 @@
     .col-md-2
       = f.input :value_rent,as: :string, input_html: { class: 'coin_mask'}
   .row
-    .col-md-4
-      = f.input :link_tour
-    .col-md-4
-      = f.association :construction_companies, as: :select, label_method: :label_name, input_html: {  class: "chosen-select",multiple: true}
-    .col-md-4
-      = f.association :sellers, as: :select, label_method: :label_name, input_html: {  class: "chosen-select",multiple: true}
-  .row
     .col-md-12
   %hr/
   .row
     .col-md-2
-      = f.input :commercial, as: :select, include_blank: false
-    .col-md-2
       = f.input :elevator, as: :select, include_blank: false
     .col-md-2
       = f.input :coverage, as: :select, include_blank: false
-    .col-md-2
-      = f.input :address_link_visible, as: :select, include_blank: false
-    .col-md-3
-      = f.input :complement_link_visible, as: :select, include_blank: false
-  %hr/
-  .row
-    .col-md-2
-      = f.input :special, as: :select, include_blank: false
+    .col-md-4
+      = f.input :status, as: :select, include_blank: false
   %hr/
   .row
     .col-md-12
@@ -127,7 +110,7 @@
 :javascript
   $(document).ready(function() {
     $("#property_customer_id").on('change', function() {
-      $.getJSON("#{projects_path}.json?by_customer="+$(this).val(), function(data) {
+      $.getJSON("json?by_customer="+$(this).val(), function(data) {
         var items = [];
         $.each(data, function(key, val) {
           items.push( "<option value='" + val.id + "'>" + val.name + "</option>");

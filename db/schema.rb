@@ -126,9 +126,10 @@ ActiveRecord::Schema.define(version: 20160225134423) do
   add_index "messages", ["client_id"], name: "index_messages_on_client_id", using: :btree
 
   create_table "properties", force: :cascade do |t|
-    t.integer  "situation",                 default: 0
-    t.integer  "type_property",             default: 0
-    t.boolean  "status",                    default: true
+    t.integer  "situation",              default: 0
+    t.integer  "type_property",          default: 0
+    t.integer  "commercial_situation",   default: 0
+    t.boolean  "status",                 default: true
     t.string   "iptu"
     t.date     "expiration_date"
     t.string   "cep"
@@ -142,33 +143,27 @@ ActiveRecord::Schema.define(version: 20160225134423) do
     t.string   "complement"
     t.string   "reference_point"
     t.string   "name"
-    t.integer  "rooms",                     default: 0
+    t.integer  "rooms",                  default: 0
     t.string   "unit"
-    t.float    "value",                     default: 0.0
-    t.integer  "suit",                      default: 0
-    t.float    "value_m2",                  default: 0.0
-    t.float    "area",                      default: 0.0
-    t.integer  "parking_spaces",            default: 0
-    t.integer  "floor",                     default: 0
+    t.float    "value",                  default: 0.0
+    t.integer  "suit",                   default: 0
+    t.float    "value_m2",               default: 0.0
+    t.float    "area",                   default: 0.0
+    t.integer  "parking_spaces",         default: 0
+    t.integer  "floor",                  default: 0
     t.string   "sun_position"
-    t.string   "link_tour"
-    t.float    "value_rent",                default: 0.0
-    t.integer  "customer_id"
-    t.integer  "project_id"
-    t.integer  "property_attributes_id",    default: [],                 array: true
-    t.integer  "construction_companies_id", default: [],                 array: true
-    t.integer  "sellers_id",                default: [],                 array: true
+    t.float    "value_rent",             default: 0.0
+    t.integer  "property_attributes_id", default: [],                 array: true
     t.text     "description"
-    t.boolean  "commercial",                default: false
-    t.boolean  "elevator",                  default: false
-    t.boolean  "coverage",                  default: false
-    t.boolean  "special",                   default: false
-    t.datetime "created_at",                                null: false
-    t.datetime "updated_at",                                null: false
+    t.boolean  "elevator",               default: false
+    t.boolean  "coverage",               default: false
+    t.integer  "block_id"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
   end
 
-  add_index "properties", ["customer_id"], name: "index_properties_on_customer_id", using: :btree
-  add_index "properties", ["project_id"], name: "index_properties_on_project_id", using: :btree
+  add_index "properties", ["block_id"], name: "index_properties_on_block_id", using: :btree
+  add_index "properties", ["commercial_situation"], name: "index_properties_on_commercial_situation", using: :btree
   add_index "properties", ["situation"], name: "index_properties_on_situation", using: :btree
   add_index "properties", ["type_property"], name: "index_properties_on_type_property", using: :btree
 

@@ -1,0 +1,57 @@
+
+Administração
+
+@cliente
+ ✔ cadastro de usuário externo junto ao cadastro de cliente @done (16-02-25 16:18)
+ ✔ adicionar campo creci @done (16-02-25 16:18)
+ ✔ padronizar tamanho das fontesp @done (16-02-25 16:18)
+
+@endereço
+ ✔ crud de localização (incialmente somente noroeste) @done (16-02-25 16:18)
+ ✔ cadastro de quadras por localização @done (16-02-25 16:18)
+ ☐ cadastro de bloco por quadra (nome, link_tour, quadra, bloco, bairro, construtora, conjunto, número)
+
+@imóvel
+ ☐ restringir números de caracteres na descrição do imóvel
+ ☐ preenchimento automatico de endereço apos selecionar localização/quadra/bloco
+ ☐ link_tour automatico, puxando do bloco
+ ☐ inserir campo para selecionar se é residencial ou comercial ao selecionar tipo residencial ou comercial aparecer/sumir campos especificos de cada um 
+ ☐ mudar texto salas para salas/quartos
+ ☐ retirar vendedores
+ ☐ retirar clientes
+ ☐ melhorar disposição de campos
+ ☐ crud de destaques
+
+@Geral
+  ☐ colocar botão de adcionar novo elemento a lista em todas as listagem
+
+
+Site
+
+ ☐ corrigir botão de inserir imagens do imóvel
+ ☐ link 360 
+ ☐ links de entrar em contato (enviar email e mesnagem interna)
+ ☐ links de ver telefone
+ ☐ botões de passar slider
+ ☐ zoom na imagem da galeria
+ ☐ colocar na ultima opção de quantidade de quartos: "Cobertura"
+
+Cliente
+
+@geral
+
+ ☐ login através do cadastro de cliente
+
+@imóvel
+
+ ☐ restringir números de caracteres na descrição do imóvel
+ ☐ preenchimento automatico de endereço apos selecionar localização/quadra/bloco
+ ☐ link_tour automatico, puxando do bloco
+ ☐ inserir campo para selecionar se é residencial ou comercial ao selecionar tipo residencial ou comercial aparecer/sumir campos especificos de cada um
+ ☐ mudar texto salas para salas/quartos
+ ☐ retirar vendedores
+ ☐ retirar clientes
+ ☐ melhorar disposição de campos
+
+@mensagens
+ ☐ gestão de mensagens
