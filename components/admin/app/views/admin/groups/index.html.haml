@@ -1,0 +1,29 @@
+.panel-heading
+  %h3
+    %b Listagem de Quadras
+    %br
+    %small 
+      Lista de quadras da localidade #{@address.name}
+  = link_to "adicionar quadra", new_address_group_path(address_id: @address.id), remote: true, class: 'pull-right btn btn-success btn-xs'
+%hr/
+.panel-body
+  .row
+    .col-md-12
+      %table.table.table-bordered
+        %thead
+          %tr
+            %th Localidade
+        %tbody
+          %tr
+            %td= link_to @address.name.humanize, addresses_path
+  %hr/
+  .row  
+    .col-md-12
+      %table.table.table-striped.table-hover.table-bordered
+        %thead 
+          %tr
+            %th Nome
+            %th 360 Tour
+            %th Ação
+        %tbody.group-index
+          = render 'index'

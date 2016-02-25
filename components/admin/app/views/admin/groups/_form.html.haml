@@ -1,0 +1,11 @@
+= simple_form_for [@address, @group], remote: true do |f|
+  .row
+    .col-md-12
+      = f.input :name, input_html: {placeholder: "digite um nome"}
+  .row
+    .col-md-12
+      = f.input :tour_360, input_html: {placeholder: "digite o link"}
+  %hr/
+  .row
+    .col-md-12
+      = f.submit "Salvar quadra", class: 'btn btn-success', data: { disable_with: t(:disable_with)}

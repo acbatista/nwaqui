@@ -7,22 +7,22 @@
     .col-md-3.pessoa_fisica{style: (f.object.pessoa_física?) ? 'display: block' : 'display: none'}
       = f.input :cpf, input_html: { class: 'cpf'}
     .col-md-3
+      = f.input :creci
+    .col-md-3
       = f.input :logo_path, as: :file
   .row
-    .col-md-6
-      = f.input :fantasy_name, input_html: { placeholder: "Digite um nome"}
     .col-md-6.pessoa_juridica{style: (f.object.pessoa_jurídica?) ? 'display: block' : 'display: none'}
       = f.input :social_reason, input_html: { placeholder: "Digite uma razão social"}
+    .col-md-6
+      = f.input :fantasy_name, input_html: { placeholder: "Digite um nome"}
   %hr/
   .row
     .col-md-2
       = f.input :cep, input_html: { placeholder: "00000-000", class: 'cep'}
     .col-md-1
       = f.input :uf, input_html: { placeholder: "UF", maxLength: 2}
-    .col-md-7
+    .col-md-9
       = f.input :city, input_html: { placeholder: "Digite o nome da cidade"}
-    .col-md-2
-      = f.input :burgh, input_html: { placeholder: "Digite o bairro"}
   .row
     .col-md-12
       = f.input :address, input_html: { placeholder: "Digite o endereço"}
@@ -42,6 +42,14 @@
       = f.input :responsible_name, input_html: { placeholder: "Digite o nome do responsável"}
     .col-md-3
       = f.input :responsible_telephone, input_html: { placeholder: "somente números"}
+  %hr/
+  .row
+    .col-md-6
+      = f.input :username, input_html: { placeholder: "Digite uma credencial de acesso"}
+    .col-md-3
+      = f.input :password, input_html: { placeholder: "Digite uma senha de acesso"}
+    .col-md-3
+      = f.input :password_confirm, input_html: { placeholder: "Digite novamente a senha"}
   %hr/
   .row
     .col-md-12

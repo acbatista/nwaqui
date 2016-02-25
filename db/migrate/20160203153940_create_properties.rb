@@ -13,15 +13,12 @@ class CreateProperties < ActiveRecord::Migration
 
       t.string :city
       t.string :region
-      t.string :district
       t.string :address
       t.string :group
       t.string :number
       t.string :block
       t.string :complement
       t.string :reference_point
-      t.boolean :address_link_visible
-      t.boolean :complement_link_visible
 
       t.string :name
       t.integer :rooms, default: 0

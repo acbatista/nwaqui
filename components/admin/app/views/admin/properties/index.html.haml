@@ -13,8 +13,6 @@
           .col-md-4
             = f.input :by_customer, label: 'Cliente', as: :select, collection: Customer.all.order(:id), label_method: :label_name, input_html: { name: 'by_customer'}, include_blank: "Todos", selected: params[:by_customer]
           .col-md-3
-            = f.input :by_project, label: 'Empreendimento', as: :select, collection: Project.all.order(:id), input_html: { name: 'by_project'}, include_blank: "Todos", selected: params[:by_project]
-          .col-md-3
             = f.submit "Filtrar lista", name: nil, class: 'btn btn-primary', style: "margin-top: 24px"
 
   %hr/ 
@@ -26,7 +24,6 @@
             %th.col-md-1 Cod.
             %th Nome
             %th Cliente
-            %th Empreendimento
             %th Situação
             %th Ação
         %tbody
@@ -35,7 +32,6 @@
               %td.col-md-1= property.id
               %td.col-md-3= property.name
               %td.col-md-2= property.customer.label_name
-              %td.col-md-3= property.project.name
               %td.col-md-1= property.status ? "ativo" : "inativo"
               %td.col-md-2
                 = link_to "", property_property_images_path(property), class: 'btn btn-warning glyphicon glyphicon-picture btn-xs'

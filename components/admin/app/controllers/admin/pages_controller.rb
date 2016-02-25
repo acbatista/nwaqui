@@ -5,7 +5,6 @@ module Admin
 
     def index
       @customers  = ::Customer.all.count
-      @projects   = ::Project.all.count
       @properties = ::Property.all.count
     end
     

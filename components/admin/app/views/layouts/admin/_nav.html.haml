@@ -23,6 +23,9 @@
               %a{:href => "#{properties_path}"} Imóveis
             %li.divider
             %li
+              %a{:href => "#{addresses_path}"} Endereços
+            %li.divider
+            %li
               %a{:href => "#{new_attribute_path}"} Novo atributo
             %li
               %a{:href => "#{attributes_path}"} Atributos
@@ -31,11 +34,6 @@
             Gestão de clientes
             %span.caret
           %ul.dropdown-menu
-            %li
-              %a{:href => "#{new_project_path}"} Novo empreendimento
-            %li
-              %a{:href => "#{projects_path}"} Empreendimentos
-            %li.divider
             %li
               %a{:href => "#{new_customer_path}"} Novo cliente
             %li
@@ -49,11 +47,6 @@
               %a{:href => "#{new_admin_user_path}"} Novo usuário administrador
             %li
               %a{:href => "#{admin_users_path}"} Usuários administradores
-            %li.divider
-            %li
-              %a{:href => "#{new_customer_user_path}"} Novo usuário cliente
-            %li
-              %a{:href => "#{customer_users_path}"} Usuários cliente
         %li.dropdown
           %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
             Gestão geral

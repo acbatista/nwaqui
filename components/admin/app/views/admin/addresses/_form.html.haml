@@ -1,0 +1,11 @@
+= simple_form_for @address, remote: true do |f|
+  .row
+    .col-md-12
+      = f.input :name, input_html: {placeholder: "digite um nome"}
+  .row
+    .col-md-12
+      = f.input :region, input_html: {placeholder: "digite uma região"}
+  %hr/
+  .row
+    .col-md-12
+      = f.submit "Salvar localidade", class: 'btn btn-success', data: { disable_with: t(:disable_with)}

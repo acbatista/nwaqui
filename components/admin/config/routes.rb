@@ -15,14 +15,17 @@ Admin::Engine.routes.draw do
     resources :property_images
   end
 
+  resources :addresses do 
+    resources :groups do 
+      resources :blocks
+    end
+  end
+
   resources :buttons
 
-  resources :projects
   resources :customers
 
-  resources :customer_users
   resources :admin_users
-
   resources :attributes
 
 end

@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160217123146) do
+ActiveRecord::Schema.define(version: 20160225134423) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.string   "name"
+    t.boolean  "status",     default: true
+    t.string   "region"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
 
   create_table "attributes", force: :cascade do |t|
     t.string   "name"
@@ -22,6 +30,19 @@ ActiveRecord::Schema.define(version: 20160217123146) do
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
   end
+
+  create_table "blocks", force: :cascade do |t|
+    t.integer  "group_id"
+    t.string   "name"
+    t.string   "tour_360"
+    t.string   "complete_address"
+    t.string   "reference_point"
+    t.string   "cep"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "blocks", ["group_id"], name: "index_blocks_on_group_id", using: :btree
 
   create_table "bookmark_lists", force: :cascade do |t|
     t.integer  "user_id"
@@ -53,6 +74,7 @@ ActiveRecord::Schema.define(version: 20160217123146) do
   end
 
   create_table "customers", force: :cascade do |t|
+    t.string   "creci"
     t.string   "logo_path"
     t.string   "social_reason"
     t.string   "fantasy_name"
@@ -69,10 +91,27 @@ ActiveRecord::Schema.define(version: 20160217123146) do
     t.string   "celphone"
     t.string   "responsible_telephone"
     t.string   "responsible_name"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
-    t.string   "burgh"
+    t.string   "username"
+    t.string   "password"
+    t.string   "token"
+    t.boolean  "token_status",          default: true
+    t.date     "last_signed"
+    t.boolean  "status",                default: true
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
   end
+
+  add_index "customers", ["username"], name: "index_customers_on_username", unique: true, using: :btree
+
+  create_table "groups", force: :cascade do |t|
+    t.integer  "address_id"
+    t.string   "name"
+    t.string   "tour_360"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "groups", ["address_id"], name: "index_groups_on_address_id", using: :btree
 
   create_table "messages", force: :cascade do |t|
     t.integer  "client_id"
@@ -86,18 +125,6 @@ ActiveRecord::Schema.define(version: 20160217123146) do
 
   add_index "messages", ["client_id"], name: "index_messages_on_client_id", using: :btree
 
-  create_table "projects", force: :cascade do |t|
-    t.integer  "customer_id"
-    t.string   "image_path"
-    t.string   "name"
-    t.string   "description"
-    t.boolean  "status",      default: true
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-  end
-
-  add_index "projects", ["customer_id"], name: "index_projects_on_customer_id", using: :btree
-
   create_table "properties", force: :cascade do |t|
     t.integer  "situation",                 default: 0
     t.integer  "type_property",             default: 0
@@ -108,15 +135,12 @@ ActiveRecord::Schema.define(version: 20160217123146) do
     t.string   "uf"
     t.string   "city"
     t.string   "region"
-    t.string   "district"
     t.string   "address"
     t.string   "group"
     t.string   "number"
     t.string   "block"
     t.string   "complement"
     t.string   "reference_point"
-    t.boolean  "address_link_visible"
-    t.boolean  "complement_link_visible"
     t.string   "name"
     t.integer  "rooms",                     default: 0
     t.string   "unit"

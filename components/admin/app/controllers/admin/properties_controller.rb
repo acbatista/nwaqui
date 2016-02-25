@@ -5,7 +5,6 @@ module Admin
     before_action :set_property, only: [:show, :edit, :update, :destroy]
 
     has_scope :by_customer
-    has_scope :by_project
     
     def index
       @properties = apply_scopes(Property).all.order('id DESC')

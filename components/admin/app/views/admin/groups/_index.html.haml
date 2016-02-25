@@ -1,0 +1,8 @@
+- @groups.each do |group|
+  %tr
+    %td= group.name
+    %td= group.tour_360
+    %td.col-md-2
+      = link_to "", address_group_blocks_path(address_id: @address, group_id: group), class: 'btn btn-success btn-xs glyphicon glyphicon-share-alt'
+      = link_to "", edit_address_group_path(address_id: @address, id: group), remote: true, class: 'btn btn-primary btn-xs glyphicon glyphicon-pencil'
+      = link_to "", address_group_path(address_id: @address, id: group), method: :delete, class: 'btn btn-danger btn-xs glyphicon glyphicon-remove'

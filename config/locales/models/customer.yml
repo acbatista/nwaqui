@@ -20,3 +20,6 @@ pt-BR:
         responsible_name: "Nome do responsável"
         responsible_telephone: "Telefone do responsável"
         burgh: "Bairro"
+        username: "Credencial"
+        password: "Senha"
+        password_confirm: "Repita a senha"

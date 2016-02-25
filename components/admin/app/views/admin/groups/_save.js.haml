@@ -1,0 +1,5 @@
+- if @group.errors.any?
+  $("#modal .modal-content .modal-body").html("#{escape_javascript(render 'form')}")
+- else 
+  $("#modal").modal('hide')
+  $(".group-index").html("#{escape_javascript(render 'index')}")
