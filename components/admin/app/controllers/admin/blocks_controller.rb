@@ -39,7 +39,7 @@ module Admin
     end
 
     def set_block
-      @block = @block.blocks.find(params[:id])
+      @block = @group.blocks.find(params[:id])
     end
 
     def set_blocks
