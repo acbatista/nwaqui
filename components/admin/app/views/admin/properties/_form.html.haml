@@ -16,7 +16,7 @@
     .col-md-4
       = f.input :situation, as: :select, include_blank: false, collection: Property.situations.map {|k,v| [k.humanize, k]}
     .col-md-4
-      = f.input :commercial_situation, as: :select, include_blank: false, collection: Property.comercial_situations.map {|k,v| [k.humanize, k]}
+      = f.input :commercial_situation, as: :select, include_blank: false, collection: Property.commercial_situations.map {|k,v| [k.humanize, k]}
    
     .col-md-4
       = f.input :type_property, as: :select, include_blank: false, collection: Property.type_properties.map {|k,v| [k.humanize, k]}

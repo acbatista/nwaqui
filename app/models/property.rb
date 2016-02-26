@@ -22,12 +22,11 @@ class Property < ActiveRecord::Base
 
   enum situation: ['breve_lançamento', 'na_planta', 'em_construção', 'pronto']
   enum type_property: ['residencial', 'comercial']
-  enum comercial_situation: ['lançamento', 'venda', 'aluguel']
+  enum commercial_situation: ['lançamento', 'venda', 'aluguel']
 
-  validates :name, :description, :situation, :type_property, :status, presence: true
-  validates :customer, :project, presence: true
+  validates :description, :situation, :type_property, :status, :address_base, :group_base, presence: true
   validates :rooms, :suit, :parking_spaces, :floor, numericality: true, presence: true
-  validates :city, :region, :group, :block, :address, presence: true
+  validates :city, :region, :group, :block, :address, :commercial_situation, presence: true
   
   def property_attributes; Attribute.where(id: self.property_attributes_id); end;
 

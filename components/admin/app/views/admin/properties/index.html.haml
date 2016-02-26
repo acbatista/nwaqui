@@ -22,20 +22,23 @@
         %thead 
           %tr
             %th.col-md-1 Cod.
-            %th Nome
-            %th Cliente
+            %th Cidade/Região
+            %th Endereço
             %th Situação
+            %th Tipo
+            %th Ativo?
             %th Ação
         %tbody
           - @properties.each do |property|
             %tr
               %td.col-md-1= property.id
-              %td.col-md-3= property.name
-              %td.col-md-2= property.customer.label_name
-              %td.col-md-1= property.status ? "ativo" : "inativo"
-              %td.col-md-2
+              %td.col-md-2= property.block.group.address.name if property.block.present? && property.block.group.present?
+              %td.col-md-2= property.address
+              %td.col-md-2= property.situation.humanize
+              %td.col-md-2= property.type_property.humanize
+              %td.col-md-1= property.status ? "sim" : "não"
+              %td.col-md-4
                 = link_to "", property_property_images_path(property), class: 'btn btn-warning glyphicon glyphicon-picture btn-xs'
-                = link_to "", property_path(property), class: 'btn btn-success glyphicon glyphicon-share-alt btn-xs'
                 = link_to "", edit_property_path(property), class: 'btn btn-primary glyphicon glyphicon-pencil btn-xs'
                 = link_to "", property_path(property), method: :delete, data: { confirm: t(:confirm)}, class: 'btn btn-danger glyphicon glyphicon-remove btn-xs'
             

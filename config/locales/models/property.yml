@@ -41,4 +41,5 @@ pt-BR:
         address_base: "Cidade/Região"
         group_base: "Quadra"
         block: "Bloco"
+        commercial_situation: "Estado"
 

@@ -13,7 +13,7 @@
           = simple_form_for :search, url: search_path, method: :get do |f|
             .gsearch-content
               .gsearch-field
-                = f.input :by_situation, as: :select, label: false, collection: Property.comercial_situations.map { |k,v| [k.humanize, v]},selected: params[:by_situation], include_blank: "Você procura por", input_html: { name: 'by_situation', id: 'by_situation'}
+                = f.input :by_situation, as: :select, label: false, collection: Property.commercial_situations.map { |k,v| [k.humanize, v]},selected: params[:by_situation], include_blank: "Você procura por", input_html: { name: 'by_situation', id: 'by_situation'}
                 
                 = f.input :by_type, as: :select, label: false, collection: Property.type_properties.map { |k,v| [k.humanize, v]},selected: params[:by_type], include_blank: "Tipo de imóvel", input_html: { name: 'by_type', id: 'by_type'}
                 

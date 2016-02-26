@@ -42,6 +42,14 @@
                   %h4.property-detail-title Descrição do Imóvel
                   %p
                     = @property.description
+            %hr/
+            .row
+              .col-md-4
+                = link_to image_tag("contact.png"), property_telephone_path(@property), remote: true
+              .col-md-4
+                = link_to image_tag("message.png"), property_new_message_path(@property), remote: true
+              .col-md-4
+                = link_to image_tag("tour.png"), @property.block.tour_360.to_s
           .property-feature
             %h4.property-feature-title Atributos do Imóvel
             .property-feature-content.clearfix
@@ -52,19 +60,10 @@
           .property-feature{:style => "overflow: hidden;"}
             %h4.property-feature-title
             .col-md-12
-              %a.btn.btn-block.btn-lg.btn-default{:href => "#{@property.link_tour}", :target => "_BLANK"}
+              %a.btn.btn-block.btn-lg.btn-default{:href => "#{@property.block.tour_360}", :target => "_BLANK"}
                 %span.glyphicon.glyphicon-map-marker
                 Confira o tour 360
-          .property-feature{:style => "overflow: hidden;"}
-            %h4.property-feature-title Venda
-            - Customer.where(id: @property.sellers_id).each do |seller|
-              .col-sm-6.col-md-2.item-col
-                %img.img-responsive.img-50{:src => "#{seller.logo_path}", :width => '150'}/
-          .property-feature{:style => "overflow: hidden;"}
-            %h4.property-feature-title Construção
-            - Customer.where(id: @property.construction_companies_id).each do |company|
-              .col-sm-6.col-md-2.item-col
-                %img.img-responsive.img-100{:src => "#{company.logo_path}", :width => '150'}/
+
           .property-feature{:style => "overflow: hidden;"}
             %h4.property-feature-title
               %b Entrar em contato -
@@ -111,7 +110,7 @@
                       = "#{@property.suit} º"
                     %span.col-xs-6.col-md-5.detail-field-label Tour
                     %span.col-xs-6.col-md-7.detail-field-value
-                      %a{:href => "#{@property.link_tour}", :target => "_BLANK"} Confira Aqui
+                      %a{:href => "#{@property.block.tour_360}", :target => "_BLANK"} Confira Aqui
           / END FIND PROPERTY
           / START RECENT PROPERTY
           .block-sidebar.recent-property

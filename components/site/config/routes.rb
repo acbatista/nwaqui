@@ -8,6 +8,7 @@ Site::Engine.routes.draw do
       get 'logout'
     end
   end
+
   resources :external_users
   resources :bookmarks do 
     get 'delete'
@@ -20,7 +21,14 @@ Site::Engine.routes.draw do
   get '/bookmark/:key', to: 'bookmarks#public_share'
   get '/search', to: 'properties#search', as: 'search'
 
-  resources :properties, path: 'imoveis'
+  resources :properties, path: 'imoveis' do 
+    
+    get 'telephone'
+
+    get   'new_message'
+    post  'create_message'
+
+  end
 
 end
 

@@ -20,7 +20,7 @@ module Admin
     def create
       @property = Property.new(set_params)
 
-      if @property.save 
+      if @property.save!
         flash[:success] = t :success
         redirect_to action: :index
       else
