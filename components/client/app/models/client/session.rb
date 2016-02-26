@@ -10,7 +10,7 @@ module Client
     private
 
     def authenticate!
-      @user = Admin::CustomerUser.where(username: self.username, password: self.password).first
+      @user = Admin::Customer.where(username: self.username, password: self.password).first
 
       if @user.present?
         self.id = @user.id 

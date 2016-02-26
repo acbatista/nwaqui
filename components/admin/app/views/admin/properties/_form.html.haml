@@ -22,10 +22,7 @@
       = f.input :type_property, as: :select, include_blank: false, collection: Property.type_properties.map {|k,v| [k.humanize, k]}
   .row
     .col-md-12
-      = f.input :name, input_html: { placeholder: "Informe o nome do imóvel"}
-  .row
-    .col-md-12
-      = f.input :description, input_html: { placeholder: "Descreva o imóvel"}
+      = f.input :description, input_html: { placeholder: "Descreva o imóvel", maxLength: 500}
   %hr/
   .row
     .col-md-12
@@ -36,7 +33,7 @@
     .col-md-4
       = f.input :city, input_html: { placeholder: "Informe a cidade", id: 'city_field', readonly: true}
     .col-md-4
-      = f.input :region, input_html: { placeholder: "Informe a região", readonly: true}
+      = f.input :region, input_html: { placeholder: "Informe a região", readonly: true, id: "region_field"}
     .col-md-2
       = f.input :group, input_html: { placeholder: "Informe a quadra", id: "group_field", readonly: true}
     .col-md-2
@@ -141,6 +138,7 @@
        $("#group_field").val(data[1].name)
        $("#city_field").val(data[2].name)
        $("#address_field").val(data[0].complete_address)
+       $("#region_field").val(data[2].region)
       });      
     });
   });

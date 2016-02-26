@@ -38,4 +38,7 @@ pt-BR:
         address_link_visible: "Endereço visível"
         complement_link_visible: "Complemento visível"
         special: "Destaque?"
+        address_base: "Cidade/Região"
+        group_base: "Quadra"
+        block: "Bloco"
 

@@ -33,7 +33,10 @@ class Customer < ActiveRecord::Base
     "#{self.id} - #{self.fantasy_name.downcase}"
   end
 
-
+  def email
+    self.cadastre_email
+  end
+  
   private
 
   def password_valid?
