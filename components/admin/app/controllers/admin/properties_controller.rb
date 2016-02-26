@@ -55,11 +55,9 @@ module Admin
     def set_params
       params.require(:property).permit(:customer_id, :project_id, :situation, :type_property, :status, :description, :rooms, 
                                        :unit, :value, :suit, :value_m2, :area, :parking_spaces, :floor, :sun_position, :value_rent,
-                                       :link_tour, :commercial, :elevator, :coverage,:name,
-                                       :city, :region, :district, :group, :block, :address, :complement, :number, :reference_point, 
-                                       :address_link_visible, :complement_link_visible, :special,
-                                       property_attributes_id: [],  construction_companies_id: [], sellers_id: [],
-                                       property_attribute_id: [])
+                                       :link_tour, :commercial, :elevator, :coverage,:name, :commercial_situation,
+                                       :address_base, :group_base, :address_block, :block_id, :city, :region,  :group, :address, :complement,
+                                       :number, :reference_point, property_attributes_id: [], property_attribute_id: [])
     end
 
   end

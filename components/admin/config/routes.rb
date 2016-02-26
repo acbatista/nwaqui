@@ -16,6 +16,12 @@ Admin::Engine.routes.draw do
   end
 
   resources :addresses do 
+    collection do 
+      get 'groups'
+      get 'blocks'
+      get 'block'
+    end
+
     resources :groups do 
       resources :blocks
     end

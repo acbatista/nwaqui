@@ -13,9 +13,9 @@
           = simple_form_for :search, url: search_path, method: :get do |f|
             .gsearch-content
               .gsearch-field
-                = f.input :by_situation, as: :select, label: false, collection: Property.type_properties.map { |k,v| [k.humanize, v]},selected: params[:by_situation], include_blank: "Você procura por", input_html: { name: 'by_situation', id: 'by_situation'}
+                = f.input :by_situation, as: :select, label: false, collection: Property.comercial_situations.map { |k,v| [k.humanize, v]},selected: params[:by_situation], include_blank: "Você procura por", input_html: { name: 'by_situation', id: 'by_situation'}
                 
-                = f.input :by_type, as: :select, label: false, collection: Property.type_search_properties.map { |k,v| [k.humanize, v]},selected: params[:by_type], include_blank: "Tipo de imóvel", input_html: { name: 'by_type', id: 'by_type'}
+                = f.input :by_type, as: :select, label: false, collection: Property.type_properties.map { |k,v| [k.humanize, v]},selected: params[:by_type], include_blank: "Tipo de imóvel", input_html: { name: 'by_type', id: 'by_type'}
                 
                 = f.input :empty,label: false, as: :select, selected: params[:option_one], include_blank: "selecione...",collection: [], input_html: { id: 'empty_one', name: 'option_one'}
 
@@ -72,6 +72,7 @@
         html_one += "<option value='2'>2</option>"
         html_one += "<option value='3'>3</option>"
         html_one += "<option value='4'>4 ou +</option>"
+        html_one += "<option value='99'>Cobertura</option>"
         $("#empty_one").html(html_one)
 
         html_two  = "<option value>Quadra</option>"
@@ -111,7 +112,7 @@
         html_one += "<option value='1'>1</option>"
         html_one += "<option value='2'>2</option>"
         html_one += "<option value='3'>3</option>"
-        html_one += "<option value='4'>4 ou +</option>"
+        html_one += "<option value='99'>Cobertura</option>"
         $("#empty_one").html(html_one)
 
         html_two = "<option value> Valor</option>"

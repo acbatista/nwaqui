@@ -5,6 +5,7 @@ class Property < ActiveRecord::Base
   
   belongs_to :customer
   belongs_to :project
+  belongs_to :block
 
   has_many :images, class_name: "PropertyImage"
   
@@ -26,7 +27,7 @@ class Property < ActiveRecord::Base
   validates :name, :description, :situation, :type_property, :status, presence: true
   validates :customer, :project, presence: true
   validates :rooms, :suit, :parking_spaces, :floor, numericality: true, presence: true
-  validates :city, :region, :district, :group, :block, :address, presence: true
+  validates :city, :region, :group, :block, :address, presence: true
   
   def property_attributes; Attribute.where(id: self.property_attributes_id); end;
 

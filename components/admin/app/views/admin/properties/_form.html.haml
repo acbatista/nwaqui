@@ -1,10 +1,11 @@
 = simple_form_for @property do |f|
   .row
     .col-md-4
-      = f.input :address_base, as: :select, include_blank: 'selecione...', collection: Address.all.order(:name)
+      = f.input :address_base, as: :select, include_blank: 'selecione...', collection: Address.all.order(:name), input_html: { id: 'address'}
     .col-md-4
-      = f.input :group_base, as: :select, include_blank: 'selecione...', collection: (f.object.address_base.present?) ? Group.where(address_id: f.object.address_base).order(:name) : ''
+      = f.input :group_base, as: :select, include_blank: 'selecione...', collection: (f.object.address_base.present?) ? Group.where(address_id: f.object.address_base).order(:name) : {}, input_html: { id: 'group'}
     .col-md-4
+      = f.association :block, as: :select, include_blank: 'selecione...', collection: (f.object.group_base.present?) ? Block.where(group_id: f.object.group_base).order(:name) : {}, input_html: { id: 'block'}
   %hr/
   .row
     .col-md-12
@@ -33,16 +34,16 @@
   %br/
   .row
     .col-md-4
-      = f.input :city, input_html: { placeholder: "Informe a cidade"}
+      = f.input :city, input_html: { placeholder: "Informe a cidade", id: 'city_field', readonly: true}
+    .col-md-4
+      = f.input :region, input_html: { placeholder: "Informe a região", readonly: true}
     .col-md-2
-      = f.input :region, input_html: { placeholder: "Informe a região"}
+      = f.input :group, input_html: { placeholder: "Informe a quadra", id: "group_field", readonly: true}
     .col-md-2
-      = f.input :group, input_html: { placeholder: "Informe a quadra"}
-    .col-md-2
-      = f.input :block, input_html: { placeholder: "Informe o bloco"}
+      = f.input :address_block, input_html: { placeholder: "Informe o bloco", id: "block_field", readonly: true}
   .row
     .col-md-4
-      = f.input :address, input_html: { placeholder: "Digite o endereço completo"}
+      = f.input :address, input_html: { placeholder: "Digite o endereço completo", id: "address_field", readonly: true}
     .col-md-4
       = f.input :complement, input_html: { placeholder: "Digite o complemento (se houver)"}
     .col-md-1
@@ -109,14 +110,38 @@
 
 :javascript
   $(document).ready(function() {
-    $("#property_customer_id").on('change', function() {
-      $.getJSON("json?by_customer="+$(this).val(), function(data) {
+    $('#address').on('change', function() {
+      var address = $(this).val();
+      $.getJSON("#{groups_addresses_path}.json?address_id="+$(this).val(), function(data) {
         var items = [];
+        items.push("<option value>selecione...</option>")
         $.each(data, function(key, val) {
           items.push( "<option value='" + val.id + "'>" + val.name + "</option>");
         });
-       
-        $("#property_project_id").html(items)
+        $("#group").html(items)
       });
     });
-  })
+
+    $('#group').on('change', function() {
+      var group = $(this).val();
+      $.getJSON("#{blocks_addresses_path}.json?group_id="+$(this).val(), function(data) {
+        var items = [];
+        items.push("<option value>selecione...</option>")
+        $.each(data, function(key, val) {
+          items.push("<option value='" + val.id + "'>" + val.name + "</option>");
+        });
+        $("#block").html(items)
+      });      
+    });
+
+    $('#block').on('change', function() {
+      var block = $(this).val();
+      $.getJSON("#{block_addresses_path}.json?id="+$(this).val(), function(data) {
+       $("#block_field").val(data[0].name)
+       $("#group_field").val(data[1].name)
+       $("#city_field").val(data[2].name)
+       $("#address_field").val(data[0].complete_address)
+      });      
+    });
+  });
+  

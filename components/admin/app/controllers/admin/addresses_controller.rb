@@ -5,6 +5,24 @@ module Admin
     before_action :set_addresses
     before_action :set_address, only: [:edit, :update, :destroy]
     
+    def groups
+      @groups = Group.where(address_id: params[:address_id])
+
+      render json: @groups
+    end
+
+    def blocks
+      @blocks = Block.where(group_id: params[:group_id])
+      render json: @blocks
+    end
+
+    def block
+      @block    = Block.find(params[:id]) rescue nil
+      @group    = @block.group
+      @address  = @group.address
+      render json: [@block, @group, @address]
+    end
+
     def index
     end
 

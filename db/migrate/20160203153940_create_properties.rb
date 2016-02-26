@@ -18,7 +18,7 @@ class CreateProperties < ActiveRecord::Migration
       t.string :address
       t.string :group
       t.string :number
-      t.string :block
+      t.string :address_block
       t.string :complement
       t.string :reference_point
 

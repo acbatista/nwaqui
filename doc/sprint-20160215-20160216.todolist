@@ -14,20 +14,19 @@ Administração
 @imóvel
  ☐ restringir números de caracteres na descrição do imóvel
  ☐ preenchimento automatico de endereço apos selecionar localização/quadra/bloco
- ☐ link_tour automatico, puxando do bloco
+ ✔ link_tour automatico, puxando do bloco @done (16-02-26 10:12)
  ☐ inserir campo para selecionar se é residencial ou comercial ao selecionar tipo residencial ou comercial aparecer/sumir campos especificos de cada um 
  ☐ mudar texto salas para salas/quartos
- ☐ retirar vendedores
- ☐ retirar clientes
- ☐ melhorar disposição de campos
+ ✔ retirar vendedores @done (16-02-26 10:13)
+ ✔ retirar clientes @done (16-02-26 10:13)
+ ✔ melhorar disposição de campos @done (16-02-26 10:13)
  ☐ crud de destaques
 
 @Geral
-  ☐ colocar botão de adcionar novo elemento a lista em todas as listagem
+ ☐ colocar botão de adicionar novo elemento a lista em todas as listagem
 
 
 Site
-
  ☐ corrigir botão de inserir imagens do imóvel
  ☐ link 360 
  ☐ links de entrar em contato (enviar email e mesnagem interna)
@@ -39,7 +38,6 @@ Site
 Cliente
 
 @geral
-
  ☐ login através do cadastro de cliente
 
 @imóvel

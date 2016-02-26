@@ -139,7 +139,7 @@ ActiveRecord::Schema.define(version: 20160225134423) do
     t.string   "address"
     t.string   "group"
     t.string   "number"
-    t.string   "block"
+    t.string   "address_block"
     t.string   "complement"
     t.string   "reference_point"
     t.string   "name"
