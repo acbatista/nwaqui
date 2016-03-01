@@ -61,14 +61,14 @@
       = f.input :unit
     .col-md-2
       = f.input :rooms, as: :string, input_html: {value: f.object.rooms.present?  ? f.object.rooms : 0}
-    .col-md-2
+    .col-md-2.value
       = f.input :value,as: :string, input_html: { class: 'coin_mask'}
     .col-md-2
       = f.input :suit, as: :string, input_html: {value: f.object.rooms.present?  ? f.object.suit : 0}
+    .col-md-2.value_m2
+      = f.input :value_m2, input_html: { readonly: true}
     .col-md-2
-      = f.input :value_m2
-    .col-md-2
-      = f.input :area
+      = f.input :area, as: :string
   .row
     .col-md-2
       = f.input :parking_spaces, as: :string, input_html: {value: f.object.rooms.present?  ? f.object.parking_spaces : 0}
@@ -76,7 +76,7 @@
       = f.input :floor, as: :string, input_html: {value: f.object.rooms.present? ? f.object.floor : 0}
     .col-md-2
       = f.input :sun_position
-    .col-md-2
+    .col-md-2.value_rent
       = f.input :value_rent,as: :string, input_html: { class: 'coin_mask'}
   .row
     .col-md-12
@@ -107,6 +107,21 @@
 
 :javascript
   $(document).ready(function() {
+
+    $('#property_commercial_situation').on('change', function() {
+
+      if($(this).val() == "aluguel") {
+        $('.value_rent').show();
+        $('.value').hide();
+        $('.value_m2').hide();
+      } else {
+        $('.value').show();
+        $('.value_m2').show();
+        $('.value_rent').hide();
+      }
+    });
+
+
     $('#address').on('change', function() {
       var address = $(this).val();
       $.getJSON("#{groups_addresses_path}.json?address_id="+$(this).val(), function(data) {

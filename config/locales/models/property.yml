@@ -10,7 +10,7 @@ pt-BR:
         status: "Ativo?"
         name: "Nome do imóvel"
         description: "Descrição do imóvel"
-        rooms: "Salas"
+        rooms: "Quartos/Salas"
         unit: "Unidade"
         value: "Valor"
         suit: "Suítes"
