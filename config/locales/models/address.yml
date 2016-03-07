@@ -2,31 +2,18 @@ pt-BR:
   activerecord:
     modules:
       address: "Endereço"
-    attributes:
-      address:
-        name: "Descrição"
-        region: "Região"
-
-
-pt-BR:
-  activerecord:
-    modules:
       group: "Quadra"
     attributes:
+      address:
+        name: "Bairro/Distrito"
+        region: "Localidade"
       group:
-        name: "Descrição"
-        tour_360: "Link 360"
-
-
-pt-BR:
-  activerecord:
-    modules:
-      block: "Bloco"
-    attributes:
+        name: "Quadra"
+        tour_360: "link 360"
       block:
-        name: "Descrição"
-        tour_360: "Link 360"
+        name: "Bloco"
         cep: "CEP"
         complete_address: "Endereço completo"
         reference_point: "Ponto de referência"
-        link_360: "Link 360"
+        tour_360: 'link 360'
+

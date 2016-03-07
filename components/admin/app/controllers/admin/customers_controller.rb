@@ -18,6 +18,11 @@ module Admin
     def create
       @customer = Customer.new(set_params)
       
+      unless params[:customer][:password].present?
+        params[:customer].delete :password
+        params[:customer].delete :password_confirm
+      end
+
       if @customer.save
         flash[:success] = t :success
         redirect_to action: :index
@@ -30,6 +35,8 @@ module Admin
     end
 
     def update
+
+
       if @customer.update(set_params)
         flash[:success] = t :success
         redirect_to action: :index

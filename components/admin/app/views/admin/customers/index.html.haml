@@ -4,6 +4,7 @@
     %br
     %small 
       Lista de clientes cadastros
+    = link_to "adicionar cliente", new_customer_path, class: 'btn btn-success btn-xs pull-right'
 %hr/
 .panel-body
   .row  
@@ -27,8 +28,7 @@
               %td.col-md-1= (customer.pessoa_jurídica?) ? customer.cnpj : customer.cpf
               %td.col-md-1= customer.contact_email
               %td.col-md-1= customer.responsible_telephone
-              %td.col-md-2
-                = link_to "", customer_path(customer), class: 'btn btn-info btn-xs glyphicon glyphicon-share-alt'
+              %td.col-md-1
                 = link_to "", edit_customer_path(customer), class: 'btn btn-success btn-xs glyphicon glyphicon-pencil'
                 = link_to "", customer_path(customer), method: :delete, class: 'btn btn-danger btn-xs glyphicon glyphicon-remove', data: { confirm: t(:confirm)}
 

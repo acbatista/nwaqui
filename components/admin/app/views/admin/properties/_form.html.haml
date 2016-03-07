@@ -1,11 +1,15 @@
 = simple_form_for @property do |f|
   .row
     .col-md-4
-      = f.input :address_base, as: :select, include_blank: 'selecione...', collection: Address.all.order(:name), input_html: { id: 'address'}
+      = f.association :customer, as: :select, label_method: :fantasy_name, include_blank: 'selecione...'
+  %hr/
+  .row
     .col-md-4
-      = f.input :group_base, as: :select, include_blank: 'selecione...', collection: (f.object.address_base.present?) ? Group.where(address_id: f.object.address_base).order(:name) : {}, input_html: { id: 'group'}
+      = f.association :address, as: :select, include_blank: 'selecione...', input_html: { id: 'address'}
     .col-md-4
-      = f.association :block, as: :select, include_blank: 'selecione...', collection: (f.object.group_base.present?) ? Block.where(group_id: f.object.group_base).order(:name) : {}, input_html: { id: 'block'}
+      = f.association :group, as: :select, include_blank: 'selecione...', collection: (f.object.address.present?) ? Group.where(address_id: f.object.address).order(:name) : {}, input_html: { id: 'group'}
+    .col-md-4
+      = f.association :block, as: :select, include_blank: 'selecione...', collection: (f.object.group.present?) ? Block.where(group_id: f.object.group).order(:name) : {}, input_html: { id: 'block'}
   %hr/
   .row
     .col-md-12
@@ -35,12 +39,12 @@
     .col-md-4
       = f.input :region, input_html: { placeholder: "Informe a região", readonly: true, id: "region_field"}
     .col-md-2
-      = f.input :group, input_html: { placeholder: "Informe a quadra", id: "group_field", readonly: true}
+      = f.input :general_group, input_html: { placeholder: "Informe a quadra", id: "group_field", readonly: true}
     .col-md-2
-      = f.input :address_block, input_html: { placeholder: "Informe o bloco", id: "block_field", readonly: true}
+      = f.input :general_block, input_html: { placeholder: "Informe o bloco", id: "block_field", readonly: true}
   .row
     .col-md-4
-      = f.input :address, input_html: { placeholder: "Digite o endereço completo", id: "address_field", readonly: true}
+      = f.input :general_address, input_html: { placeholder: "Digite o endereço completo", id: "address_field", readonly: true}
     .col-md-4
       = f.input :complement, input_html: { placeholder: "Digite o complemento (se houver)"}
     .col-md-1

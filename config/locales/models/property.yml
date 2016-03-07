@@ -4,7 +4,6 @@ pt-BR:
     attributes:
       property: 
         customer: "Cliente"
-        project: "Empreendimento"
         situation: "Situação"
         type_property: "Tipo de propriedade"
         status: "Ativo?"
@@ -26,20 +25,18 @@ pt-BR:
         commercial: "Comercial?"
         elevator: "Tem elevador?"
         coverage: "Cobertura?"
-        city: "Cidade"
-        region: "Região"
-        District: "Bairro"
-        group: "Quadra"
+        city: "Bairro/Distrito"
+        region: "Localidade"
+        district: "Bairro"
+        address: 'Bairro/Distrito'
+        group: 'Logradouro/Quadra'
         block: "Bloco"
-        address: "Endereço/Logradouro"
+        general_group: "Quadra"
+        general_block: "Bloco"
+        general_address: "Endereço completo"
         complement: "Complemento"
         number: "Nº"
         reference_point: "Ponto de referência"
-        address_link_visible: "Endereço visível"
-        complement_link_visible: "Complemento visível"
-        special: "Destaque?"
-        address_base: "Cidade/Região"
-        group_base: "Quadra"
         block: "Bloco"
         commercial_situation: "Estado"
 

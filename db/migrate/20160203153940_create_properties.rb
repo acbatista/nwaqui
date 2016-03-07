@@ -15,10 +15,10 @@ class CreateProperties < ActiveRecord::Migration
 
       t.string :city
       t.string :region
-      t.string :address
-      t.string :group
+      t.string :general_address
+      t.string :general_group
+      t.string :general_block
       t.string :number
-      t.string :address_block
       t.string :complement
       t.string :reference_point
 
@@ -35,6 +35,7 @@ class CreateProperties < ActiveRecord::Migration
       t.float :value_rent, default: 0.00
   
       t.references :property_attributes, array: true, default: []
+      t.references :customer, index: true
       
       t.text  :description
       
@@ -42,6 +43,9 @@ class CreateProperties < ActiveRecord::Migration
       t.boolean :coverage,    default: false
 
       t.references :block, index: true
+      t.references :group, index: true
+      t.references :address, index: true
+      
       t.timestamps null: false
     end
   end

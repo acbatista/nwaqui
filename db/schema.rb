@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160225134423) do
+ActiveRecord::Schema.define(version: 20160307141518) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -136,10 +136,10 @@ ActiveRecord::Schema.define(version: 20160225134423) do
     t.string   "uf"
     t.string   "city"
     t.string   "region"
-    t.string   "address"
-    t.string   "group"
+    t.string   "general_address"
+    t.string   "general_group"
+    t.string   "general_block"
     t.string   "number"
-    t.string   "address_block"
     t.string   "complement"
     t.string   "reference_point"
     t.string   "name"
@@ -154,16 +154,22 @@ ActiveRecord::Schema.define(version: 20160225134423) do
     t.string   "sun_position"
     t.float    "value_rent",             default: 0.0
     t.integer  "property_attributes_id", default: [],                 array: true
+    t.integer  "customer_id"
     t.text     "description"
     t.boolean  "elevator",               default: false
     t.boolean  "coverage",               default: false
     t.integer  "block_id"
+    t.integer  "group_id"
+    t.integer  "address_id"
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
   end
 
+  add_index "properties", ["address_id"], name: "index_properties_on_address_id", using: :btree
   add_index "properties", ["block_id"], name: "index_properties_on_block_id", using: :btree
   add_index "properties", ["commercial_situation"], name: "index_properties_on_commercial_situation", using: :btree
+  add_index "properties", ["customer_id"], name: "index_properties_on_customer_id", using: :btree
+  add_index "properties", ["group_id"], name: "index_properties_on_group_id", using: :btree
   add_index "properties", ["situation"], name: "index_properties_on_situation", using: :btree
   add_index "properties", ["type_property"], name: "index_properties_on_type_property", using: :btree
 
@@ -178,6 +184,16 @@ ActiveRecord::Schema.define(version: 20160225134423) do
   end
 
   add_index "property_images", ["property_id"], name: "index_property_images_on_property_id", using: :btree
+
+  create_table "specials", force: :cascade do |t|
+    t.integer  "property_id"
+    t.integer  "order"
+    t.boolean  "status"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "specials", ["property_id"], name: "index_specials_on_property_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -199,4 +215,5 @@ ActiveRecord::Schema.define(version: 20160225134423) do
 
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
+  add_foreign_key "specials", "properties"
 end

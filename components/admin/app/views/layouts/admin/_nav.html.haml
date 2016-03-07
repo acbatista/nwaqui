@@ -26,9 +26,9 @@
               %a{:href => "#{addresses_path}"} Endereços
             %li.divider
             %li
-              %a{:href => "#{new_attribute_path}"} Novo atributo
-            %li
               %a{:href => "#{attributes_path}"} Atributos
+            %li
+              %a{:href => "#{specials_path}"} Imóveis destaque
         %li.dropdown
           %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
             Gestão de clientes
@@ -40,22 +40,14 @@
               %a{:href => "#{customers_path}"} Clientes
         %li.dropdown
           %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-            Gestão de acessos
-            %span.caret
-          %ul.dropdown-menu
-            %li
-              %a{:href => "#{new_admin_user_path}"} Novo usuário administrador
-            %li
-              %a{:href => "#{admin_users_path}"} Usuários administradores
-        %li.dropdown
-          %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
             Gestão geral
             %span.caret
           %ul.dropdown-menu
             %li
               %a{:href => "#{buttons_path}"} Botões publicitários
+            %li.divider
             %li
-              %a{:href => "#{buttons_path}"} Imóveis destaque
+              %a{:href => "#{admin_users_path}"} Usuários administradores
             %li.divider
             %li
               %a{:href => "#{buttons_path}"} Páginas

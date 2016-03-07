@@ -33,6 +33,7 @@ Admin::Engine.routes.draw do
 
   resources :admin_users
   resources :attributes
+  resources :specials
 
 end
   

@@ -17,7 +17,7 @@ class Customer < ActiveRecord::Base
   validates :social_reason, presence: true, if: :is_cnpj?
 
   validates :username, uniqueness: true, presence: true
-  validates :password, :password_confirm, presence: true, length: { minimum: 6, maximum: 28}
+  validates :password, :password_confirm, presence: true, length: { minimum: 6, maximum: 28}, on: :create
 
   validate  :password_valid?, on: :create
 

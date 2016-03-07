@@ -5,6 +5,8 @@ module Admin
     before_action :set_property, only: [:show, :edit, :update, :destroy]
 
     has_scope :by_customer
+    has_scope :by_type
+    has_scope :by_situation
     
     def index
       @properties = apply_scopes(Property).all.order('id DESC')
@@ -53,10 +55,10 @@ module Admin
     end
 
     def set_params
-      params.require(:property).permit(:customer_id, :project_id, :situation, :type_property, :status, :description, :rooms, 
+      params.require(:property).permit(:customer_id, :situation, :type_property, :status, :description, :rooms, 
                                        :unit, :value, :suit, :value_m2, :area, :parking_spaces, :floor, :sun_position, :value_rent,
-                                       :link_tour, :commercial, :elevator, :coverage,:name, :commercial_situation,
-                                       :address_base, :group_base, :address_block, :block_id, :city, :region,  :group, :address, :complement,
+                                       :link_tour, :commercial, :elevator, :coverage,:name, :commercial_situation, :general_block,
+                                       :general_address, :general_group, :group_id, :address_id, :block_id, :city, :region, :complement,
                                        :number, :reference_point, property_attributes_id: [], property_attribute_id: [])
     end
 
