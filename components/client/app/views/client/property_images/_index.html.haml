@@ -1,0 +1,8 @@
+- @property.images.order(:order).each do |image|
+  %tr 
+    %td.col-md-1= "#{image.order} º"
+    %td.col-md-8= image.name
+    %td.col-md-l=link_to "visualizar", image.image.to_s, target: '_blank'
+    %td.col-md-l= image.publish ? "Sim" : "Não"
+    %td.col-md-2
+      = link_to "excluir", property_property_image_path(property_id: @property, id: image), method: :delete, data: {confirm: t(:confirm)}, class: 'btn btn-danger btn-xs'

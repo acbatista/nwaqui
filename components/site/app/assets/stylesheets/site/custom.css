@@ -1,4 +1,6 @@
-
+label {
+  font-weight: 700 !important;
+}
 .gsearch .gsearch-wrap .gsearch-content .gsearch-field {
   width: 90% !important;
 }

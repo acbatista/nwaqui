@@ -1,0 +1,11 @@
+pt-BR:
+  activerecord:
+    modules: 
+      message: 'Mensagem'
+    attributes:
+      message:
+        name: "Nome completo"
+        email: "E-mail"
+        telephone: "Telefone"
+        celphone: "Celular"
+        content: "Mensagem"

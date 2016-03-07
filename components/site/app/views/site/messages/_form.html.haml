@@ -1,0 +1,24 @@
+= simple_form_for [@property, @message], remote: true do |f|
+  .row
+    .col-md-12
+      = f.label :name
+      = f.input :name, label: false, input_html: { placeholder: "Digite seu nome completo"}
+    .col-md-12
+      = f.label :email
+      = f.input :email, label: false, input_html: { placeholder: "Digite seu e-mail"}
+  .row
+    .col-md-6
+      = f.label :telephone
+      = f.input :telephone, label: false, input_html: { placeholder: "Somente números"}
+    .col-md-6
+      = f.label :celphone
+      = f.input :celphone, label: false, input_html: { placeholder: "Somente números"}
+  %hr/
+  .row
+    .col-md-12
+      = f.label :content
+      = f.input :content, label: false, input_html: { placeholder: "Digite sua mensagem..."}
+  %hr/
+  .row
+    .col-md-12
+      = f.submit "Enviar mensagem", class: 'btn btn-success'

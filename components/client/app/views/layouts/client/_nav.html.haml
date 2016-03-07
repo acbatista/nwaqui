@@ -21,18 +21,13 @@
               %a{:href => "#{new_property_path}"} Novo imóveis
             %li
               %a{:href => "#{properties_path}"} Imóveis
-            %li
-              %a{:href => "#{properties_path}"} Mensagens
-
         %li.dropdown
           %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-            Meus empreendimentos
+            Gestão
             %span.caret
           %ul.dropdown-menu
             %li
-              %a{:href => "#{new_project_path}"} Novo empreendimento
-            %li
-              %a{:href => "#{projects_path}"} Empreendimentos
+              %a{:href => "#{messages_path}"} Mensagens
       %ul.nav.navbar-nav.navbar-right
         %li.dropdown
           %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}

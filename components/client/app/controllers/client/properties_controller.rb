@@ -4,21 +4,23 @@ module Client
   class PropertiesController < ApplicationController
     before_action :set_property, only: [:show, :edit, :update, :destroy]
 
-    has_scope :by_customer
-    has_scope :by_project
+    has_scope :by_type
+    has_scope :by_situation
+
+
     def index
-      @properties = apply_scopes(Property).where(customer_id: current_user.customer_id).order('id DESC')
+      @properties = apply_scopes(Property).where(customer_id: current_user.id).order('id DESC')
     end
 
     def new
-      @property = Property.new
+      @property =  Property.where(customer_id: current_user.id).new
     end
 
     def show
     end
 
     def create
-      @property = Property.new(set_params)
+      @property = Property.where(customer_id: current_user.id).new(set_params)
 
       if @property.save 
         flash[:success] = t :success
@@ -49,17 +51,15 @@ module Client
     private
 
     def set_property
-      @property = Property.where(customer_id: current_user.customer_id).find(params[:id])
+      @property = Property.where(customer_id: current_user.id).find(params[:id])
     end
 
     def set_params
-      params.require(:property).permit(:customer_id, :project_id, :situation, :type_property, :status, :description, :rooms, 
+      params.require(:property).permit(:situation, :type_property, :status, :description, :rooms, 
                                        :unit, :value, :suit, :value_m2, :area, :parking_spaces, :floor, :sun_position, :value_rent,
-                                       :link_tour, :commercial, :elevator, :coverage,:name,
-                                       :city, :region, :district, :group, :block, :address, :complement, :number, :reference_point, 
-                                       :address_link_visible, :complement_link_visible,
-                                       property_attributes_id: [],  construction_companies_id: [], sellers_id: [],
-                                       property_attribute_id: [])
+                                       :link_tour, :commercial, :elevator, :coverage,:name, :commercial_situation, :general_block,
+                                       :general_address, :general_group, :group_id, :address_id, :block_id, :city, :region, :complement,
+                                       :number, :reference_point, property_attributes_id: [], property_attribute_id: [])
     end
 
   end

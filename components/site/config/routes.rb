@@ -22,12 +22,9 @@ Site::Engine.routes.draw do
   get '/search', to: 'properties#search', as: 'search'
 
   resources :properties, path: 'imoveis' do 
-    
     get 'telephone'
 
-    get   'new_message'
-    post  'create_message'
-
+    resources :messages, only: [:new, :create]
   end
 
 end

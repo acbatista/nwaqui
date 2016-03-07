@@ -20,7 +20,7 @@ jQuery(document).ready(function(a) {
       circular: false,
       infinite: true,
       auto: {
-        play: false,
+        play: true,
         pauseOnHover: true
       },
       prev: d.find(".caroufredsel-prev"),

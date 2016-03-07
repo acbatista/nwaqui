@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160307141518) do
+ActiveRecord::Schema.define(version: 20160307145404) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -114,16 +114,18 @@ ActiveRecord::Schema.define(version: 20160307141518) do
   add_index "groups", ["address_id"], name: "index_groups_on_address_id", using: :btree
 
   create_table "messages", force: :cascade do |t|
-    t.integer  "client_id"
-    t.text     "content"
-    t.string   "name"
+    t.integer  "customer_id"
     t.string   "email"
+    t.string   "name"
+    t.text     "content"
     t.string   "telephone"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "celphone"
+    t.boolean  "read"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
-  add_index "messages", ["client_id"], name: "index_messages_on_client_id", using: :btree
+  add_index "messages", ["customer_id"], name: "index_messages_on_customer_id", using: :btree
 
   create_table "properties", force: :cascade do |t|
     t.integer  "situation",              default: 0

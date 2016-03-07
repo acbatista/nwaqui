@@ -8,7 +8,7 @@
           %h1.property-title
             = @property.name
             %small
-              = "#{@property.address} - Nº #{@property.number}"
+              = "#{@property.general_address} - Nº #{@property.number}"
           .property-featured.clearfix
             .images
               .caroufredsel-wrap
@@ -33,8 +33,8 @@
                     - else
                       %li.thumb.selected{:style => "width: 138px;"}
                         %img.img-responsive{:src => "https://nwaqui.s3.amazonaws.com/uploads/real_evolution-fachada-185.jpg"}
-              %a.caroufredsel-prev{:href => "#", :style => "display: block;"}
-              %a.caroufredsel-next{:href => "#", :style => "display: block;"}
+              %a.caroufredsel-prev{:href => "#"}
+              %a.caroufredsel-next{:href => "#"}
           .property-summary
             .row
               .col-md-12
@@ -47,7 +47,7 @@
               .col-md-4
                 = link_to image_tag("contact.png"), property_telephone_path(@property), remote: true
               .col-md-4
-                = link_to image_tag("message.png"), property_new_message_path(@property), remote: true
+                = link_to image_tag("message.png"), new_property_message_path(@property), remote: true
               .col-md-4
                 = link_to image_tag("tour.png"), @property.block.tour_360.to_s
           .property-feature
@@ -120,6 +120,7 @@
                         = property.situation.humanize
                       %h4.featured-title
                         %a{:href => "#{property_path(property)}", :title => "Imóvel"}
-                          = "#{property.address} - Nº #{property.number}"
+                          = "#{property.general_address} - Nº #{property.number}"
           / END RECENT PROPERTY
       / END SIDEBAR
+

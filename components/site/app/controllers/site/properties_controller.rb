@@ -14,17 +14,11 @@ module Site
     end
 
     def search
-      @properties = apply_scopes(Property).all.order(:address)
+      @properties = apply_scopes(Property).all.order(:general_address)
     end
 
     def telephone
       @property = Property.where(status: true).find(params[:property_id])
-    end
-
-    def new_message
-    end
-
-    def message
     end
 
   end

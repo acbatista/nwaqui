@@ -1,0 +1,21 @@
+- @messages.each do |message|
+  %tr
+    %td= message.id
+    %td= message.name
+    %td= message.email
+    %td= message.telephone
+    %td= message.content
+    %td= message.created_at.strftime('%d/%m/%y às %H:%M')
+    %td
+      - if message.read
+        %span.label.label-primary
+          Lida
+      - else
+        %span.label.label-default
+          Não lida
+
+    %td
+      - if message.read
+        = link_to "marcar como não lida", message_unread_path(message)
+      - else
+        = link_to "marcar como lida",message_read_path(message)

@@ -1,0 +1,14 @@
+.modal-header
+  %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+    %span{"aria-hidden" => "true"} &times;
+  %h4.modal-title
+    %b= "#{@property.general_address} - Nº #{@property.number}"
+.modal-body
+  %label Telefone
+  %p= @property.customer.telephone
+  %hr/
+  %label Celular
+  %p= @property.customer.celphone
+  %hr/
+  %label E-mail
+  %p= @property.customer.email

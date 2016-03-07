@@ -1,6 +1,4 @@
 class Property < ActiveRecord::Base
-  belongs_to :sellers, class_name: 'Customer'
-  belongs_to :construction_companies, class_name: 'Customer'
   belongs_to :property_attributes, class_name: 'Attribute'
   
   belongs_to :customer
@@ -28,7 +26,7 @@ class Property < ActiveRecord::Base
 
   validates :description, :situation, :type_property, :status, :general_address, :general_group, presence: true
   validates :rooms, :suit, :parking_spaces, :floor, numericality: true, presence: true
-  validates :city, :region, :group, :block, :address, :commercial_situation, presence: true
+  validates :city, :region, :group, :block, :address, :commercial_situation, :number, presence: true
   
   def property_attributes; Attribute.where(id: self.property_attributes_id); end;
 

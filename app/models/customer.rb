@@ -1,6 +1,7 @@
 class Customer < ActiveRecord::Base
   
   has_many :projects
+  has_many :messages
   
 
   attr_accessor :password_confirm

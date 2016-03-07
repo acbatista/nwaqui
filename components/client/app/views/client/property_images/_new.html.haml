@@ -2,6 +2,6 @@
   %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
     %span{"aria-hidden" => "true"} &times;
   %h4.modal-title
-    %b= "#{@property.address} - Nº #{@property.number} - Visualizar telefone"
+    %b Adicionar nova imagem
 .modal-body
-  %h1 Telefone exemplo #1
+  = render 'form' 

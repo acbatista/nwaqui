@@ -10,7 +10,7 @@ module Client
     validate :validate_current_password
 
     def update_password
-      @user = Client::CustomerUser.find(self.id)
+      @user = Client::Customer.find(self.id)
       @user.password = self.password
       @user.save
     end
@@ -24,7 +24,7 @@ module Client
     end
 
     def validate_current_password
-      @user = Client::CustomerUser.find(self.id)
+      @user = Client::Customer.find(self.id)
       
       if @user.password != self.current_password
         errors.add(:current_password, "Sua atual incorreta")

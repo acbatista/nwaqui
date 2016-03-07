@@ -35,7 +35,7 @@
                   .property-wrap
                     %h2.property-title
                       %a{:href => "#{property_path(property)}", :title => "#{property.name}"}
-                        = "#{property.address} - #{property.number}"
+                        = "#{property.general_address} - #{property.number}"
                     .property-excerpt
                       %p
                         = property.description
@@ -62,7 +62,7 @@
                           .property-links
                             %a{:href => "#{property_path(property)}"} Mais Detalhes
                           .property-links
-                            %a{:href => "#{property.link_tour}", :target => "_blank"}
+                            %a{:href => "#{property.block.tour_360}", :target => "_blank"}
                               %span.glyphicon.glyphicon-map-marker
                               Tour 360
                       .property-info.property-fullwidth-info
@@ -86,5 +86,5 @@
                     .property-links
                       %a{:href => "#{property_path(property)}"} Mais Detalhes
                     .property-links.property-invese-link-mod
-                      %a{:href => "#{property.link_tour}"}
+                      %a{:href => "#{property.block.tour_360}"}
                         %img{:alt => "", :src => "/images/icon/icon-360.png"}/
