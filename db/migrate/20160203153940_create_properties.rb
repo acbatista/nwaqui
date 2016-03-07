@@ -35,6 +35,7 @@ class CreateProperties < ActiveRecord::Migration
       t.float :value_rent, default: 0.00
   
       t.references :property_attributes, array: true, default: []
+      t.references :companies, array: true, default: []
       t.references :customer, index: true
       
       t.text  :description
