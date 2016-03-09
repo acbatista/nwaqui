@@ -47,10 +47,8 @@
       = f.input :general_address, input_html: { placeholder: "Digite o endereço completo", id: "address_field", readonly: true}
     .col-md-4
       = f.input :complement, input_html: { placeholder: "Digite o complemento (se houver)"}
-    .col-md-1
-      = f.input :number
-    .col-md-3
-      = f.input :reference_point
+    .col-md-4
+      = f.input :reference_point, input_html: { placeholder: "Digite um ponto de referência"}
   .row
     .col-md-2
 
@@ -68,11 +66,11 @@
     .col-md-2.value
       = f.input :value,as: :string, input_html: { class: 'coin_mask'}
     .col-md-2
-      = f.input :suit, as: :string, input_html: {value: f.object.rooms.present?  ? f.object.suit : 0}
-    .col-md-2.value_m2
-      = f.input :value_m2, input_html: { readonly: true}
-    .col-md-2
       = f.input :area, as: :string
+    .col-md-2.value_m2
+      = f.input :value_m2, as: :string, input_html: { readonly: true, class: 'coin_mask'}
+    .col-md-2
+      = f.input :suit, as: :string, input_html: {value: f.object.rooms.present?  ? f.object.suit : 0}
   .row
     .col-md-2
       = f.input :parking_spaces, as: :string, input_html: {value: f.object.rooms.present?  ? f.object.parking_spaces : 0}
@@ -160,5 +158,13 @@
        $("#region_field").val(data[2].region)
       });      
     });
+
+
+    $("#property_area").on('change', function() {
+      var area = $(this).val();
+      var value = $('#property_value').val();
+      var m2 = value / area
+      $("#property_value_m2").val(m2.toFixed(2)) 
+    })
   });
   

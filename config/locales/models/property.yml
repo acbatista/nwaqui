@@ -14,7 +14,7 @@ pt-BR:
         value: "Valor"
         suit: "Suítes"
         value_m2: "Valor m²"
-        area: "Área"
+        area: "Área (m)"
         parking_spaces: "Garagens"
         floor: "Andar"
         sun_position: "Posição do sol"

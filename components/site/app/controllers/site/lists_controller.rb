@@ -8,6 +8,7 @@ module Site
     has_scope :by_group
     has_scope :by_type
     has_scope :by_client
+    has_scope :by_commercial
 
     def index
       @properties = apply_scopes(::Property).all

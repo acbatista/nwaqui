@@ -19,6 +19,7 @@ class Property < ActiveRecord::Base
   scope :by_block,      -> block {where(block_id: block)}
   scope :by_group,      -> group {where(group_id: group)}
   scope :by_client,     -> client {where(customer_id: client)}
+  scope :by_commercial,  -> commercial {where(commercial_situation: commercial)}
 
   scope :attributes, -> {Attribute.all.order(:name) }
 
