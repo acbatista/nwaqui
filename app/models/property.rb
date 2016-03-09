@@ -8,7 +8,7 @@ class Property < ActiveRecord::Base
   belongs_to :group
   belongs_to :block
 
-  has_many :images, class_name: "PropertyImage"
+  has_many :images, class_name: "PropertyImage", dependent: :destroy
   
   scope :by_customer, -> customer {where(customer_id: customer)}
   scope :by_project, -> project {where(project_id: project)}
