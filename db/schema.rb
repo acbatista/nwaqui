@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160307145404) do
+ActiveRecord::Schema.define(version: 20160309161819) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -206,13 +206,17 @@ ActiveRecord::Schema.define(version: 20160307145404) do
     t.string   "email"
     t.string   "telephone"
     t.string   "token"
-    t.boolean  "token_status", default: true
+    t.boolean  "token_status",     default: true
     t.date     "last_signed"
-    t.boolean  "status",       default: true
-    t.integer  "user_type",    default: 0
-    t.integer  "customer_id",  default: [],                array: true
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.boolean  "status",           default: true
+    t.integer  "user_type",        default: 0
+    t.integer  "customer_id",      default: [],                array: true
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.string   "uid"
+    t.string   "provider"
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
   end
 
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree

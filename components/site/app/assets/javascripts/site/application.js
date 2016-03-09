@@ -22,3 +22,4 @@
 //= require site/imagesloaded.pkgd.min
 //= require site/property-slider
 //= require site/script
+//= require site/facebook

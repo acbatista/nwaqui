@@ -21,7 +21,14 @@ module Site
 
       redirect_to site.root_path
     end
-    
+
+    def facebook_session_create
+
+    end
+
+    def facebook_session_destroy
+    end
+
     private
 
     def set_params

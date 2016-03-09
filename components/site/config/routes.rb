@@ -11,6 +11,10 @@ Site::Engine.routes.draw do
   end
 
   resources :external_users
+
+  get 'auth/:provider/callback', to: 'sessions#facebook_session_create', as: 'facebook_session_create'
+  get 'auth/failure', to: redirect('/site')
+  
   resources :bookmarks do 
     get 'delete'
     collection do 
@@ -24,7 +28,6 @@ Site::Engine.routes.draw do
 
   resources :properties, path: 'imoveis' do 
     get 'telephone'
-
     resources :messages, only: [:new, :create]
   end
 

@@ -9,4 +9,5 @@
  *= require site/citilights-shortcode
  *= require site/color-custom
  *= require site/custom
+ *= require site/bootstrap-social.min
  */
