@@ -1,6 +1,7 @@
 Site::Engine.routes.draw do
   root 'pages#index'
 
+  resources :lists, only: [:index], path: 'lista'
   resources :pages
   
   resources :sessions, only: [:new, :create, :logout] do 
@@ -19,7 +20,7 @@ Site::Engine.routes.draw do
   end
 
   get '/bookmark/:key', to: 'bookmarks#public_share'
-  get '/search', to: 'properties#search', as: 'search'
+  get '/search', path: 'pesquisa', to: 'properties#search', as: 'search'
 
   resources :properties, path: 'imoveis' do 
     get 'telephone'

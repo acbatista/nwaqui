@@ -28,14 +28,14 @@
                       - else
                         %img.thumb-list{:alt => "", :src => "/images/icon/image404.png"}/
                     %span.property-label
-                      Lançamento
+                      = property.commercial_situation
                     %span.property-category
                       %a{:href => "#{property_path(property)}"}
-                        = property.name
+                        = property.address_name
                   .property-wrap
                     %h2.property-title
                       %a{:href => "#{property_path(property)}", :title => "#{property.name}"}
-                        = "#{property.general_address} - #{property.number}"
+                        = property.address_name
                     .property-excerpt
                       %p
                         = property.description
@@ -69,7 +69,10 @@
                         .property-price
                           %span
                             %span.amount
-                              = number_to_currency property.value
+                              - if property.aluguel?
+                                = number_to_currency property.value_rent
+                              - else
+                                = number_to_currency property.value
                         .size
                           %span
                             = property.area

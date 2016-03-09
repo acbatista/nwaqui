@@ -17,14 +17,15 @@
             %th Quadra
         %tbody
           %tr
-            %td= link_to @address.name.humanize, addresses_path
-            %td= link_to @group.name.humanize, address_groups_path(address_id: @address.id)
+            %td= link_to @address.name.upcase, addresses_path
+            %td= link_to @group.name.upcase, address_groups_path(address_id: @address.id)
   %hr/
   .row  
     .col-md-12
       %table.table.table-striped.table-hover.table-bordered
         %thead 
           %tr
+            %th Cod.
             %th Localidade
             %th Quadra
             %th Bloco

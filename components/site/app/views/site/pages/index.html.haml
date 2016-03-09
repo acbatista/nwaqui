@@ -9,7 +9,7 @@
         %h3 Busca Exclusiva
     - Button.where(publish: true).each do |button| 
       .col-md-2
-        = image_tag button.image
+        = link_to image_tag(button.image), button.link.to_s
   
   %section#recent-.wrap.recent-properties
     .container
@@ -27,14 +27,16 @@
                   %article.hentry.has-featured.mod1_home
                     .property-featured
                       %a.content-thumb{:href => "#{property_path(property)}"}
-                        %img.attachment-property-thumb.featured-thumb-home{:alt => "", :src => "https://nwaqui.s3.amazonaws.com/uploads/c0f5d31336b1d3c5c450cefebd261156.jpg"}/
-                      %span.property-category.new_name
-                        %a{:href => "/imoveis/163"}
-                          = property.name
+                        - if property.images.present?
+                          %img.attachment-property-thumb.featured-thumb-home{:alt => "", :src => "#{property.images.first.image_url}"}/
+                        - else
+                          %img.attachment-property-thumb.featured-thumb-home{:alt => "", :src => "https://nwaqui.s3.amazonaws.com/uploads/c0f5d31336b1d3c5c450cefebd261156.jpg"}/
+                        %span.property-category.new_name
+                          = property.address_name
                       .property-detail.mod-detail
                         .size
                           %span
-                            105
+                            = property.area
                         .bedrooms
                           %span
                             = property.rooms

@@ -1,10 +1,11 @@
 - @blocks.each do |block|
   %tr
+    %td.col-md-1= block.id
     %td.col-md-2= block.group.address.name.humanize if block.group.present? && block.group.address.present?
-    %td.col-md-1= block.group.name.upcase if block.group.present?
+    %td.col-md-2= block.group.name.upcase if block.group.present?
     %td.col-md-1= block.name.upcase
-    %td.col-md-1= block.cep
-    %td.col-md-4= block.tour_360
-    %td.col-md-2
+    %td.col-md-2= block.cep
+    %td.col-md-3= block.tour_360
+    %td.col-md-3
       = link_to "",edit_address_group_block_path(address_id: @address.id, group_id: @group.id, id: block), remote: true, class: 'btn btn-primary btn-sm glyphicon glyphicon-pencil btn-xs'
       = link_to "", address_group_block_path(address_id: @address.id, group_id: @group.id, id: block), method: :delete, class: 'btn btn-danger btn-sm glyphicon glyphicon-remove btn-xs'

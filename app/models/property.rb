@@ -15,7 +15,10 @@ class Property < ActiveRecord::Base
   
   scope :by_situation, -> situation {where(situation: situation)}
   scope :by_type,      -> commecial {where(type_property: commecial)}
-
+  
+  scope :by_block,      -> block {where(block_id: block)}
+  scope :by_group,      -> group {where(group_id: group)}
+  scope :by_client,     -> client {where(customer_id: client)}
 
   scope :attributes, -> {Attribute.all.order(:name) }
 
@@ -30,4 +33,8 @@ class Property < ActiveRecord::Base
   
   def property_attributes; Attribute.where(id: self.property_attributes_id); end;
 
+  def address_name
+    "#{self.address.name.upcase} - #{self.group.name.upcase} BLOCO #{self.block.name} 
+     #{self.unit} - #{self.type_property.upcase}"
+  end
 end
