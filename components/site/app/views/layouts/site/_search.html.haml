@@ -13,11 +13,10 @@
           = simple_form_for :search, url: search_path, method: :get do |f|
             .gsearch-content
               .gsearch-field
-                = f.input :by_situation, as: :select, label: false, collection: Property.commercial_situations.map { |k,v| [k.humanize, v]},selected: params[:by_situation], include_blank: "Você procura por", input_html: { name: 'by_situation', id: 'by_situation'}
+                = f.input :by_commercial, as: :select, label: false, collection: Property.commercial_situations.map { |k,v| [k.humanize, v]},selected: params[:by_commercial], include_blank: "Você procura por", input_html: { name: 'by_commercial', id: 'by_commercial'}
                 
                 = f.input :by_type, as: :select, label: false, collection: Property.type_properties.map { |k,v| [k.humanize, v]},selected: params[:by_type], include_blank: "Tipo de imóvel", input_html: { name: 'by_type', id: 'by_type'}
-                
-                = f.input :empty,label: false, as: :select, selected: params[:option_one], include_blank: "selecione...",collection: [], input_html: { id: 'empty_one', name: 'option_one'}
+                = f.input :empty,label: false, as: :select, selected: params[:by_room], include_blank: "selecione...",collection: [], input_html: { id: 'empty_one', name: 'option_one'}
 
                 = f.input :empty,label: false, as: :select,  selected: params[:option_two], include_blank: "selecione...",collection: [], input_html: { id: 'empty_two', name: 'option_two'}
 
@@ -32,7 +31,7 @@
     options();
     select_options();
 
-    $("#by_situation").on('change', function() {
+    $("#by_commercial").on('change', function() {
       html = '<option value>selecione...</option>'
       
       $("#by_type").val('')
@@ -41,7 +40,7 @@
     });
 
     $("#by_type").on('change', function() {
-      if($("#by_situation").val() == "") {
+      if($("#by_commercial").val() == "") {
         alert('Selecione a situação do imóvel...')
       } else {
          options();
@@ -63,7 +62,7 @@
 
     function options() {
 
-      var situation = $("#by_situation").val();
+      var situation = $("#by_commercial").val();
       var type = $("#by_type").val();
 
       if((situation == '0' || situation == '1') && type == '0') {
@@ -74,20 +73,22 @@
         html_one += "<option value='4'>4 ou +</option>"
         html_one += "<option value='99'>Cobertura</option>"
         $("#empty_one").html(html_one)
+        $("#empty_one").attr('name', 'by_room');
 
         html_two  = "<option value>Quadra</option>"
-        html_two += "<option value='111'>111/311</option>"
-        html_two += "<option value='110'>110/310</option>"
-        html_two += "<option value='109'>109/309</option>"
-        html_two += "<option value='108'>108/308</option>"
-        html_two += "<option value='107'>107/307</option>"
-        html_two += "<option value='106'>106/306</option>"
-        html_two += "<option value='105'>105/305</option>"
-        html_two += "<option value='104'>104/304</option>"
-        html_two += "<option value='103'>103/303</option>"
-        html_two += "<option value='102'>102/302</option>"
+        html_two += "<option value='111-311'>111/311</option>"
+        html_two += "<option value='110-310'>110/310</option>"
+        html_two += "<option value='109-309'>109/309</option>"
+        html_two += "<option value='108-308'>108/308</option>"
+        html_two += "<option value='107-307'>107/307</option>"
+        html_two += "<option value='106-306'>106/306</option>"
+        html_two += "<option value='105-305'>105/305</option>"
+        html_two += "<option value='104-304'>104/304</option>"
+        html_two += "<option value='103-303'>103/303</option>"
+        html_two += "<option value='102-302'>102/302</option>"
 
         $("#empty_two").html(html_two)
+        $("#empty_two").attr('name', 'by_group');
       }
 
       if((situation == '0' || situation == '1') && type == '1') {

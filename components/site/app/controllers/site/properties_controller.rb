@@ -3,7 +3,7 @@ require_dependency 'site/application_controller'
 module Site
   class PropertiesController < ApplicationController
 
-    has_scope :by_situation
+    has_scope :by_commercial
     has_scope :by_type
 
     def index
