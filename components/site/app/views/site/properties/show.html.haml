@@ -69,35 +69,27 @@
                 .property-detail-content
                   .detail-field.row
                     %span.col-xs-6.col-md-5.detail-field-label Situação
-                    %span.col-xs-6.col-md-7.detail-field-value
-                      Pronto
-                    %span.col-xs-6.col-md-5.detail-field-label Localização
-                    %span.col-xs-6.col-md-7.detail-field-value
+                    %span.col-xs-6.col-md-7.detail-field-value= @property.situation.humanize
+                    %span.col-xs-6.col-md-5.detail-field-label Unidade
+                    %span.col-xs-6.col-md-7.detail-field-value= @property.unit
+                    %span.col-xs-6.col-md-5.detail-field-label Quartos
+                    %span.col-xs-6.col-md-7.detail-field-value= @property.rooms
+                    %span.col-xs-6.col-md-5.detail-field-label Suites
+                    %span.col-xs-6.col-md-7.detail-field-value= @property.suit
+                    %span.col-xs-6.col-md-5.detail-field-label Vagas
+                    %span.col-xs-6.col-md-7.detail-field-value= @property.parking_spaces
+                    %span.col-xs-6.col-md-5.detail-field-label Elevador
+                    %span.col-xs-6.col-md-7.detail-field-value= @property.elevator ? 'Sim' : 'Não'
+                    %span.col-xs-6.col-md-5.detail-field-label Posição do sol
+                    %span.col-xs-6.col-md-7.detail-field-value= @property.sun_position
+                    %span.col-xs-6.col-md-5.detail-field-label Valor M²
+                    %span.col-xs-6.col-md-7.detail-field-value= number_to_currency @property.value_m2
                     %span.col-xs-6.col-md-5.detail-field-label Valor
                     %span.col-xs-6.col-md-7.detail-field-value
                       %span.amount
                         = number_to_currency @property.value
-                    %span.col-xs-6.col-md-5.detail-field-label Elevador
-                    %span.col-xs-6.col-md-7.detail-field-value
-                      = @property.elevator ? 'Sim' : 'Não'
-                    %span.col-xs-6.col-md-5.detail-field-label Quartos
-                    %span.col-xs-6.col-md-7.detail-field-value
-                      = @property.rooms
-                    %span.col-xs-6.col-md-5.detail-field-label Sol
-                    %span.col-xs-6.col-md-7.detail-field-value
-                      = @property.sun_position
-                    %span.col-xs-6.col-md-5.detail-field-label Valor M²
-                    %span.col-xs-6.col-md-7.detail-field-value
-                      = number_to_currency @property.value_m2
-                    %span.col-xs-6.col-md-5.detail-field-label Vagas
-                    %span.col-xs-6.col-md-7.detail-field-value
-                      = @property.parking_spaces
-                    %span.col-xs-6.col-md-5.detail-field-label Suites
-                    %span.col-xs-6.col-md-7.detail-field-value
-                      = @property.suit
                     %span.col-xs-6.col-md-5.detail-field-label Andar
-                    %span.col-xs-6.col-md-7.detail-field-value
-                      = "#{@property.suit} º"
+                    %span.col-xs-6.col-md-7.detail-field-value= (@property.floor == 0) ? "térreo" : @property.floorº
                     %span.col-xs-6.col-md-5.detail-field-label Tour
                     %span.col-xs-6.col-md-7.detail-field-value
                       %a{:href => "#{@property.block.tour_360}", :target => "_BLANK"} Confira Aqui

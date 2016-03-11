@@ -35,7 +35,7 @@ class Property < ActiveRecord::Base
   def property_attributes; Attribute.where(id: self.property_attributes_id); end;
 
   def address_name
-    "#{self.address.name.upcase} - #{self.group.name.upcase} BLOCO #{self.block.name} 
-     #{self.unit} - #{self.type_property.upcase}"
+    "#{self.group.name.upcase} Bloco #{self.block.name} 
+     #{self.unit} - #{self.commercial_situation.humanize}"
   end
 end
