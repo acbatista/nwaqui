@@ -24,7 +24,7 @@ class Property < ActiveRecord::Base
   scope :attributes, -> {Attribute.all.order(:name) }
 
 
-  enum situation: ['breve_lançamento', 'na_planta', 'em_construção', 'pronto']
+  enum situation: ['na_planta', 'em_construção','breve_lançamento','pronto']
   enum type_property: ['residencial', 'comercial']
   enum commercial_situation: ['lançamento', 'venda', 'aluguel']
 
