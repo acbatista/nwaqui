@@ -74,6 +74,9 @@
       = f.input :floor, as: :string, input_html: {value: f.object.rooms.present? ? f.object.floor : 0}
     .col-md-2
       = f.input :sun_position
+    .col-md-3.prediction{style:  f.object.lançamento? ? 'display: block;' : 'display: none;'} 
+      = f.label "Previsão de entrega"
+      = f.input :prediction,label: false, as: :string, input_html: { class: 'date', value: f.object.prediction ? localize(f.object.prediction) : nil}
     .col-md-2.value_rent
       = f.input :value_rent,as: :string, input_html: { class: 'coin_mask'}
   .row
@@ -88,10 +91,15 @@
       = f.input :status, as: :select, include_blank: false
   %hr/
   .row
+    .col-md-4
+      = f.input :company_id, as: :select, collection: Customer.all.order(:fantasy_name), label_method: :label_name, input_html: {multiple: true, class: 'chosen-select'}
+  %hr/
+  .row
     .col-md-12
       %h4 
         %b Atributos
   %br/
+
   .row
     .col-md-12
       = f.association :property_attributes, as: :check_boxes, label_method: lambda { |property_attribute| property_attribute.name.downcase}, label: false, item_wrapper_class: 'col-md-2'

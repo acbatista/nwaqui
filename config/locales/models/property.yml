@@ -39,4 +39,6 @@ pt-BR:
         reference_point: "Ponto de referência"
         block: "Bloco"
         commercial_situation: "Estado"
+        company_id: "Contrutoras/Vendedores"
+        prediction: "Previsão de entrega"
 
