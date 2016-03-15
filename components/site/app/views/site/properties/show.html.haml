@@ -7,7 +7,7 @@
         %article.property
           %h1.property-title
             %small
-              = link_to "Voltar para listagem", search_path, class: 'btn btn-primary'
+              = link_to "Voltar para listagem", site.search_path, class: 'btn btn-primary'
             %br/
             %small
               = "#{@property.address_name}"
@@ -91,7 +91,7 @@
                       %span.amount
                         = number_to_currency @property.value
                     %span.col-xs-6.col-md-5.detail-field-label Andar
-                    %span.col-xs-6.col-md-7.detail-field-value= (@property.floor == 0) ? "térreo" : @property.floorº
+                    %span.col-xs-6.col-md-7.detail-field-value= (@property.floor == 0) ? "térreo" : "#{@property.floor} º"
                     %span.col-xs-6.col-md-5.detail-field-label Tour
                     %span.col-xs-6.col-md-7.detail-field-value
                       %a{:href => "#{@property.block.tour_360}", :target => "_BLANK"} Confira Aqui
