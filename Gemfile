@@ -24,6 +24,8 @@ gem 'fog'
 gem 'carrierwave',  '~> 0.10.0'
 gem 'omniauth-facebook'
 
+gem 'money-rails'
+
 path 'components' do 
   gem 'site'
   gem 'client'

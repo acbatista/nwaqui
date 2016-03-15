@@ -6,7 +6,9 @@
         / START ARTICLE PROPERTY
         %article.property
           %h1.property-title
-            = @property.name
+            %small
+              = link_to "Voltar para listagem", search_path, class: 'btn btn-primary'
+            %br/
             %small
               = "#{@property.address_name}"
           .property-featured.clearfix
@@ -83,7 +85,7 @@
                     %span.col-xs-6.col-md-5.detail-field-label Posição do sol
                     %span.col-xs-6.col-md-7.detail-field-value= @property.sun_position
                     %span.col-xs-6.col-md-5.detail-field-label Valor M²
-                    %span.col-xs-6.col-md-7.detail-field-value= number_to_currency @property.value_m2
+                    %span.col-xs-6.col-md-7.detail-field-value= @property.value_m2
                     %span.col-xs-6.col-md-5.detail-field-label Valor
                     %span.col-xs-6.col-md-7.detail-field-value
                       %span.amount

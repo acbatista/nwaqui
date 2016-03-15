@@ -29,9 +29,6 @@
                         %img.thumb-list{:alt => "", :src => "/images/icon/image404.png"}/
                     %span.property-label
                       = property.commercial_situation
-                    %span.property-category
-                      %a{:href => "#{property_path(property)}"}
-                        = property.address_name
                   .property-wrap
                     %h2.property-title
                       %a{:href => "#{property_path(property)}", :title => "#{property.name}"}

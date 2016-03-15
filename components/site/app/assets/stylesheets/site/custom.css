@@ -1,3 +1,7 @@
+
+.properties .hentry .property-featured .property-label{
+  top: 1px !important;
+}
 .gsearch-info-content h1 {
   color:white;
   font-weight: bold;
