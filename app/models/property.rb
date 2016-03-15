@@ -28,7 +28,8 @@ class Property < ActiveRecord::Base
   enum type_property: ['residencial', 'comercial']
   enum commercial_situation: ['lançamento', 'venda', 'aluguel']
 
-  monetize :value
+  monetize :value, allow_nil: true
+  monetize :value_rent, allow_nil: true
 
   validates :description, :situation, :type_property, :status, :general_address, :general_group, presence: true
   validates :rooms, :suit, :parking_spaces, :floor, numericality: true, presence: true
