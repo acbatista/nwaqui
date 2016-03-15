@@ -11,7 +11,6 @@ class Property < ActiveRecord::Base
   has_many :images, class_name: "PropertyImage", dependent: :destroy
   
   scope :by_customer, -> customer {where(customer_id: customer)}
-  scope :by_project, -> project {where(project_id: project)}
   
   scope :by_situation, -> situation {where(situation: situation)}
   scope :by_type,      -> commecial {where(type_property: commecial)}
