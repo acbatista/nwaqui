@@ -59,6 +59,11 @@
                 .has
                   %i.fa.fa-check-circle
                   = attribute.name
+          .property-feature
+            %h4.property-feature-title Construtoras e venda
+            .property-feature-content.clearfix
+              - @property.companies.each do |company|
+                = image_tag company.logo_path.url, size: '100x100' if company.logo_path.present?
 
       / START SIDEBAR
       .noo-sidebar.noo-sidebar-right.col-xs-12.col-md-4

@@ -37,6 +37,8 @@ class Property < ActiveRecord::Base
   
   def property_attributes; Attribute.where(id: self.property_attributes_id); end;
 
+  def companies; Customer.where(id: self.company_id); end;
+
   def address_name
     "#{self.group.name.upcase} Bloco #{self.block.name} 
      #{self.unit} - #{self.commercial_situation.humanize}"
