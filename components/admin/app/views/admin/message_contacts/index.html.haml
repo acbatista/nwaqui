@@ -1,0 +1,24 @@
+.panel-heading
+  %h3
+    %b Listagem de contatos de mensagens
+    %br
+    %small 
+      Lista de emails vínculados as mensagens enviados pelo nwaqui
+%hr/
+.panel-body
+  .row  
+    .col-md-12
+      %table.table.table-striped.table-hover.table-bordered
+        %thead 
+          %tr
+            %th Cod.
+            %th E-mail
+            %th Nome
+            %th Data
+        %tbody.group-index
+          - Message.all.order('created_at DESC').each do |message|
+            %tr
+              %td= message.id
+              %td= message.email
+              %td= message.name.downcase
+              %td= message.created_at.strftime('%d/%m/%Y ás %H:%M')

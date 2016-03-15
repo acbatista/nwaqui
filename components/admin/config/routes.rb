@@ -28,8 +28,9 @@ Admin::Engine.routes.draw do
   end
 
   resources :buttons
-
   resources :customers
+  resources :message_contacts
+  resources :bookmark_contacts
 
   resources :admin_users
   resources :attributes
