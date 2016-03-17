@@ -11,9 +11,7 @@ Site::Engine.routes.draw do
   end
 
   resources :external_users
-
-  get 'auth/:provider/callback', to: 'sessions#gmail_session_create', as: 'gmail_session_create'
-  
+ 
   resources :bookmarks do 
     get 'delete'
     collection do 
