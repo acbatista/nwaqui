@@ -29,6 +29,11 @@ module Site
     def facebook_session_destroy
     end
 
+
+    def gmail_session_create
+      @auth = request.env['omniauth.auth']['credentials']
+    end
+
     private
 
     def set_params
