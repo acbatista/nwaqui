@@ -31,13 +31,13 @@ class Property < ActiveRecord::Base
 
   monetize :value, allow_nil: true
   monetize :value_rent, allow_nil: true
+  monetize :value_m2, allow_nil: true
 
   validates :description, :situation, :type_property, :status, :general_address, :general_group, presence: true
   validates :rooms, :suit, :parking_spaces, :floor, numericality: true, presence: true
-  validates :city, :region, :group, :block, :address, :commercial_situation, presence: true
+  validates :city, :region, :group, :block, :address, :commercial_situation, :unit, presence: true
+  validates :prediction, presence: true, if: :is_lançamento?
   
-  before_validation :set_monetary
-
   def property_attributes; Attribute.where(id: self.property_attributes_id); end;
 
   def companies; Customer.where(id: self.company_id); end;
@@ -49,8 +49,7 @@ class Property < ActiveRecord::Base
 
   private
 
-  def set_monetary
-    self.value = self.value.to_s.gsub('.','')
+  def is_lançamento?
+    self.lançamento?
   end
-
 end

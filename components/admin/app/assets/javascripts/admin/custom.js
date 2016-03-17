@@ -7,7 +7,7 @@ var mask = function() {
   $('.hour').mask("00:00", {placeholder: "00:00"});
   $('.cep').mask("00000-000", {placeholder: "00000-000"});
 
-  $('.coin_mask').maskMoney({prefix:'R$ ', allowNegative: true,allowZero:true, thousands:'.', decimal:',', affixesStay: false});
+  $('.coin_mask').maskMoney({prefix:'R$ ', thousands:'', decimal:'.', affixesStay: false});
 
   $(".chosen-select").chosen({
     placeholder: "selecione...",
