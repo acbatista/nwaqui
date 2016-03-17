@@ -3,9 +3,9 @@ require_dependency 'site/application_controller'
 module Site
   class BookmarksController < ApplicationController
     layout 'site/bookmark'
-    before_filter :validate_session!, except: [:public]
+    before_filter :validate_session!, except: [:share]
 
-    before_action :set_user
+    before_action :set_user, except: [:share]
 
     def index
     end
