@@ -22,7 +22,10 @@ gem 'remotipart', '~> 1.2'
 
 gem 'fog'
 gem 'carrierwave',  '~> 0.10.0'
+
+gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
 
 gem 'money-rails'
 

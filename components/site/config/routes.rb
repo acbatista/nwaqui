@@ -12,8 +12,7 @@ Site::Engine.routes.draw do
 
   resources :external_users
 
-  get 'auth/:provider/callback', to: 'sessions#facebook_session_create', as: 'facebook_session_create'
-  get 'auth/failure', to: redirect('/site')
+  get 'auth/:provider/callback', to: 'sessions#gmail_session_create', as: 'gmail_session_create'
   
   resources :bookmarks do 
     get 'delete'
