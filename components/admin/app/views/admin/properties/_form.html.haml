@@ -64,11 +64,11 @@
     .col-md-2
       = f.input :rooms, as: :string, input_html: {value: f.object.rooms.present?  ? f.object.rooms : 0}
     .col-md-2.value
-      = f.input :value,as: :string
+      = f.input :value,as: :string, input_html: { class: 'coin_mask'}
     .col-md-2
       = f.input :area, as: :string
     .col-md-2.value_m2
-      = f.input :value_m2, as: :string
+      = f.input :value_m2, as: :string, input_html: { class: 'coin_mask'}
     .col-md-2
       = f.input :suit, as: :string, input_html: {value: f.object.rooms.present?  ? f.object.suit : 0}
   .row

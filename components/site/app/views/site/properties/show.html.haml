@@ -60,10 +60,14 @@
                   %i.fa.fa-check-circle
                   = attribute.name
           .property-feature
-            %h4.property-feature-title Construtoras e venda
+            %h4.property-feature-title Construção
             .property-feature-content.clearfix
               - @property.companies.each do |company|
                 = image_tag company.logo_path.url, size: '100x100' if company.logo_path.present?
+          .property-feature
+            %h4.property-feature-title Venda
+            .property-feature-content.clearfix
+              = image_tag @property.customer.logo_path, size: '100x100' if @property.customer.logo_path.present?
 
       / START SIDEBAR
       .noo-sidebar.noo-sidebar-right.col-xs-12.col-md-4
@@ -87,16 +91,25 @@
                     %span.col-xs-6.col-md-7.detail-field-value= @property.parking_spaces
                     %span.col-xs-6.col-md-5.detail-field-label Elevador
                     %span.col-xs-6.col-md-7.detail-field-value= @property.elevator ? 'Sim' : 'Não'
-                    %span.col-xs-6.col-md-5.detail-field-label Posição do sol
-                    %span.col-xs-6.col-md-7.detail-field-value= @property.sun_position
-                    %span.col-xs-6.col-md-5.detail-field-label Valor M²
-                    %span.col-xs-6.col-md-7.detail-field-value= @property.value_m2
-                    %span.col-xs-6.col-md-5.detail-field-label Valor
-                    %span.col-xs-6.col-md-7.detail-field-value
-                      %span.amount
-                        = number_to_currency @property.value
                     %span.col-xs-6.col-md-5.detail-field-label Andar
                     %span.col-xs-6.col-md-7.detail-field-value= (@property.floor == 0) ? "térreo" : "#{@property.floor} º"
+                    %span.col-xs-6.col-md-5.detail-field-label Valor M²
+                    %span.col-xs-6.col-md-7.detail-field-value= @property.value_m2
+                    - if @property.aluguel?
+                      %span.col-xs-6.col-md-5.detail-field-label Valor do Aluguel
+                      %span.col-xs-6.col-md-7.detail-field-value
+                        %span.amount
+                          = number_to_currency @property.value_rent
+                    - else
+                      %span.col-xs-6.col-md-5.detail-field-label Valor
+                      %span.col-xs-6.col-md-7.detail-field-value
+                        %span.amount
+                          = number_to_currency @property.value
+                    - if @property.lançamento?
+                      %span.col-xs-6.col-md-5.detail-field-label Previsão de entrega
+                      %span.col-xs-6.col-md-7.detail-field-value= @property.prediction.strftime('%d/%m/%Y') if @property.prediction.present?
+                    %span.col-xs-6.col-md-5.detail-field-label Posição do sol
+                    %span.col-xs-6.col-md-7.detail-field-value= @property.sun_position
                     %span.col-xs-6.col-md-5.detail-field-label Tour
                     %span.col-xs-6.col-md-7.detail-field-value
                       %a{:href => "#{@property.block.tour_360}", :target => "_blank"} Confira Aqui

@@ -3,6 +3,7 @@ class Customer < ActiveRecord::Base
   has_many :projects
   has_many :messages
   
+  default_scope {order(:id)}
 
   attr_accessor :password_confirm
 

@@ -1,12 +1,14 @@
 class Property < ActiveRecord::Base
   belongs_to :property_attributes, class_name: 'Attribute'
-  
+    
   belongs_to :customer
   belongs_to :project
 
   belongs_to :address
   belongs_to :group
   belongs_to :block
+
+  default_scope {order(:id)}
 
   has_many :images, class_name: "PropertyImage", dependent: :destroy
   
@@ -34,6 +36,8 @@ class Property < ActiveRecord::Base
   validates :rooms, :suit, :parking_spaces, :floor, numericality: true, presence: true
   validates :city, :region, :group, :block, :address, :commercial_situation, presence: true
   
+  before_validation :set_monetary
+
   def property_attributes; Attribute.where(id: self.property_attributes_id); end;
 
   def companies; Customer.where(id: self.company_id); end;
@@ -42,4 +46,11 @@ class Property < ActiveRecord::Base
     "#{self.group.name.upcase} Bloco #{self.block.name} 
      #{self.unit} - #{self.commercial_situation.humanize}"
   end
+
+  private
+
+  def set_monetary
+    self.value = self.value.to_s.gsub('.','')
+  end
+
 end
