@@ -19,9 +19,9 @@
                 
                 = f.input :empty,label: false, as: :select, selected: params[:by_room], include_blank: "selecione...",collection: [], input_html: { id: 'empty_one', name: 'option_one'}
 
-                = f.input :empty,label: false, as: :select,  selected: params[:option_two], include_blank: "selecione...",collection: [], input_html: { id: 'empty_two', name: 'option_two'}
+                = f.input :empty,label: false, as: :select,  selected: params[:by_group], include_blank: "selecione...",collection: [], input_html: { id: 'by_group', name: 'by_group'}
 
-                = f.input :empty,label: false, as: :select,  selected: params[:option_two], include_blank: "selecione...",collection: [], input_html: { id: 'empty_two', name: 'option_two'}
+                = f.input :by_detail_group,label: false, as: :select,  selected: params[:option_two], include_blank: "selecione...",collection: [], input_html: { id: 'by_detail_group', name: 'by_detail_group'}
               .gsearch-action
                 .gsubmit
                   %input.btn.btn-deault{type: 'submit', value: 'Buscar'}
@@ -48,6 +48,24 @@
          options();
       }
     });
+
+
+    $("#by_group").on('change', function() {
+      get_json_units($(this).val())
+    });
+
+    function get_json_units(group_id) {
+
+      $.getJSON("/site/units?group_id=" + group_id, function(data) {
+        var items = [];
+        $.each(data, function(key, val) {
+          items.push("<option value='" + val.id + "'>" + val.name + "</option>");
+        });
+        console.log(items)
+        $("#by_detail_group").html(items)
+      });
+
+    }
 
     function select_options() {
       var option_one = #{(!params[:option_one].present?) ? 'null' : params[:option_one] }
@@ -78,70 +96,29 @@
         $("#empty_one").attr('name', 'by_room');
 
         html_two  = "<option value>Quadra</option>"
-        html_two += "<option value='111-311'>111/311</option>"
-        html_two += "<option value='110-310'>110/310</option>"
-        html_two += "<option value='109-309'>109/309</option>"
-        html_two += "<option value='108-308'>108/308</option>"
-        html_two += "<option value='107-307'>107/307</option>"
-        html_two += "<option value='106-306'>106/306</option>"
-        html_two += "<option value='105-305'>105/305</option>"
-        html_two += "<option value='104-304'>104/304</option>"
-        html_two += "<option value='103-303'>103/303</option>"
-        html_two += "<option value='102-302'>102/302</option>"
+        html_two += "<option value='100_SQNW'>100 SQNW</option>"
+        html_two += "<option value='200_SQNW'>200 SQNW</option>"
+        html_two += "<option value='700_SQNW'>700 SQNW</option>"
 
-        $("#empty_two").html(html_two)
-        $("#empty_two").attr('name', 'by_group');
+        $("#by_group").html(html_two)
       }
 
-      if((situation == '0' || situation == '1') && type == '1') {
+      if((situation == '0' || situation == '2') && type == '1') {
         html_one = "<option value>Área (m²)</option>"
         html_one += "<option value='50'>0 - 50</option>"
         html_one += "<option value='70'>51 - 70</option>"
         html_one += "<option value='100'>71 - 100</option>"
         html_one += "<option value='101'>100 ou +</option>"
-        $("#empty_one").html(html_one)
+         $("#empty_one").html(html_one)
+        $("#empty_one").attr('name', 'by_area');
 
         html_two  = "<option value>Quadra</option>"
-        html_two += "<option value='100'>100</option>"
-        html_two += "<option value='300'>300</option>"
-        html_two += "<option value='500'>500</option>"
-        html_two += "<option value='700'>700</option>"
+        html_two += "<option value='CLNW'>CLNW</option>"
+        html_two += "<option value='500_CRNW'>500 CRNW</option>"
+        html_two += "<option value='700_CRNW'>700 CRNW</option>"
 
-        $("#empty_two").html(html_two)
+        $("#by_group").html(html_two)
       }
 
-      if(situation == '2' && type == '0') {
-        html_one = "<option value> Nº de Quartos</option>"
-        html_one += "<option value='1'>1</option>"
-        html_one += "<option value='2'>2</option>"
-        html_one += "<option value='3'>3</option>"
-        html_one += "<option value='99'>Cobertura</option>"
-        $("#empty_one").html(html_one)
-
-        html_two = "<option value> Valor</option>"
-        html_two += "<option value='3000'>Até R$ 3.000</option>"
-        html_two += "<option value='5000'>Até R$ 5.000</option>"
-        html_two += "<option value='7000'>Até R$ 7.000</option>"
-        html_two += "<option value='10000'> Até R$ 10.000</option>"
-        html_two += "<option value='99999'> Acima R$ 10.000</option>"
-        $("#empty_two").html(html_two)
-      }
-
-      if(situation == '2' && type == '1') {
-        html_one = "<option value>Área (m²)</option>"
-        html_one += "<option value='50'>0 - 50</option>"
-        html_one += "<option value='70'>51 - 70</option>"
-        html_one += "<option value='100'>71 - 100</option>"
-        html_one += "<option value='101'>100 ou +</option>"
-        $("#empty_one").html(html_one)
-
-        html_two = "<option value> Valor</option>"
-        html_two += "<option value='5000'>Até R$ 3.000</option>"
-        html_two += "<option value='8000'>Até R$ 8.000</option>"
-        html_two += "<option value='12000'>Até R$ 12.000</option>"
-        html_two += "<option value='15000'>> Até R$ 15.000</option>"
-        html_two += "<option value='99999'>> Acima R$ 15.000</option>"
-        $("#empty_two").html(html_two)
-      }
     }
   });

@@ -26,5 +26,18 @@ module Site
       @property = Property.where(status: true).find(params[:property_id])
     end
 
+    def group
+      if !params[:group_id].present?
+        render json: nil
+      else
+        group = params[:group_id]
+        group = group.split('_') 
+        group = "#{group[1]} #{group[0][0]}"
+  
+        @groups = Group.where("name LIKE '%#{group}%'")
+        render json: @groups
+      end
+    end
+
   end
 end

@@ -22,7 +22,8 @@ Site::Engine.routes.draw do
 
   get '/bookmark/:key', to: 'bookmarks#public_share'
   get '/search', path: 'pesquisa', to: 'properties#search', as: 'search'
-
+  get '/units', to: "properties#group"
+  
   resources :properties, path: 'imoveis' do 
     get 'telephone'
     resources :messages, only: [:new, :create]

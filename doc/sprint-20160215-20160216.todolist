@@ -9,13 +9,13 @@ Administração
 @endereço
  ✔ crud de localização (incialmente somente noroeste) @done (16-02-25 16:18)
  ✔ cadastro de quadras por localização @done (16-02-25 16:18)
- ☐ cadastro de bloco por quadra (nome, link_tour, quadra, bloco, bairro, construtora, conjunto, número)
+ ✔ cadastro de bloco por quadra (nome, link_tour, quadra, bloco, bairro, construtora, conjunto, número) @done (16-02-27 14:49)
 
 @imóvel
- ☐ restringir números de caracteres na descrição do imóvel
- ☐ preenchimento automatico de endereço apos selecionar localização/quadra/bloco
+ ✔ restringir números de caracteres na descrição do imóvel @done (16-02-27 14:49)
+ ✔ preenchimento automatico de endereço apos selecionar localização/quadra/bloco @done (16-02-27 14:49)
  ✔ link_tour automatico, puxando do bloco @done (16-02-26 10:12)
- ☐ inserir campo para selecionar se é residencial ou comercial ao selecionar tipo residencial ou comercial aparecer/sumir campos especificos de cada um 
+ ✔ inserir campo para selecionar se é residencial ou comercial ao selecionar tipo residencial ou comercial aparecer/sumir campos especificos de cada um  @done (16-02-27 14:49)
  ☐ mudar texto salas para salas/quartos
  ✔ retirar vendedores @done (16-02-26 10:13)
  ✔ retirar clientes @done (16-02-26 10:13)
