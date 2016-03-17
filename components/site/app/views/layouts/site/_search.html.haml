@@ -16,10 +16,12 @@
                 = f.input :by_commercial, as: :select, label: false, collection: Property.commercial_situations.map { |k,v| [k.humanize, v]},selected: params[:by_commercial], include_blank: "Você procura por", input_html: { name: 'by_commercial', id: 'by_commercial'}
                 
                 = f.input :by_type, as: :select, label: false, collection: Property.type_properties.map { |k,v| [k.humanize, v]},selected: params[:by_type], include_blank: "Tipo de imóvel", input_html: { name: 'by_type', id: 'by_type'}
+                
                 = f.input :empty,label: false, as: :select, selected: params[:by_room], include_blank: "selecione...",collection: [], input_html: { id: 'empty_one', name: 'option_one'}
 
                 = f.input :empty,label: false, as: :select,  selected: params[:option_two], include_blank: "selecione...",collection: [], input_html: { id: 'empty_two', name: 'option_two'}
 
+                = f.input :empty,label: false, as: :select,  selected: params[:option_two], include_blank: "selecione...",collection: [], input_html: { id: 'empty_two', name: 'option_two'}
               .gsearch-action
                 .gsubmit
                   %input.btn.btn-deault{type: 'submit', value: 'Buscar'}

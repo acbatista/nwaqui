@@ -1,4 +1,9 @@
+@media screen and (min-width: 992px) {
+  .gsearch .gsearch-wrap .gsearch-content .gsearch-field .form-group {
+    width: 20% !important;
+  }
 
+}
 .properties .hentry .property-featured .property-label{
   top: 1px !important;
 }
