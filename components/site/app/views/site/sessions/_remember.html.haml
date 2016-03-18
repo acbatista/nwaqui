@@ -1,0 +1,11 @@
+.modal-header
+  %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+    %span{"aria-hidden" => "true"} &times;
+  %h4.modal-title
+    %b Lembrar minha senha
+.modal-body
+  .row
+    .col-md-12
+      = simple_form_for root_path, method: :get do |f|
+        = f.input :email, placeholder: "Informe seu e-mail"
+        = f.submit "Enviar e-mail de atualização de senha", class: 'btn btn-primary'

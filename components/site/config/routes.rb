@@ -7,6 +7,7 @@ Site::Engine.routes.draw do
   resources :sessions, only: [:new, :create, :logout] do 
     collection do 
       get 'logout'
+      get 'remember'
     end
   end
 

@@ -15,6 +15,9 @@ module Site
       end
     end
 
+    def remember
+    end
+    
     def logout
       session[:external_user_id]    = nil
       session[:external_user_time]  = nil
