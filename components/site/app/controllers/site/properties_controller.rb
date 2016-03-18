@@ -12,7 +12,6 @@ module Site
     has_scope :by_situation
     has_scope :by_room
     has_scope :by_order
-    has_scope :by_group   
     
 
     def index
