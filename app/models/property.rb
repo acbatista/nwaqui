@@ -23,7 +23,9 @@ class Property < ActiveRecord::Base
   scope :by_client,       -> client {where(customer_id: client)}
   scope :by_commercial,   -> commercial {where(commercial_situation: commercial)}
   scope :by_detail_group, -> group { where(group_id: group)}
-
+  scope :by_room,         -> room { where(rooms: room)}
+  scope :by_order,        -> order { order(order)}
+  
   scope :attributes, -> {Attribute.all.order(:name) }
 
 

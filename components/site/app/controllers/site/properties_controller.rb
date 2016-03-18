@@ -10,6 +10,9 @@ module Site
     has_scope :by_detail_group
     has_scope :by_block
     has_scope :by_situation
+    has_scope :by_room
+    has_scope :by_order
+    
     
 
     def index

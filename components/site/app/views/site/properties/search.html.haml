@@ -14,6 +14,12 @@
               .col-md-4{style: 'padding-top: 20px;'}
                 %span.label.label-primary{style: 'margin-top: 10px; font-size: 100%'}
                   Ordenar por
+                %span.label{style: 'margin-top: 10px; font-size: 100%'}
+                  = link_to "valor", "#{request.original_url}&by_order=value"
+                %span.label{style: 'margin-top: 10px; font-size: 100%'}
+                  = link_to "quadra", "#{request.original_url}&by_order=group_id"
+                %span.label{style: 'margin-top: 10px; font-size: 100%'}
+                  = link_to "tipo", "#{request.original_url}&by_order=commercial_situation"
             %br
             %br
             %br
