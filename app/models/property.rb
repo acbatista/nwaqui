@@ -17,6 +17,7 @@ class Property < ActiveRecord::Base
   scope :by_situation, -> situation {where(situation: situation)}
   scope :by_type,      -> commecial {where(type_property: commecial)}
   
+  scope :by_group,        -> group {joins(:group).where("group.name = '%?'", "#{group.slipt('_')[1]} #{group.slipt('_')[0][0]}")}    
   scope :by_block,        -> block {where(block_id: block)}
   scope :by_area,         -> (area = nil)  {where(area: area.to_s.split('_')[0]..area.to_s.split('_')[1])}
   scope :by_group,        -> group {where(group_id: group)}

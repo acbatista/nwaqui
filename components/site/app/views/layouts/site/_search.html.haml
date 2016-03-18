@@ -58,7 +58,7 @@
         var items = [];
         var by_detail_group  = "#{(!params[:by_detail_group].present?)  ? false : params[:by_detail_group]}"
 
-        items.push("<option selected>selecione...</option>");
+        items.push("<option value='' selected>Quadras...</option>");
         $.each(data, function(key, val) {
           items.push("<option value='" + val.id + "'>" + val.name + "</option>");
         });
@@ -80,7 +80,7 @@
      
       
       if(type == '0') {
-        html_one = "<option value selected> Nº de Quartos</option>"
+        html_one = "<option value='' selected> Nº de Quartos</option>"
         html_one += "<option value='1'>1</option>"
         html_one += "<option value='2'>2</option>"
         html_one += "<option value='3'>3</option>"
@@ -89,7 +89,7 @@
         $("#empty_one").html(html_one)
         $("#empty_one").attr('name', 'by_room');
 
-        html_two  = "<option selected>Quadra</option>"
+        html_two  = "<option value='' selected>Quadra</option>"
         html_two += "<option value='100_SQNW'>100 SQNW</option>"
         html_two += "<option value='300_SQNW'>300 SQNW</option>"
         html_two += "<option value='700_SQNW'>700 SQNW</option>"
@@ -101,7 +101,7 @@
     
       if(type == '1') {
 
-        html_one  = "<option selected>Área (m²)</option>"
+        html_one  = "<option value='' selected>Área (m²)</option>"
         html_one += "<option value='0_50'>0 - 50</option>"
         html_one += "<option value='51_70'>51 - 70</option>"
         html_one += "<option value='71_100'>71 - 100</option>"
@@ -110,7 +110,7 @@
         $("#empty_one").attr('name', 'by_area');
 
 
-        html_two  = "<option selected>Quadra</option>"
+        html_two  = "<option value='' selected>Quadra</option>"
         html_two += "<option value='_CLNW'>CLNW</option>"
         html_two += "<option value='500_CRNW'>500 CRNW</option>"
         html_two += "<option value='700_CRNW'>700 CRNW</option>"
