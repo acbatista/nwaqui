@@ -58,7 +58,7 @@
 
       $.getJSON("/site/units?group_id=" + group_id, function(data) {
         var items = [];
-        items.push("<option value>Selecione...</option>");)
+        items.push("<option value>Selecione...</option>");
         $.each(data, function(key, val) {
           items.push("<option value='" + val.id + "'>" + val.name + "</option>");
         });
