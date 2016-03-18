@@ -18,6 +18,7 @@ class Property < ActiveRecord::Base
   scope :by_type,      -> commecial {where(type_property: commecial)}
   
   scope :by_block,        -> block {where(block_id: block)}
+  scope :by_area,         -> (area = nil)  {where(area: area.to_s.split('_')[0]..area.to_s.split('_')[1])}
   scope :by_group,        -> group {where(group_id: group)}
   scope :by_client,       -> client {where(customer_id: client)}
   scope :by_commercial,   -> commercial {where(commercial_situation: commercial)}
