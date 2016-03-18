@@ -17,11 +17,11 @@
                 
                 = f.input :by_type, as: :select, label: false, collection: Property.type_properties.map { |k,v| [k.humanize, v]},selected: params[:by_type], include_blank: "Tipo de imóvel", input_html: { name: 'by_type', id: 'by_type'}
                 
-                = f.input :empty,label: false, as: :select, selected: params[:by_room], include_blank: "selecione...",collection: [], input_html: { id: 'empty_one', name: 'option_one'}
+                = f.input :empty,label: false, as: :select, selected: params[:empty_one], include_blank: "selecione...",collection: [], input_html: { id: 'empty_one', name: 'option_one'}
 
                 = f.input :empty,label: false, as: :select,  selected: params[:by_group], include_blank: "selecione...",collection: [], input_html: { id: 'by_group', name: 'by_group'}
 
-                = f.input :by_detail_group,label: false, as: :select,  selected: params[:option_two], include_blank: "selecione...",collection: [], input_html: { id: 'by_detail_group', name: 'by_detail_group'}
+                = f.input :by_detail_group,label: false, as: :select,  selected: params[:by_detail_group], include_blank: "selecione...",collection: [], input_html: { id: 'by_detail_group', name: 'by_detail_group'}
               .gsearch-action
                 .gsubmit
                   %input.btn.btn-deault{type: 'submit', value: 'Buscar'}
@@ -31,7 +31,6 @@
   $(document).ready(function() {
 
     options();
-    select_options();
 
     $("#by_commercial").on('change', function() {
       html = '<option value>selecione...</option>'
@@ -45,7 +44,7 @@
       if($("#by_commercial").val() == "") {
         alert('Selecione a situação do imóvel...')
       } else {
-         options();
+        options();
       }
     });
 
@@ -55,38 +54,33 @@
     });
 
     function get_json_units(group_id) {
-
       $.getJSON("/site/units?group_id=" + group_id, function(data) {
         var items = [];
-        items.push("<option value>Selecione...</option>");
+        var by_detail_group  = "#{(!params[:by_detail_group].present?)  ? false : params[:by_detail_group]}"
+
+        items.push("<option selected>selecione...</option>");
         $.each(data, function(key, val) {
           items.push("<option value='" + val.id + "'>" + val.name + "</option>");
         });
         $("#by_detail_group").html(items)
+
+        if(by_detail_group != 'false') {
+          $("#by_detail_group").val(by_detail_group);
+        } 
       });
-
     }
 
-    function select_options() {
-      var option_one = #{(!params[:option_one].present?) ? 'null' : params[:option_one] }
-      var option_two = #{(!params[:option_two].present?) ? 'null' : params[:option_two] }
-
-      if(option_one != null) {
-        $("#empty_one").val(option_one)
-      }
-
-      if(option_two != null) {
-        $("#empty_two").val(option_two)
-      }
-    }
 
     function options() {
-
-      var situation = $("#by_commercial").val();
-      var type = $("#by_type").val();
-
-      if((situation == '0' || situation == '1') && type == '0') {
-        html_one = "<option value> Nº de Quartos</option>"
+      var by_group   = "#{(!params[:by_group].present?) ? false : params[:by_group]}"
+      var by_room    = "#{(!params[:by_room].present?)  ? false : params[:by_room]}"
+      var by_area    = "#{(!params[:by_area].present?)  ? false : params[:by_area]}"
+      var situation  = $("#by_commercial").val();
+      var type       = $("#by_type").val();
+     
+      
+      if(type == '0') {
+        html_one = "<option value selected> Nº de Quartos</option>"
         html_one += "<option value='1'>1</option>"
         html_one += "<option value='2'>2</option>"
         html_one += "<option value='3'>3</option>"
@@ -95,30 +89,44 @@
         $("#empty_one").html(html_one)
         $("#empty_one").attr('name', 'by_room');
 
-        html_two  = "<option value>Quadra</option>"
+        html_two  = "<option selected>Quadra</option>"
         html_two += "<option value='100_SQNW'>100 SQNW</option>"
-        html_two += "<option value='300_SQNW'>200 SQNW</option>"
+        html_two += "<option value='300_SQNW'>300 SQNW</option>"
         html_two += "<option value='700_SQNW'>700 SQNW</option>"
 
         $("#by_group").html(html_two)
+
       }
 
-      if((situation == '0' || situation == '2') && type == '1') {
-        html_one = "<option value>Área (m²)</option>"
-        html_one += "<option value='50'>0 - 50</option>"
-        html_one += "<option value='70'>51 - 70</option>"
-        html_one += "<option value='100'>71 - 100</option>"
-        html_one += "<option value='101'>100 ou +</option>"
-         $("#empty_one").html(html_one)
+    
+      if(type == '1') {
+
+        html_one  = "<option selected>Área (m²)</option>"
+        html_one += "<option value='0_50'>0 - 50</option>"
+        html_one += "<option value='51_70'>51 - 70</option>"
+        html_one += "<option value='71_100'>71 - 100</option>"
+        html_one += "<option value='100_999'>100 ou +</option>"
+        $("#empty_one").html(html_one)
         $("#empty_one").attr('name', 'by_area');
 
-        html_two  = "<option value>Quadra</option>"
+
+        html_two  = "<option selected>Quadra</option>"
         html_two += "<option value='_CLNW'>CLNW</option>"
         html_two += "<option value='500_CRNW'>500 CRNW</option>"
         html_two += "<option value='700_CRNW'>700 CRNW</option>"
 
         $("#by_group").html(html_two)
+
       }
 
+      if(by_group != 'false') { 
+        $("#by_group").val(by_group);
+        get_json_units(by_group)
+      }
+      if(by_area  != 'false') { $("#empty_one").val(by_area);}
+      if(by_room  != 'false') { $("#empty_one").val(by_room);}
+
+      
     }
   });
+
