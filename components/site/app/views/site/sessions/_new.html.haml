@@ -4,11 +4,9 @@
   %h4.modal-title
     %b Acessar meus favoritos
 .modal-body
-  .row 
-    .col-md-6{style: "text-align: center"}
-      = link_to "Acessar via Google", '/auth/google_oauth2', class: 'btn btn-danger'
-    .col-md-6{style: "text-align: center"}
-      = link_to "Acessar via Facebook", '/auth/google_oauth2', class: 'btn btn-primary'
+  .row
+    .col-md-12{style: 'text-align: center'}
+      %h5= link_to "Não possuí cadastro? clique aqui", new_external_user_path, remote: true
   %hr/
   .row
     .col-md-12

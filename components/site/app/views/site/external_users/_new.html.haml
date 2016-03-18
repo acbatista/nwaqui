@@ -4,11 +4,9 @@
   %h4.modal-title
     %b Realizar meu cadastro
 .modal-body
-  .row 
-    .col-md-6{style: "text-align: center"}
-      = link_to "Acessar via Google", '/auth/google_oauth2', class: 'btn btn-danger'
-    .col-md-6{style: "text-align: center"}
-      = link_to "Acessar via Facebook", '/auth/facebook', class: 'btn btn-primary'
+  .row
+    .col-md-12{style: 'text-align: center'}
+      %h4= link_to "Já possuí cadastro? clique aqui", new_session_path, remote: true
   %hr/
   .row
     .col-md-12

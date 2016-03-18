@@ -4,6 +4,11 @@
   }
 
 }
+
+.recent-properties .recent-properties-content .property-row .hentry .property-category {
+  left: -22px !important;
+  padding: 5px !important;
+}
 .properties .hentry .property-featured .property-label{
   top: 1px !important;
 }

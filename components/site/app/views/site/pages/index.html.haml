@@ -23,28 +23,28 @@
           %ul
             %li
               .property-row
-                - Property.where(status:true).order('id DESC').limit(8).each do |property|
+                - Special.includes(:property).all.order(:order).each do |special|
                   %article.hentry.has-featured.mod1_home
                     .property-featured
-                      %a.content-thumb{:href => "#{property_path(property)}"}
-                        - if property.images.present?
-                          %img.attachment-property-thumb.featured-thumb-home{:alt => "", :src => "#{property.images.first.image_url}"}/
+                      %a.content-thumb{:href => "#{property_path(special.property)}"}
+                        - if special.property.images.present?
+                          %img.attachment-property-thumb.featured-thumb-home{:alt => "", :src => "#{special.property.images.first.image_url}"}/
                         - else
                           %img.attachment-property-thumb.featured-thumb-home{:alt => "", :src => "https://nwaqui.s3.amazonaws.com/uploads/c0f5d31336b1d3c5c450cefebd261156.jpg"}/
                         %span.property-category.new_name
-                          = property.address_name
+                          = special.property.address_name
                       .property-detail.mod-detail
                         .size
                           %span
-                            = property.area
+                            = special.property.area
                         .bedrooms
                           %span
-                            = property.rooms
+                            = special.property.rooms
                         .bathrooms
                           %span
-                            = property.suit
-                        .size{class: "starfav_#{property.id}"}
-                          = star_fav(property)
+                            = special.property.suit
+                        .size{class: "starfav_#{special.property.id}"}
+                          = star_fav(special.property)
 %br/
 %br/
 .container-fluid{style:'text-align: center; background-color: #18A3BE;'}

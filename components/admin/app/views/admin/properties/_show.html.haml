@@ -1,0 +1,81 @@
+.modal-header
+  %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+    %span{"aria-hidden" => "true"} &times;
+  %h4.modal-title
+    %b= @property.address_name
+.modal-body
+  %table.table.table-bordered.table-striped
+    %thead
+      %tr
+        %th Nº
+        %th Tipo  
+        %th Situação  
+        %th Status  
+    %tbody
+      %tr
+        %td= @property.id
+        %td= @property.type_property.humanize
+        %td= @property.situation.humanize
+        %td= @property.commercial_situation.humanize
+  %table.table.table-bordered.table-striped
+    %thead
+      %tr
+        %th Localidade  
+        %th Quadra
+        %th Bloco  
+    %tbody
+      %tr
+        %td= @property.address.name.humanize
+        %td= @property.group.name.upcase
+        %td= @property.block.name.upcase
+  %table.table.table-bordered.table-striped
+    %thead
+      %tr
+        %th 360 Tour
+    %tbody
+      %tr
+        %td= @property.block.tour_360
+  %table.table.table-bordered.table-striped
+    %thead
+      %tr
+        %th Quartos/Salas
+        %th Unidade/Loja
+        %th Andar
+        %th Garagens
+        %th Suítes/Banheiros
+    %tbody
+      %tr
+        %td= @property.rooms
+        %td= @property.unit
+        %td= @property.floor
+        %td= @property.parking_spaces
+        %td= @property.suit
+  %table.table.table-bordered.table-striped
+    %thead
+      %tr
+        %th Area
+        %th Valor
+        %th Valor do Aluguel
+        %th Valor m²
+    %tbody
+      %tr
+        %td= @property.area
+        %td= number_to_currency @property.value
+        %td= number_to_currency @property.value_rent
+        %td= number_to_currency @property.value_m2
+  %table.table.table-bordered.table-striped
+    %thead
+      %tr
+        %th Construção
+    %tbody
+      - @property.companies.each do |company|
+        %tr
+          %td= company.fantasy_name
+  %table.table.table-bordered.table-striped
+    %thead
+      %tr
+        %th Venda
+    %tbody
+      %tr
+        %td= @property.customer.fantasy_name
+                
