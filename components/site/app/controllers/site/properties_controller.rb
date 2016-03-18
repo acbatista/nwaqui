@@ -6,7 +6,7 @@ module Site
     has_scope :by_commercial
     has_scope :by_type
     has_scope :by_client
-    has_scope :by_group
+    has_scope :by_detail_group
     has_scope :by_block
     has_scope :by_situation
     
