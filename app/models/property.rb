@@ -21,6 +21,7 @@ class Property < ActiveRecord::Base
   scope :by_group,      -> group {where(group_id: group)}
   scope :by_client,     -> client {where(customer_id: client)}
   scope :by_commercial,  -> commercial {where(commercial_situation: commercial)}
+  scope :by_detail_group, -> group { where("name LIKE '%?'", group)}
 
   scope :attributes, -> {Attribute.all.order(:name) }
 
@@ -46,6 +47,7 @@ class Property < ActiveRecord::Base
     "#{self.group.name.upcase} Bloco #{self.block.name} 
      #{self.unit} - #{self.commercial_situation.humanize}"
   end
+
 
   private
 
