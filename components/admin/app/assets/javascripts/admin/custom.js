@@ -8,7 +8,7 @@ var mask = function() {
   $('.cep').mask("00000-000", {placeholder: "00000-000"});
 
   $('.coin_mask').maskMoney({prefix:'R$ ', thousands:'', decimal:'.', affixesStay: false});
-
+  
   $(".chosen-select").chosen({
     placeholder: "selecione...",
     no_results_text: "Oops, nada encontrado!"

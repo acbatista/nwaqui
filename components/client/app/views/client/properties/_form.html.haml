@@ -114,6 +114,12 @@
 :javascript
   $(document).ready(function() {
 
+      
+    $(".chosen-select").chosen({
+      placeholder: "selecione...",
+      no_results_text: "Oops, nada encontrado!"
+    });
+    
     $('#property_commercial_situation').on('change', function() {
 
       if($(this).val() == "aluguel") {
