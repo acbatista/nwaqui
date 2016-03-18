@@ -9,9 +9,9 @@ Gem::Specification.new do |s|
   s.version     = Admin::VERSION
   s.authors     = ["Elton Silva"]
   s.email       = ["elton.chrls@gmail.com"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of Admin."
-  s.description = "TODO: Description of Admin."
+  s.homepage    = "https://github.com/silvaelton/nwaqui.git"
+  s.summary     = "Summary of Site."
+  s.description = "Description of Site."
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
