@@ -3,7 +3,7 @@ class ExternalUser < ActiveRecord::Base
   attr_accessor :password_confirmation
   
   validates :email, email: true, uniqueness: true
-  validates :password_digest, :password_confirmation, presence: true
+  validates :password_digest, :password_confirmation, presence: true, if: :omniauth?
 
   validate :compare_password, if: :omniauth?
 
@@ -15,7 +15,7 @@ class ExternalUser < ActiveRecord::Base
     create! do |user|
       user.provider = auth["provider"]
       user.uuid = auth["uid"]
-      user.name = auth["info"]["name"]
+      user.email = auth["info"]["email"]
     end
   end
 
