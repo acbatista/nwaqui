@@ -18,6 +18,7 @@ class Property < ActiveRecord::Base
   scope :by_type,      -> commecial {where(type_property: commecial)}
   
   scope :by_group,        -> group {joins(:group).where("groups.name = ?", "%#{group.split('_')[1]} #{group.split('_')[0][0]}")}    
+  scope :by_group_view,   -> group {where(group_id: group}    
   scope :by_block,        -> block {where(block_id: block)}
   scope :by_area,         -> (area = nil)  {where(area: area.to_s.split('_')[0]..area.to_s.split('_')[1])}
   scope :by_client,       -> client {where(customer_id: client)}
