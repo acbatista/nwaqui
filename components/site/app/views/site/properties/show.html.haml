@@ -11,6 +11,7 @@
             %br/
             %small
               = "#{@property.address_name}"
+
           .property-featured.clearfix
             .images
               .caroufredsel-wrap
@@ -25,6 +26,7 @@
                         %img.img-responsive{:src => "https://nwaqui.s3.amazonaws.com/uploads/real_evolution-fachada-185.jpg"}
 
             .thumbnails
+
               .thumbnails-wrap
                 .caroufredsel_wrapper
                   %ul
@@ -136,3 +138,9 @@
           / END RECENT PROPERTY
       / END SIDEBAR
 
+:javascript
+  $(document).ready(function() {
+    $('.bxslider').bxSlider({
+      pagerCustom: '#bx-pager'
+    });
+  })

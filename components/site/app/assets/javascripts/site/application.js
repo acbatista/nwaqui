@@ -21,5 +21,6 @@
 //= require site/jquery.carouFredSel-6.2.1-packed
 //= require site/imagesloaded.pkgd.min
 //= require site/property-slider
+//= require site/bxslider
 //= require site/script
 //= require site/facebook
