@@ -4,10 +4,18 @@
   %h4.modal-title
     %b Realizar meu cadastro
 .modal-body
+  %br/
+  %br/
+
   .row
-    .col-md-12{style: 'text-align: center'}
-      %h4= link_to "Já possuí cadastro? clique aqui", new_session_path, remote: true
+    .col-md-6{style: 'text-align: center'}
+      = link_to "<i class='fa fa-facebook'></i> | Acessar usando o facebook".html_safe, '/auth/facebook', class: 'btn btn-facebook'
+    .col-md-6{style: 'text-align: center'}
+      = link_to "<i class='glyphicon glyphicon-pencil'></i> | Eu já possuo cadastro".html_safe, new_external_user_path, remote: true, class: 'btn btn-success'
+
+  %br/
   %hr/
+  %br/
   .row
     .col-md-12
       = render 'form' 

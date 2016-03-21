@@ -9,13 +9,14 @@ module Site
 
     def create
       @user = Site::ExternalUser.new(set_params)
-      @user.save
+      session[:external_user_id] = @user.id if @user.save
+
     end
 
     private
 
     def set_params
-      params.require(:external_user).permit(:email, :password, :username, :password_confirmation)
+      params.require(:external_user).permit(:email, :password_digest, :password_confirmation)
     end
     
   end

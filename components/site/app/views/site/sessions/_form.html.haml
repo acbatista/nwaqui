@@ -1,11 +1,10 @@
 = simple_form_for @session, remote: true do |f|
   .row
-    .col-md-12
+    .col-md-6
       %label
         %b Usuário
       = f.input :username, label: false, input_html: { placeholder: "Digite seu usuário"}
-  .row
-    .col-md-12
+    .col-md-6
       %label
         %b Senha
       = f.input :password, label: false, input_html: { placeholder: "Digite sua senha"}

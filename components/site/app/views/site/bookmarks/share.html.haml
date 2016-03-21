@@ -22,10 +22,11 @@
             %th Link
         %tbody
           - @bookmarks.each_with_index do |bookmark, index|
-            %tr 
-              %td= index + 1
-              %td= bookmark.property.type_property if bookmark.property.present?
-              %td= bookmark.property.situation if bookmark.property.present?
-              %td= bookmark.property.commercial_situation if bookmark.property.present?
-              %td= bookmark.property.address_name if bookmark.property.present?
-              %td= link_to "Acessar", property_path(bookmark.property) if bookmark.property.present?  
+            - if bookmark.property.present?
+              %tr 
+                %td= index + 1
+                %td= bookmark.property.type_property.humanize
+                %td= bookmark.property.situation.humanize
+                %td= bookmark.property.commercial_situation.humanize
+                %td= bookmark.property.address_name
+                %td= link_to "Acessar", property_path(bookmark.property), class: 'btn btn-success btn-xs'

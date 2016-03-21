@@ -1,6 +1,7 @@
 /*
  *= require site/bootstrap.min
  *= require site/bootstrap-theme.min
+ *= require site/social
  *= require site/font-awesome.min
  *= require site/jquery.nouislider.min
  *= require site/style
@@ -9,5 +10,4 @@
  *= require site/citilights-shortcode
  *= require site/color-custom
  *= require site/custom
- *= require site/bootstrap-social.min
  */

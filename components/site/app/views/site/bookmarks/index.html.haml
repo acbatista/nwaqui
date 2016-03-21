@@ -11,17 +11,20 @@
         %thead
           %tr
             %th #
-            %th Nome
-            %th Endereço
+            %th Tipo
+            %th Situação
+            %th Unidade
             %th Link
             %th Ação
         %tbody
           - bookmark_user.bookmarks.each_with_index do |bookmark, index|
-            %tr
-              %td.col-md-1= index + 1
-              %td.col-md-5= bookmark.property.name if bookmark.property.present?
-              %td.col-md-3= bookmark.property.address if bookmark.property.present?
-              %td.col-md-1= link_to "Acessar", property_path(bookmark.property), target: '_blank' if bookmark.property.present?
-              %td.col-md-2
-                = link_to "remover", bookmark_path(bookmark), method: :delete
-          
+            - if bookmark.property.present?
+              %tr
+                %td.col-md-1= index + 1
+                %td.col-md-1= bookmark.property.type_property.humanize
+                %td.col-md-1= bookmark.property.commercial_situation.humanize
+                %td.col-md-5= bookmark.property.address_name
+                %td.col-md-1= link_to 'Acessar', property_path(bookmark.property_id), target: '_blank', class: 'btn btn-success btn-xs'
+                %td.col-md-1
+                  = link_to "remover", bookmark_path(bookmark), method: :delete, class: 'btn btn-danger btn-xs'
+            

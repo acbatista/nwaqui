@@ -348,6 +348,7 @@ DEPENDENCIES
   has_scope
   jquery-rails
   money-rails
+  omniauth
   omniauth-facebook
   omniauth-google-oauth2
   pg

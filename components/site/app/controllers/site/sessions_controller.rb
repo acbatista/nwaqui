@@ -26,22 +26,13 @@ module Site
     end
 
     def omniauth_create
-      user = ExternalUser.from_omniauth(env["omniauth.auth"])
+      user = ::ExternalUser.from_omniauth(env["omniauth.auth"])
       session[:external_user_id] = user.id
-      redirect_to root_url, notice: "Signed in!"
-    end
-
-    def omniauth_destroy
-      session[:external_user_id] = nil
       redirect_to root_url, notice: "Signed in!"
     end
 
     def omniatuh_failure
       redirect_to root_url, alert: "Authentication failed, please try again."
-    end
-
-    def gmail_session_create
-      @auth = request.env['omniauth.auth']['credentials']
     end
 
     private
