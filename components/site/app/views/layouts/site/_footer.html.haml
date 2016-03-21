@@ -4,11 +4,10 @@
       .row
         .col-md-3
           .ft-about-us
-            %h4.ft-col-title DF Aqui
+            %h4.ft-col-title= ::Page.dfaqui_title.html_safe
             %hr/
             .text-block
-              %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus congue est nisi, non tristique eros scelerisque vitae. Ut sed dolor ornare, ullamcorper eros sit amet, accumsan risus.
-              %p Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              = ::Page.dfaqui_content.html_safe
         .col-md-2
         .col-md-3
           .ft-useful-links
@@ -16,18 +15,12 @@
             %hr/
             %nav.useful-links-menu{:role => "navigation"}
               %ul
-                %li.menu-item
-                  %a{:href => "#"} Termos de Uso
-                %li.menu-item
-                  %a{:href => "#"} Política de Uso
-                %li.menu-item
-                  %a{:href => "#"} Contato
-                %li.menu-item
-                  %a{:href => "#"} Trabalhe Conosco
-                %li.menu-item
-                  %a{:href => "#"} Quem Somos
-                %li.menu-item
-                  %a{:href => "#"} FAQs
+                = link_to_code('termos_de_uso')
+                = link_to_code('politica_de_uso')
+                = link_to_code('contato')
+                = link_to_code('trabalhe_conosco')
+                = link_to_code('quem_somos')
+                = link_to_code('faqs')
         .col-xs-12.col-sm-6.col-md-3.footer-nav-col
           .ft-contact-info
             %h4.ft-col-title Anuncie
@@ -39,4 +32,4 @@
                  Brasília
               %li
                 %i.fa.fa-envelope-o>
-                %a{:href => "mailto:dfaqui@dfaqui.com"} dfaqui@dfaqui.com
+                %a{:href => "mailto:dfaqui@dfaqui.com"} contato@dfaqui.com

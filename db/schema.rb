@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160315174312) do
+ActiveRecord::Schema.define(version: 20160321162607) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -127,6 +127,18 @@ ActiveRecord::Schema.define(version: 20160315174312) do
 
   add_index "messages", ["customer_id"], name: "index_messages_on_customer_id", using: :btree
 
+  create_table "pages", force: :cascade do |t|
+    t.string   "title"
+    t.text     "content"
+    t.string   "code"
+    t.string   "slug"
+    t.boolean  "publish",    default: true
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "pages", ["slug"], name: "index_pages_on_slug", unique: true, using: :btree
+
   create_table "properties", force: :cascade do |t|
     t.integer  "situation",              default: 0
     t.integer  "type_property",          default: 0
@@ -223,4 +235,5 @@ ActiveRecord::Schema.define(version: 20160315174312) do
 
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
+  add_foreign_key "specials", "properties"
 end

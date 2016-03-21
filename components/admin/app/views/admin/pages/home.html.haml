@@ -1,0 +1,19 @@
+.panel-heading
+  %h3
+    %b Visão Geral
+    %br/
+    %small
+      Visão geral da plataforma
+%hr/
+.panel-body
+  %table.table.table-striped.table-bordered
+    %thead
+      %tr
+        %th Total de imóveis cadastrados
+        %th Total de empreendimentos cadastrados
+        %th Total de clientes cadastrados
+    %tbody
+      %tr
+        %td= @properties
+        %td= @projects
+        %td= @customers

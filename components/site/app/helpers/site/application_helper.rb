@@ -14,5 +14,15 @@ module Site
         link_to "", new_session_path, class: 'glyphicon glyphicon-star-empty', remote: true, style: 'font-size: 25px', id: "bookmark_#{property}"
       end
     end
+
+    def link_to_code(code)
+      @page = ::Page.find_by_code(code) rescue nil
+
+      if !@page.nil?
+        content_tag('li', class: 'menu-item') do
+          link_to "#{@page.title}", page_path(@page)
+        end
+      end
+    end
   end
 end

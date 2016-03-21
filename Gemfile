@@ -11,11 +11,13 @@ gem 'turbolinks'
 
 gem 'simple_form'
 gem 'haml-rails'
+gem 'friendly_id'
 
 gem 'validates_cpf_cnpj'
 gem 'validates_timeliness'
 gem 'email_validator'
 gem 'file_validators'
+gem 'bootstrap-wysihtml5-rails'
 
 gem 'has_scope'
 gem 'remotipart', '~> 1.2'

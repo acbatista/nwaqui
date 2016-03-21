@@ -18,4 +18,6 @@
 //= require admin/jquery.mask.min
 //= require admin/jquery.maskmoney.min
 //= require admin/jquery.chosen.min
+//= require bootstrap-wysihtml5
+//= require bootstrap-wysihtml5/locales/pt-BR
 //= require admin/custom

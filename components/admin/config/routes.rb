@@ -1,7 +1,9 @@
 Admin::Engine.routes.draw do
 
-  root 'pages#index'
+  root 'pages#home'
   
+  resources :pages 
+    
   resources :sessions do 
     collection do 
       get 'logout'

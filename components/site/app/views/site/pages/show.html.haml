@@ -1,0 +1,12 @@
+.container
+  %br/
+  %br/
+  %br/
+  .row
+    .col-md-12{style: 'text-align: center'}
+      %h3
+        %b= @page.title
+  %hr/
+  .row
+    .col-md-12
+      = @page.content.html_safe

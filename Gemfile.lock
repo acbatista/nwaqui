@@ -50,6 +50,8 @@ GEM
     arel (6.0.3)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-wysihtml5-rails (0.3.3.8)
+      railties (>= 3.0)
     builder (3.2.2)
     byebug (8.2.2)
     carrierwave (0.10.0)
@@ -178,6 +180,8 @@ GEM
       fog-core
       nokogiri (~> 1.5, >= 1.5.11)
     formatador (0.2.5)
+    friendly_id (5.1.0)
+      activerecord (>= 4.0.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     haml (4.0.7)
@@ -332,12 +336,14 @@ PLATFORMS
 
 DEPENDENCIES
   admin!
+  bootstrap-wysihtml5-rails
   byebug
   carrierwave (~> 0.10.0)
   client!
   email_validator
   file_validators
   fog
+  friendly_id
   haml-rails
   has_scope
   jquery-rails

@@ -1,0 +1,17 @@
+= simple_form_for @page do |f|
+  .row
+    .col-md-10
+      = f.input :title, placeholder: "Digite um título"
+    .col-md-2
+      = f.input :code, placeholder: "Digite um código"
+  .row
+    .col-md-12
+      = f.input :content, input_html: { class: 'wysihtml5'}
+  .row
+    .col-md-2
+      = f.input :publish, as: :select
+  %hr/
+  .row
+    .col-md-6
+      = f.button :submit, class: 'btn btn-success'
+      = link_to "Voltar", pages_path, class: 'btn btn-default'
