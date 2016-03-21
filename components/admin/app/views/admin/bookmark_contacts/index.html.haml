@@ -14,7 +14,7 @@
             %th Cod.
             %th E-mail
         %tbody.group-index
-          - User.admin_users.each do |book|
+          - ExternalUser.all.order('created_at DESC').each do |book|
             %tr
               %td= book.id
               %td= book.email
