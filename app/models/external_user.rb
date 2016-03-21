@@ -5,7 +5,7 @@ class ExternalUser < ActiveRecord::Base
   validates :email, email: true, uniqueness: true
   validates :password_digest, :password_confirmation, presence: true
 
-  validate :compare_password
+  validate :compare_password, if: :omniauth?
 
   def self.from_omniauth(auth)
     self.find_by_provider_and_uuid(auth["provider"], auth["uid"]) || create_with_omniauth(auth)
@@ -20,6 +20,10 @@ class ExternalUser < ActiveRecord::Base
   end
 
   private
+
+  def omniauth?
+    !self.uuid.present?
+  end
 
   def compare_password
     errors.add(:password_digest, 'Senha não confere') unless self.password_digest == self.password_confirmation
