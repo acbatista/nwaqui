@@ -9,9 +9,9 @@
 
   .row
     .col-md-6{style: 'text-align: center'}
-      = link_to "<i class='fa fa-facebook'></i> | Acessar usando o facebook".html_safe, '/auth/facebook', class: 'btn btn-facebook'
+      = link_to "<i class='fa fa-facebook'></i> | Acessar usando o Facebook".html_safe, '/auth/facebook', class: 'btn btn-facebook'
     .col-md-6{style: 'text-align: center'}
-      = link_to "<i class='glyphicon glyphicon-pencil'></i> | Quero realizar meu cadastro".html_safe, new_external_user_path, remote: true, class: 'btn btn-primary'
+      = link_to "<i class='fa fa-google-plus'></i> | Acessar usando a conta Google".html_safe, '/auth/google_oauth2', class: 'btn btn-google-plus'
 
   %br/
   %hr/
