@@ -136,7 +136,7 @@
                           %img.thumb-featured{:alt => "", :src => "/images/patterns/az_subtle.png"}/
                     .featured-decs
                       %span.featured-status
-                        = property.situation.humanize
+                        = "#{property.situation.humanize} - #{property.commercial_situation.humanize}"
                       %h4.featured-title
                         %a{:href => "#{property_path(property)}", :title => "Imóvel"}
                           = "#{property.general_address} - Nº #{property.number}"
