@@ -2,20 +2,20 @@ module Site
   class Session
     include ActiveModel::Model 
     
-    attr_accessor :username, :password, :id
+    attr_accessor :email, :password, :id
 
-    validates :username, :password, presence: true
+    validates :email, :password, presence: true
     validate :authenticate!
 
     private
 
     def authenticate!
-      @user = Site::ExternalUser.where(username: self.username, password: self.password).first
+      @user = Site::ExternalUser.no_oauth.where(email: self.email, password_digest: self.password).first
 
       if @user.present?
         self.id = @user.id 
       else
-        errors.add(:username, "Usuário ou senha incorreto.")
+        errors.add(:email, "Usuário ou senha incorreto.")
       end
     end
   end

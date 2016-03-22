@@ -38,7 +38,7 @@ module Site
     private
 
     def set_params
-      params.require(:session).permit(:username, :password)
+      params.require(:session).permit(:email, :password)
     end
   end
 end
