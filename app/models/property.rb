@@ -2,7 +2,6 @@ class Property < ActiveRecord::Base
   belongs_to :property_attributes, class_name: 'Attribute'
     
   belongs_to :customer
-  belongs_to :project
 
   belongs_to :address
   belongs_to :group
