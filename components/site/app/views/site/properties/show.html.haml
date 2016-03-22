@@ -10,7 +10,10 @@
               = link_to "Voltar para listagem", site.search_path, class: 'btn btn-primary'
             %br/
             %small
-              = "#{@property.address_name}"
+              %p
+                %H4= "#{@property.address_name}"
+              %p= @property.project
+
 
           .property-featured.clearfix
             .images
@@ -82,12 +85,14 @@
                 .property-detail-content
                   .detail-field.row
                     %span.col-xs-6.col-md-5.detail-field-label Situação
-                    %span.col-xs-6.col-md-7.detail-field-value= @property.situation.humanize
-                    %span.col-xs-6.col-md-5.detail-field-label Unidade
+                    %span.col-xs-6.col-md-7.detail-field-value= "#{@property.situation.humanize}"
+                    %span.col-xs-6.col-md-5.detail-field-label Tipo
+                    %span.col-xs-6.col-md-7.detail-field-value= @property.type_property.humanize
+                    %span.col-xs-6.col-md-5.detail-field-label= @property.residencial? ? 'Unidade' : 'Loja' 
                     %span.col-xs-6.col-md-7.detail-field-value= @property.unit
                     %span.col-xs-6.col-md-5.detail-field-label Quartos
                     %span.col-xs-6.col-md-7.detail-field-value= @property.rooms
-                    %span.col-xs-6.col-md-5.detail-field-label Suites
+                    %span.col-xs-6.col-md-5.detail-field-label= @property.residencial? ? 'Suites' : 'Banheiros'
                     %span.col-xs-6.col-md-7.detail-field-value= @property.suit
                     %span.col-xs-6.col-md-5.detail-field-label Vagas
                     %span.col-xs-6.col-md-7.detail-field-value= @property.parking_spaces

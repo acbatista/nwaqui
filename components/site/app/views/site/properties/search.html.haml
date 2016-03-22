@@ -33,6 +33,9 @@
                     %h2.property-title
                       %a{:href => "#{property_path(property)}", :title => "#{property.name}"}
                         = property.address_name
+                      %small
+                        %br/
+                        %p{style: 'margin-top: 10px'}= property.project
                     .property-excerpt
                       %p
                         = property.description
