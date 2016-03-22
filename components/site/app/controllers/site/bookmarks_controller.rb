@@ -20,7 +20,7 @@ module Site
     end
 
     def public
-      @bookmark_hash = BookmarkList.new(user_id: @user.id, token: Digest::MD5.hexdigest(@user.email))
+      @bookmark_hash = BookmarkList.new(user_id: @user.id, token: Digest::MD5.hexdigest("#{@user.email}#{@user.id}"))
       if @bookmark_hash.save
         redirect_to action: :share, id: @bookmark_hash.token
       else
