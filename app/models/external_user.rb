@@ -2,7 +2,8 @@ class ExternalUser < ActiveRecord::Base
 
   attr_accessor :password_confirmation
   
-  validates :email, email: true, uniqueness: true
+  validates :email, email: true
+  validates :email, uniqueness: true, if: :omniauth?
   validates :password_digest, :password_confirmation, presence: true, if: :omniauth?
 
   validate :compare_password, if: :omniauth?
