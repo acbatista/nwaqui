@@ -34,7 +34,7 @@
                 .caroufredsel_wrapper
                   %ul
                     - if @property.images.present?
-                      - @property.images.order('order ASC').each do |image|
+                      - @property.images.order(:order).each do |image|
                         %li.thumb.selected{:style => "width: 138px;"}
 
                           %img.img-responsive{:src => "#{image.image}"}
