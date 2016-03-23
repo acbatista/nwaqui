@@ -2,6 +2,11 @@
   font-size: 12px !important;
 }
 
+.properties .hentry .property-info .property-price {
+  font-size: 16px !important;
+
+}
+
 @media screen and (min-width: 992px) {
   .gsearch .gsearch-wrap .gsearch-content .gsearch-field .form-group {
     width: 20% !important;
