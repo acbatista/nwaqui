@@ -1,7 +1,8 @@
 class Customer < ActiveRecord::Base
   
-  has_many :projects
   has_many :messages
+  has_many :specials, dependent: :destroy
+  has_many :properties, dependent: :destroy
   
   default_scope {order(:id)}
 
