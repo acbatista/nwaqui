@@ -34,9 +34,10 @@
                 .caroufredsel_wrapper
                   %ul
                     - if @property.images.present?
-                      - @property.images.order(:order).each do |image|
+                      - @property.images.order('order ASC').each do |image|
                         %li.thumb.selected{:style => "width: 138px;"}
-                          %img.img-responsive{:src => "#{image.image}"}
+
+                          %img.img-responsive{:src => "#{image.image}", width: 100}
                     - else
                       %li.thumb.selected{:style => "width: 138px;"}
                         %img.img-responsive{:src => "https://nwaqui.s3.amazonaws.com/uploads/real_evolution-fachada-185.jpg"}
