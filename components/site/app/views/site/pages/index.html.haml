@@ -7,10 +7,10 @@
     .container
       .section-title
         %h3 Busca Exclusiva
-    - Button.where(publish: true).order(:order).each do |button| 
+    - Button.where(publish: true).order(:order).each do |button|
       .col-md-2
         = link_to image_tag(button.image), button.link.to_s
-  
+
   %section#recent-.wrap.recent-properties
     .container
       .recent-properties-inner
@@ -24,27 +24,28 @@
             %li
               .property-row
                 - Special.includes(:property).all.order(:order).each do |special|
-                  %article.hentry.has-featured.mod1_home
-                    .property-featured
-                      %a.content-thumb{:href => "#{property_path(special.property)}"}
-                        - if special.property.images.present?
-                          %img.attachment-property-thumb.featured-thumb-home{:alt => "", :src => "#{special.property.images.first.image_url}"}/
-                        - else
-                          %img.attachment-property-thumb.featured-thumb-home{:alt => "", :src => "https://nwaqui.s3.amazonaws.com/uploads/c0f5d31336b1d3c5c450cefebd261156.jpg"}/
-                        %span.property-category.new_name
-                          = special.property.address_name
-                      .property-detail.mod-detail
-                        .size
-                          %span
-                            = special.property.area
-                        .bedrooms
-                          %span
-                            = special.property.rooms
-                        .bathrooms
-                          %span
-                            = special.property.suit
-                        .size{class: "starfav_#{special.property.id}"}
-                          = star_fav(special.property)
+                  - if special.property.present?
+                    %article.hentry.has-featured.mod1_home
+                      .property-featured
+                        %a.content-thumb{:href => "#{property_path(special.property)}"}
+                          - if special.property.images.present?
+                            %img.attachment-property-thumb.featured-thumb-home{:alt => "", :src => "#{special.property.images.first.image_url}"}/
+                          - else
+                            %img.attachment-property-thumb.featured-thumb-home{:alt => "", :src => "https://nwaqui.s3.amazonaws.com/uploads/c0f5d31336b1d3c5c450cefebd261156.jpg"}/
+                          %span.property-category.new_name
+                            = special.property.address_name
+                        .property-detail.mod-detail
+                          .size
+                            %span
+                              = special.property.area
+                          .bedrooms
+                            %span
+                              = special.property.rooms
+                          .bathrooms
+                            %span
+                              = special.property.suit
+                          .size{class: "starfav_#{special.property.id}"}
+                            = star_fav(special.property)
 %br/
 %br/
 .container-fluid{style:'text-align: center; background-color: #18A3BE;'}

@@ -1,9 +1,10 @@
 - @specials.order(:order).each do |special|
-  %tr
-    %td= special.order
-    %td= special.property_id
-    %td= special.property.address_name
-    %td= special.status ? "sim" : "não"
-    %td
-      = link_to "", edit_special_path(special), remote: true, class: 'btn btn-success btn-xs glyphicon glyphicon-pencil'
-      = link_to "", special_path(special), method: :delete, remote: true, data: { confirm: t(:confirm)},  class: 'btn btn-danger btn-xs glyphicon glyphicon-remove'
+  - if special.property.present?
+    %tr
+      %td= special.order
+      %td= special.property_id
+      %td= special.property.address_name
+      %td= special.status ? "sim" : "não"
+      %td
+        = link_to "", edit_special_path(special), remote: true, class: 'btn btn-success btn-xs glyphicon glyphicon-pencil'
+        = link_to "", special_path(special), method: :delete, remote: true, data: { confirm: t(:confirm)},  class: 'btn btn-danger btn-xs glyphicon glyphicon-remove'
