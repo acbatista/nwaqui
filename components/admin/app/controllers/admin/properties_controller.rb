@@ -25,7 +25,6 @@ module Admin
         flash[:success] = t :success
         redirect_to action: :index
       else
-        byebug
         render action: :new
       end
     end
