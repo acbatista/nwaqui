@@ -55,6 +55,6 @@ class Property < ActiveRecord::Base
   private
 
   def is_lançamento?
-    self.lançamento? && !self.pronto
+    self.lançamento? && !self.pronto?
   end
 end
