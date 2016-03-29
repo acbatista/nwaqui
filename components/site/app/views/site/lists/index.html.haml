@@ -48,15 +48,18 @@
                             = "#{property.area} M²"
                         .bedrooms
                           %span
-                            4
+                            = "#{property.rooms}"
                         .bathrooms
                           %span
-                            4
+                            = "#{property.suit}"
                       .property-info
                         .property-price
                           %span
                             %span.amount
-                              R$ 0,00
+                              - if property.aluguel?
+                                = number_to_currency property.value_rent
+                              - else
+                                = number_to_currency property.value
                         .property-action
                           .property-links
                             %a{:href => "#{property_path(property)}"} Mais Detalhes
