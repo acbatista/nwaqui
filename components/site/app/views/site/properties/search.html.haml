@@ -24,7 +24,7 @@
                   .property-featured
                     %a.content-thumb{:href => "#{property_path(property)}"}
                       - if property.images.present?
-                        %img.thumb-list{:alt => "", :src => "#{property.images.first.image}"}/
+                        %img.thumb-list{:alt => "", :src => "#{property.images.order(:order).first.image}"}/
                       - else
                         %img.thumb-list{:alt => "", :src => "/images/icon/image404.png"}/
                     %span.property-label
