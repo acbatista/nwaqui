@@ -1,19 +1,54 @@
-.panel-heading
-  %h3
-    %b Visão Geral
-    %br/
-    %small
-      Visão geral da plataforma
-%hr/
-.panel-body
-  %table.table.table-striped.table-bordered
-    %thead
-      %tr
-        %th Total de imóveis cadastrados
-        %th Total de empreendimentos cadastrados
-        %th Total de clientes cadastrados
-    %tbody
-      %tr
-        %td= @properties
-        %td= @projects
-        %td= @customers
+:css
+  #dashboard {
+    text-align: center;
+    color: #1DA3C2;
+  }
+  #dashboard h1 {
+    font-size: 80px;
+    font-weight: bold;
+  }
+
+  #dashboard small {
+    font-size: 20px;
+    font-weight: bold;
+  }
+%br/
+%br/
+
+#dashboard
+  .row
+    .col-md-4
+      .row
+        %h1= ::Property.where(status: true).count
+        %small
+          Imóveis ativos
+    .col-md-4
+      .row
+        %h1= ::Property.where(type_property: 1).count
+        %small
+          Imóveis comerciais
+    .col-md-4
+      .row
+        %h1= ::Property.where(commercial_situation: 1).count
+        %small
+          Imóveis à venda
+  %br/
+  %br/
+  %br/
+  %br/
+  .row
+    .col-md-4
+      .row
+        %h1= ::Property.where(status: false).count
+        %small
+          Imóveis inativos
+    .col-md-4
+      .row
+        %h1= ::Property.where(type_property: 0).count
+        %small
+          Imóveis residenciais
+    .col-md-4
+      .row
+        %h1= ::Property.where(type_property: 2).count
+        %small
+          Imóveis aluguel

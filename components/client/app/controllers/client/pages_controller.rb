@@ -4,6 +4,7 @@ module Client
   class PagesController < ApplicationController 
     
     def index
+      @dashboard = true
     end
     
   end

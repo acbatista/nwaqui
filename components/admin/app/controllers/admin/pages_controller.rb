@@ -5,8 +5,7 @@ module Admin
     before_action :set_page, only: [:edit, :update, :destroy]
 
     def home 
-      @customers  = ::Customer.all.count
-      @properties = ::Property.all.count
+      @dashboard  = true 
     end
     
     def index

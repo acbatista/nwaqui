@@ -9,7 +9,7 @@
   = render 'layouts/admin/nav'
   .container
     = render 'layouts/admin/flash_message'
-    .panel
+    %div{class: (@dashboard.nil?) ?  'panel' : ''}
       = yield
 
 #modal.modal.fade{"aria-labelledby" => "modal", :role => "dialog", :tabindex => "-1"}
