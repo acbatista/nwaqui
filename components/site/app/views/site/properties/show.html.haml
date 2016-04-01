@@ -127,6 +127,9 @@
                             Sob consulta
                           - else
                             = number_to_currency @property.value
+                    - if !@property.lançamento?
+                      %span.col-xs-6.col-md-5.detail-field-label Valor condomínio
+                      %span.col-xs-6.col-md-7.detail-field-value= number_to_currency @property.project_value
                     - if !@property.pronto?
                       %span.col-xs-6.col-md-5.detail-field-label Previsão de entrega
                       %span.col-xs-6.col-md-7.detail-field-value= @property.prediction.strftime('%d/%m/%Y') if @property.prediction.present?

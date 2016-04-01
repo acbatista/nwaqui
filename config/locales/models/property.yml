@@ -42,4 +42,5 @@ pt-BR:
         company_id: "Contrutoras/Vendedores"
         prediction: "Previsão de entrega"
         project: "Empreendimento/Condomínio"
+        project_value: "Valor do condomínio"
 

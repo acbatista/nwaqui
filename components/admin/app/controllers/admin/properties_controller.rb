@@ -58,7 +58,7 @@ module Admin
                                        :unit, :value, :suit, :value_m2, :area, :parking_spaces, :floor, :sun_position, :value_rent,
                                        :link_tour, :commercial, :elevator, :coverage,:name, :commercial_situation, :general_block,
                                        :general_address, :project, :general_group, :group_id, :address_id, :block_id, :city, :region, :complement,
-                                       :number, :reference_point, :prediction, property_attributes_id: [], property_attribute_id: [],
+                                       :number, :reference_point, :project_value, :prediction, property_attributes_id: [], property_attribute_id: [],
                                        company_id: [])
 
     end

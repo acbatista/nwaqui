@@ -49,9 +49,6 @@
       = f.input :complement, input_html: { placeholder: "Digite o complemento (se houver)"}
     .col-md-4
       = f.input :reference_point, input_html: { placeholder: "Digite um ponto de referência"}
-  .row
-    .col-md-12
-      = f.input :project, input_html: { placeholder: "Digite o nome do empreendimento/condomínio"}
   %hr/
   .row
     .col-md-12
@@ -63,35 +60,39 @@
       = f.input :unit
     .col-md-2
       = f.input :rooms, as: :string, input_html: {value: f.object.rooms.present?  ? f.object.rooms : 0}
-    .col-md-2.value
-      = f.input :value,as: :string, input_html: { class: 'coin_mask'}
-    .col-md-2
-      = f.input :area, as: :string
-    .col-md-2.value_m2
-      = f.input :value_m2, as: :string, input_html: { class: 'coin_mask'}
-    .col-md-2
-      = f.input :suit, as: :string, input_html: {value: f.object.rooms.present?  ? f.object.suit : 0}
-  .row
     .col-md-2
       = f.input :parking_spaces, as: :string, input_html: {value: f.object.rooms.present?  ? f.object.parking_spaces : 0}
+    .col-md-2
+      = f.input :suit, as: :string, input_html: {value: f.object.rooms.present?  ? f.object.suit : 0}
     .col-md-2
       = f.input :floor, as: :string, input_html: {value: f.object.rooms.present? ? f.object.floor : 0}
     .col-md-2
       = f.input :sun_position
-    .col-md-3.prediction{style:  f.object.lançamento? ? 'display: block;' : 'display: none;'} 
-      = f.label "Previsão de entrega"
-      = f.input :prediction,label: false, as: :string, input_html: { class: 'date', value: f.object.prediction ? localize(f.object.prediction) : nil}
+    .col-md-2.value
+      = f.input :value,as: :string, input_html: { class: 'coin_mask'}
+    .col-md-2.value_m2
+      = f.input :area, as: :string
+    .col-md-2.value_m2
+      = f.input :value_m2, as: :string, input_html: { class: 'coin_mask'}
     .col-md-2.value_rent
       = f.input :value_rent,as: :string, input_html: { class: 'coin_mask'}
+    .col-md-4.prediction{style:  f.object.lançamento? ? 'display: block;' : 'display: none;'} 
+      = f.label "Previsão de entrega"
+      = f.input :prediction,label: false, as: :string, input_html: { class: 'date', value: f.object.prediction ? localize(f.object.prediction) : nil}
+  %hr/
   .row
-    .col-md-12
+    .col-md-8
+      = f.input :project, input_html: { placeholder: "Digite o nome do empreendimento/condomínio"}
+    .col-md-4
+      = f.input :project_value, input_html: { class: 'coin_mask', placeholder: 'R$ 0.00'}
+
   %hr/
   .row
     .col-md-2
       = f.input :elevator, as: :select, include_blank: false
     .col-md-2
       = f.input :coverage, as: :select, include_blank: false
-    .col-md-4
+    .col-md-2
       = f.input :status, as: :select, include_blank: false
   %hr/
   .row

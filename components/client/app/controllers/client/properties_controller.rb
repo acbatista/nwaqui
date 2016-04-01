@@ -58,7 +58,7 @@ module Client
       params.require(:property).permit(:situation, :type_property, :status, :description, :rooms, 
                                        :unit, :value, :suit, :value_m2, :area, :parking_spaces, :floor, :sun_position, :value_rent,
                                        :link_tour, :project,:commercial, :elevator, :coverage,:name, :commercial_situation, :general_block,
-                                       :general_address, :general_group, :group_id, :prediction, :address_id, :block_id, :city, :region, :complement,
+                                       :general_address, :project_value, :general_group, :group_id, :prediction, :address_id, :block_id, :city, :region, :complement,
                                        :number, :reference_point, property_attributes_id: [], property_attribute_id: [], company_id: [])
     end
 
