@@ -13,10 +13,8 @@ module Client
 
     def create
       @image = @property.images.new(set_params)
-
-      if @image.save
-        redirect_to action: :index 
-      end
+      @image.save
+      flash[:success] = t :success
     end
 
 
