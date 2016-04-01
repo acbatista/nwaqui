@@ -37,7 +37,7 @@ class Property < ActiveRecord::Base
   monetize :value_rent, allow_nil: true
   monetize :value_m2, allow_nil: true
 
-  validates :situation, :type_property, :status, :general_address, :general_group, presence: true
+  validates :situation, :type_property, :general_address, :general_group, presence: true
   validates :rooms, :suit, :parking_spaces, :floor, numericality: true, allow_blank: true
   validates :city, :region, :group, :block, :address, :commercial_situation, presence: true
   validates :prediction, presence: true, if: :is_lançamento?
