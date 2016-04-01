@@ -29,7 +29,7 @@
                       .property-featured
                         %a.content-thumb{:href => "#{property_path(special.property)}"}
                           - if special.property.images.present?
-                            %img.attachment-property-thumb.featured-thumb-home{:alt => "", :src => "#{special.property.images.first.image_url}"}/
+                            %img.attachment-property-thumb.featured-thumb-home{:alt => "", :src => "#{special.property.images.order(:order).first.image_url}"}/
                           - else
                             %img.attachment-property-thumb.featured-thumb-home{:alt => "", :src => "https://nwaqui.s3.amazonaws.com/uploads/c0f5d31336b1d3c5c450cefebd261156.jpg"}/
                           %span.property-category.new_name
