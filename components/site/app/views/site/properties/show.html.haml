@@ -123,7 +123,10 @@
                       %span.col-xs-6.col-md-5.detail-field-label Valor
                       %span.col-xs-6.col-md-7.detail-field-value
                         %span.amount
-                          = number_to_currency @property.value
+                          - if @property.value.to_s.empty? || @property.value == 0.0
+                            Sob consulta
+                          - else
+                            = number_to_currency @property.value
                     - if !@property.pronto?
                       %span.col-xs-6.col-md-5.detail-field-label Previsão de entrega
                       %span.col-xs-6.col-md-7.detail-field-value= @property.prediction.strftime('%d/%m/%Y') if @property.prediction.present?
@@ -154,7 +157,7 @@
                         = "#{property.situation.humanize} - #{property.commercial_situation.humanize}"
                       %h4.featured-title
                         %a{:href => "#{property_path(property)}", :title => "Imóvel"}
-                          = "#{property.general_address} - Nº #{property.number}"
+                          = "#{property.general_address} - Nº #{property.unit}"
           / END RECENT PROPERTY
       / END SIDEBAR
 
