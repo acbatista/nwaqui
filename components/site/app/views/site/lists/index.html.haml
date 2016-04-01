@@ -36,6 +36,8 @@
                     %h2.property-title
                       %a{:href => "#{property_path(property)}", :title => "#{property.name}", :target => '_blank'}
                         = property.address_name
+                        %span.pull-right
+                          %img{:alt => "", :src => "#{property.customer.logo_path.url}", :widht => "80", style: "border: 1px solid #D8D4D4;"}
                     .property-excerpt
                       %p
                         = property.description

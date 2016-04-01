@@ -34,7 +34,7 @@
                       %a{:href => "#{property_path(property)}", :title => "#{property.name}"}
                         = property.address_name
                         %span.pull-right
-                          %img{:alt => "", :src => "#{property.customer.logo_path.url}"}
+                          %img{:alt => "", :src => "#{property.customer.logo_path.url}", :widht => "80", style: "border: 1px solid #D8D4D4;"}
                       %small
                         %br/
                         %p{style: 'margin-top: 10px'}= property.project
