@@ -7,7 +7,7 @@ module Client
     has_scope :by_situation
 
     def index
-      @messages = apply_scopes(::Message).all.order('created_at DESC')
+      @messages = apply_scopes(::Message).where(customer_id: current_user.id).order('created_at DESC')
     end
 
     def new
