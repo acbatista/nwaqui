@@ -5,14 +5,24 @@
       .noo-content.col-xs-12.col-md-8
         / START ARTICLE PROPERTY
         %article.property
-          %h1.property-title
-            %small
-              = link_to "Voltar para listagem", site.root_path, class: 'btn btn-primary'
-            %br/
-            %small
-              %p
-                %H4= "#{@property.address_name}"
-              %p= @property.project
+          .row
+            .col-md-12
+              %h1.property-title
+                %small
+                  = link_to "Voltar para listagem", site.root_path, class: 'btn btn-primary'
+                %br/
+                %small
+                  %p
+                    %H4
+                      = star_fav(@property.id)
+                      = " #{@property.address_name} - " 
+                      
+                  %span.pull-right
+                    
+                  %p
+                
+            .col-md-2.col-md-offset-2
+              
 
 
           .property-featured.clearfix
