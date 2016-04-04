@@ -6,7 +6,6 @@ gem 'rails', '4.2.5.1'
 
 gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
-
 gem 'turbolinks'
 
 gem 'simple_form'
@@ -49,3 +48,5 @@ group :production do
   gem 'rails_12factor'
   gem 'unicorn'
 end
+
+#teste
