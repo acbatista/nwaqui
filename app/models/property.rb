@@ -40,7 +40,7 @@ class Property < ActiveRecord::Base
   validates :situation, :type_property, :general_address, :general_group, presence: true
   validates :rooms, :suit, :parking_spaces, :floor, numericality: true, allow_blank: true
   validates :city, :region, :group, :block, :address, :commercial_situation, presence: true
-  validates :prediction, presence: true, if: :is_lançamento?
+  #validates :prediction, presence: true, if: :is_lançamento?
   
   def property_attributes; Attribute.where(id: self.property_attributes_id); end;
 
