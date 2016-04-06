@@ -1,0 +1,12 @@
+%header
+  .main-nav-wrap.container
+    .row
+      .col-sm-1
+        = link_to image_tag('/images/logo/logo_full.png', size: '150x50'), site.root_path
+      .col-sm-6
+        .fav-buttons
+          - if bookmark_user.present?
+            = link_to "<i class='glyphicon glyphicon-star'></i> Meus favoritos".html_safe, bookmarks_path, class: 'fav-button btn btn-primary'
+          - else
+            = link_to "<i class='glyphicon glyphicon-star'></i> Acessar favoritos".html_safe, new_session_path,  remote: true, class: 'fav-button'
+          

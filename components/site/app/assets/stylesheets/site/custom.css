@@ -1,3 +1,8 @@
+
+.recent-properties .recent-properties-content .property-row .hentry .property-detail > div {
+  padding: 2px 8px !important;
+}
+
 .property-fullwidth-excerpt {
   font-size: 12px !important;
 }
