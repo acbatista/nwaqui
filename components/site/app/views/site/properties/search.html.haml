@@ -60,6 +60,8 @@
                             %span.amount
                               - if property.aluguel?
                                 = number_to_currency property.value_rent
+                              - elsif property.value.to_s.empty?
+                                Sob consulta
                               - else
                                 = number_to_currency property.value
                         .property-action
@@ -75,6 +77,8 @@
                             %span.amount
                               - if property.aluguel?
                                 = number_to_currency property.value_rent
+                              - elsif property.value.to_s.empty?
+                                Sob consulta
                               - else
                                 = number_to_currency property.value
                         .size

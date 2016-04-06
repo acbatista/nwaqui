@@ -4,11 +4,13 @@
   %h4.modal-title
     %b= "#{@property.general_address} - Nº #{@property.number}"
 .modal-body
-  %label Telefone
-  %p= @property.customer.telephone
-  %hr/
-  %label Celular
-  %p= @property.customer.celphone
-  %hr/
-  %label E-mail
-  %p= @property.customer.email
+  .row
+    .col-md-4
+      %label Telefone
+      %p= @property.customer.telephone
+    .col-md-4
+      %label Telefone Secundário
+      %p= @property.customer.telephone
+    .col-md-4
+      %label Celular
+      %p= @property.customer.celphone

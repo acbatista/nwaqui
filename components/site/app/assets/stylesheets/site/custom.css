@@ -1,4 +1,6 @@
-
+.property .property-detail-content .detail-field { 
+  border-bottom: 1px solid #DCDCDC;
+}
 .recent-properties .recent-properties-content .property-row .hentry .property-detail > div {
   padding: 2px 8px !important;
 }

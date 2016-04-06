@@ -51,6 +51,9 @@ class Property < ActiveRecord::Base
      #{self.unit} - #{self.commercial_situation.humanize}"
   end
 
+  def unit_formated
+    self.unit.present? ? " - Nº #{self.unit}" : ""
+  end
 
   private
 

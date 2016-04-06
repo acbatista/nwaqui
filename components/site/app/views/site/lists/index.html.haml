@@ -60,6 +60,8 @@
                             %span.amount
                               - if property.aluguel?
                                 = number_to_currency property.value_rent
+                              - elsif property.value.to_s.empty?
+                                Sob consulta
                               - else
                                 = number_to_currency property.value
                         .property-action
@@ -75,6 +77,8 @@
                             %span.amount
                               - if property.aluguel? 
                                 = number_to_currency property.value_rent
+                              - elsif property.value.to_s.empty?
+                                Sob consulta
                               - else
                                 = number_to_currency property.value
                         .size
@@ -87,7 +91,7 @@
 
                   .property-action.property-fullwidth-action
                     .property-links
-                      %a{:href => "#{property_path(property)}", :target => '_blank'} Mais Detalhes
+                      %a{:href => "#{property_path(property)}"} Mais Detalhes
                     .property-links.property-invese-link-mod
                       %a{:href => "#{property.block.tour_360}", :target => '_blank'}
                         %img{:alt => "", :src => "/images/icon/icon-360.png"}/
