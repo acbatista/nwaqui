@@ -1,6 +1,8 @@
 module Site
   class ApplicationController < ActionController::Base
-    layout :set_layout
+    layout :domain?
+
+    DOMAINS = %w(nwaqui asaaqui gamaaaqui)
 
     helper SessionHelper
     include SessionHelper
@@ -15,9 +17,24 @@ module Site
 
     private
 
-    def set_layout
-      touch_device? ? 'site/mobile' : 'site/application'
+    def domain?
+
+      DOMAINS.each do |domain|
+        if request.url.include? domain 
+          @layout = "site/templates/#{domain}/application" 
+        else
+          @layout = "site/templates/dfaqui/application"
+        end      
+      end    
+
+      return @layout
     end
+
+    helper_method :domain?
+
+    #def set_layout
+    #  touch_device? ? 'site/mobile' : 'site/application'
+    #end
 
     def validate_session!
       if !session[:external_user_id].present? and !session_controller?
