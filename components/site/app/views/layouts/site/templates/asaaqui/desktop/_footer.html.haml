@@ -1,0 +1,36 @@
+%footer.footer
+  .footer-nav
+    .container
+      .row
+        .col-md-3
+          .ft-about-us
+            %h4.ft-col-title= ::Page.dfaqui_title.html_safe
+            %hr/
+            .text-block
+              = ::Page.dfaqui_content.html_safe
+        .col-md-2
+        .col-md-3
+          .ft-useful-links
+            %h4.ft-col-title Links Úteis
+            %hr/
+            %nav.useful-links-menu{:role => "navigation"}
+              %ul
+                = link_to_code('termos_de_uso')
+                = link_to_code('politica_de_uso')
+                = link_to_code('contato')
+                = link_to_code('trabalhe_conosco')
+                = link_to_code('quem_somos')
+                = link_to_code('faqs')
+        .col-md-1
+        .col-xs-12.col-sm-6.col-md-3.footer-nav-col
+          .ft-contact-info
+            %h4.ft-col-title Anuncie
+            %hr/
+            %ul.detail-contact-info
+              = image_tag('/images/icon/logo_white.png')
+              %li
+                %i.fa.fa-map-marker>
+                 Brasília
+              %li
+                %i.fa.fa-envelope-o>
+                %a{:href => "mailto:dfaqui@dfaqui.com"} contato@dfaqui.com

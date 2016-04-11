@@ -1,0 +1,132 @@
+.noo-wrapper
+  %section#search-box.wrap.search-box
+    .gsearch
+      .container
+        .gsearch-info
+          .gsearch-info-content
+            %h1
+              FRASE ASA NORTE/SUL
+            %br/
+            %br/
+            %br/
+        .gsearch-wrap 
+          = simple_form_for :search, url: search_path, method: :get do |f|
+            .gsearch-content
+              .gsearch-field
+                = f.input :by_commercial, as: :select, label: false, collection: Property.commercial_situations.map { |k,v| [k.humanize, v]},selected: params[:by_commercial], include_blank: "Você procura por", input_html: { name: 'by_commercial', id: 'by_commercial'}
+                
+                = f.input :by_type, as: :select, label: false, collection: Property.type_properties.map { |k,v| [k.humanize, v]},selected: params[:by_type], include_blank: "Tipo de imóvel", input_html: { name: 'by_type', id: 'by_type'}
+                
+                = f.input :empty,label: false, as: :select, selected: params[:empty_one], include_blank: "selecione...",collection: [], input_html: { id: 'empty_one', name: 'option_one'}
+
+                = f.input :empty,label: false, as: :select,  selected: params[:by_group], include_blank: "selecione...",collection: [], input_html: { id: 'by_group', name: 'by_group'}
+
+                = f.input :by_detail_group,label: false, as: :select,  selected: params[:by_detail_group], include_blank: "selecione...",collection: [], input_html: { id: 'by_detail_group', name: 'by_detail_group'}
+              .gsearch-action
+                .gsubmit
+                  %input.btn.btn-deault{type: 'submit', value: 'Buscar'}
+
+:javascript
+
+  $(document).ready(function() {
+
+    options();
+
+    $("#by_commercial").on('change', function() {
+      html = '<option value>selecione...</option>'
+      
+      $("#by_type").val('')
+      $("#empty_one").html(html)
+      $("#empty_two").html(html)
+    });
+
+    $("#by_type").on('change', function() {
+      if($("#by_commercial").val() == "") {
+        alert('Selecione a situação do imóvel...')
+      } else {
+        options();
+      }
+    });
+
+
+    $("#by_group").on('change', function() {
+      get_json_units($(this).val())
+    });
+
+    function get_json_units(group_id) {
+      $.getJSON("/site/units?group_id=" + group_id, function(data) {
+        var items = [];
+        var by_detail_group  = "#{(!params[:by_detail_group].present?)  ? false : params[:by_detail_group]}"
+
+        items.push("<option value='' selected>Quadras...</option>");
+        $.each(data, function(key, val) {
+          items.push("<option value='" + val.id + "'>" + val.name + "</option>");
+        });
+        $("#by_detail_group").html(items)
+
+        if(by_detail_group != 'false') {
+          $("#by_detail_group").val(by_detail_group);
+        } 
+      });
+    }
+
+
+    function options() {
+      var by_group   = "#{(!params[:by_group].present?) ? false : params[:by_group]}"
+      var by_room    = "#{(!params[:by_room].present?)  ? false : params[:by_room]}"
+      var by_area    = "#{(!params[:by_area].present?)  ? false : params[:by_area]}"
+      var situation  = $("#by_commercial").val();
+      var type       = $("#by_type").val();
+     
+      
+      if(type == '0') {
+        html_one = "<option value='' selected> Nº de Quartos</option>"
+        html_one += "<option value='1'>1</option>"
+        html_one += "<option value='2'>2</option>"
+        html_one += "<option value='3'>3</option>"
+        html_one += "<option value='4'>4 ou +</option>"
+        html_one += "<option value='99'>Cobertura</option>"
+        $("#empty_one").html(html_one)
+        $("#empty_one").attr('name', 'by_room');
+
+        html_two  = "<option value='' selected>Quadra</option>"
+        html_two += "<option value='100_SQNW'>100 SQNW</option>"
+        html_two += "<option value='300_SQNW'>300 SQNW</option>"
+        html_two += "<option value='700_EQNW'>700 EQNW</option>"
+
+        $("#by_group").html(html_two)
+
+      }
+
+    
+      if(type == '1') {
+
+        html_one  = "<option value='' selected>Área (m²)</option>"
+        html_one += "<option value='0_50'>0 - 50</option>"
+        html_one += "<option value='51_70'>51 - 70</option>"
+        html_one += "<option value='71_100'>71 - 100</option>"
+        html_one += "<option value='100_999'>100 ou +</option>"
+        $("#empty_one").html(html_one)
+        $("#empty_one").attr('name', 'by_area');
+
+
+        html_two  = "<option value='' selected>Quadra</option>"
+        html_two += "<option value='_CLNW'>CLNW</option>"
+        html_two += "<option value='500_CRNW'>500 CRNW</option>"
+        html_two += "<option value='700_CRNW'>700 CRNW</option>"
+
+        $("#by_group").html(html_two)
+
+      }
+
+      if(by_group != 'false') { 
+        $("#by_group").val(by_group);
+        get_json_units(by_group)
+      }
+      if(by_area  != 'false') { $("#empty_one").val(by_area);}
+      if(by_room  != 'false') { $("#empty_one").val(by_room);}
+
+      
+    }
+  });
+

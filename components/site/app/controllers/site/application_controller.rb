@@ -19,12 +19,10 @@ module Site
 
     def domain?
 
+      @layout = "site/templates/dfaqui/application"
+      
       DOMAINS.each do |domain|
-        if request.url.include? domain 
-          @layout = "site/templates/#{domain}/application" 
-        else
-          @layout = "site/templates/dfaqui/application"
-        end      
+        @layout = "site/templates/#{domain}/application" if request.url.include? domain 
       end    
 
       return @layout

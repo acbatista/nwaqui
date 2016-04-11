@@ -21,10 +21,10 @@
 
   %body{class: (controller.action_name == 'show') ? 'page-right-sidebar' : 'home page-fullwidth' }
     .site
-      = render 'layouts/site/desktop/header'
-      = render 'layouts/site/desktop/search'
+      = render 'layouts/site/templates/nwaqui/desktop/header'
+      = render 'layouts/site/templates/nwaqui/desktop/search'
       = yield
-      = render 'layouts/site/desktop/footer'
+      = render 'layouts/site/templates/nwaqui/desktop/footer'
     #modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "modal", :role => "dialog", :tabindex => "-1", :style => 'z-index: 9999;'}
       .modal-dialog
         .modal-content
