@@ -1,6 +1,6 @@
 .noo-wrapper
   %section#search-box.wrap.search-box
-    .gsearch{style: 'padding-top: 0px'}
+    .gsearch{style: 'padding-top: 0px; height: 190px;margin-bottom: 130px;'}
       .container
         .gsearch-info
           .gsearch-info-content
@@ -11,23 +11,24 @@
               %br/
               %br/
               %br/
-        .gsearch-wrap 
+        .gsearch-wrap.gsearch-wrap-mobile
           = simple_form_for :search, url: search_path, method: :get do |f|
-            .gsearch-content
-              .gsearch-field
+            .gsearch-content.gsearch-mobile
+              .col-xs-4
                 = f.input :by_commercial, as: :select, label: false, collection: Property.commercial_situations.map { |k,v| [k.humanize, v]},selected: params[:by_commercial], include_blank: "Você procura por", input_html: { name: 'by_commercial', id: 'by_commercial'}
                 
+              .col-xs-4
                 = f.input :by_type, as: :select, label: false, collection: Property.type_properties.map { |k,v| [k.humanize, v]},selected: params[:by_type], include_blank: "Tipo de imóvel", input_html: { name: 'by_type', id: 'by_type'}
                 
+              .col-xs-4
                 = f.input :empty,label: false, as: :select, selected: params[:empty_one], include_blank: "selecione...",collection: [], input_html: { id: 'empty_one', name: 'option_one'}
 
+              .col-xs-4
                 = f.input :empty,label: false, as: :select,  selected: params[:by_group], include_blank: "selecione...",collection: [], input_html: { id: 'by_group', name: 'by_group'}
-
+              .col-xs-4
                 = f.input :by_detail_group,label: false, as: :select,  selected: params[:by_detail_group], include_blank: "selecione...",collection: [], input_html: { id: 'by_detail_group', name: 'by_detail_group'}
-              .gsearch-action
-                .gsubmit
-                  %input.btn.btn-deault{type: 'submit', value: 'Buscar'}
-    }
+              .gsearch-action.gsearch-action-mobile
+                %input.btn.btn-primary{type: 'submit', value: 'Buscar'}
 
 :javascript
 

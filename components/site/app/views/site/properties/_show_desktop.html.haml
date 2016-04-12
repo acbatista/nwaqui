@@ -1,0 +1,365 @@
+:javascript
+  jQuery(document).ready(function ($) {
+      
+      var jssor_1_SlideshowTransitions = [
+        {$Duration:1200,x:0.3,$During:{$Left:[0.3,0.7]},$Easing:{$Left:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
+        {$Duration:1200,x:-0.3,$SlideOut:true,$Easing:{$Left:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
+        {$Duration:1200,x:-0.3,$During:{$Left:[0.3,0.7]},$Easing:{$Left:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
+        {$Duration:1200,x:0.3,$SlideOut:true,$Easing:{$Left:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
+        {$Duration:1200,y:0.3,$During:{$Top:[0.3,0.7]},$Easing:{$Top:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
+        {$Duration:1200,y:-0.3,$SlideOut:true,$Easing:{$Top:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
+        {$Duration:1200,y:-0.3,$During:{$Top:[0.3,0.7]},$Easing:{$Top:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
+        {$Duration:1200,y:0.3,$SlideOut:true,$Easing:{$Top:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
+        {$Duration:1200,x:0.3,$Cols:2,$During:{$Left:[0.3,0.7]},$ChessMode:{$Column:3},$Easing:{$Left:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
+        {$Duration:1200,x:0.3,$Cols:2,$SlideOut:true,$ChessMode:{$Column:3},$Easing:{$Left:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
+        {$Duration:1200,y:0.3,$Rows:2,$During:{$Top:[0.3,0.7]},$ChessMode:{$Row:12},$Easing:{$Top:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
+        {$Duration:1200,y:0.3,$Rows:2,$SlideOut:true,$ChessMode:{$Row:12},$Easing:{$Top:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
+        {$Duration:1200,y:0.3,$Cols:2,$During:{$Top:[0.3,0.7]},$ChessMode:{$Column:12},$Easing:{$Top:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
+        {$Duration:1200,y:-0.3,$Cols:2,$SlideOut:true,$ChessMode:{$Column:12},$Easing:{$Top:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
+        {$Duration:1200,x:0.3,$Rows:2,$During:{$Left:[0.3,0.7]},$ChessMode:{$Row:3},$Easing:{$Left:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
+        {$Duration:1200,x:-0.3,$Rows:2,$SlideOut:true,$ChessMode:{$Row:3},$Easing:{$Left:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
+        {$Duration:1200,x:0.3,y:0.3,$Cols:2,$Rows:2,$During:{$Left:[0.3,0.7],$Top:[0.3,0.7]},$ChessMode:{$Column:3,$Row:12},$Easing:{$Left:$Jease$.$InCubic,$Top:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
+        {$Duration:1200,x:0.3,y:0.3,$Cols:2,$Rows:2,$During:{$Left:[0.3,0.7],$Top:[0.3,0.7]},$SlideOut:true,$ChessMode:{$Column:3,$Row:12},$Easing:{$Left:$Jease$.$InCubic,$Top:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
+        {$Duration:1200,$Delay:20,$Clip:3,$Assembly:260,$Easing:{$Clip:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
+        {$Duration:1200,$Delay:20,$Clip:3,$SlideOut:true,$Assembly:260,$Easing:{$Clip:$Jease$.$OutCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
+        {$Duration:1200,$Delay:20,$Clip:12,$Assembly:260,$Easing:{$Clip:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
+        {$Duration:1200,$Delay:20,$Clip:12,$SlideOut:true,$Assembly:260,$Easing:{$Clip:$Jease$.$OutCubic,$Opacity:$Jease$.$Linear},$Opacity:2}
+      ];
+      
+      var jssor_1_options = {
+        $AutoPlay: true,
+        $SlideshowOptions: {
+          $Class: $JssorSlideshowRunner$,
+          $Transitions: jssor_1_SlideshowTransitions,
+          $TransitionsOrder: 1
+        },
+        $ArrowNavigatorOptions: {
+          $Class: $JssorArrowNavigator$
+        },
+        $ThumbnailNavigatorOptions: {
+          $Class: $JssorThumbnailNavigator$,
+          $Cols: 10,
+          $SpacingX: 8,
+          $SpacingY: 8,
+          $Align: 360
+        }
+      };
+      
+      var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
+      
+      //responsive code begin
+      //you can remove responsive code if you don't want the slider scales while window resizing
+      function ScaleSlider() {
+          var refSize = jssor_1_slider.$Elmt.parentNode.clientWidth;
+          if (refSize) {
+              refSize = Math.min(refSize, 800);
+              jssor_1_slider.$ScaleWidth(refSize);
+          }
+          else {
+              window.setTimeout(ScaleSlider, 30);
+          }
+      }
+      ScaleSlider();
+      $(window).bind("load", ScaleSlider);
+      $(window).bind("resize", ScaleSlider);
+      $(window).bind("orientationchange", ScaleSlider);
+      //responsive code end
+  });
+:css
+  /* jssor slider arrow navigator skin 05 css */
+  /*
+  .jssora05l                  (normal)
+  .jssora05r                  (normal)
+  .jssora05l:hover            (normal mouseover)
+  .jssora05r:hover            (normal mouseover)
+  .jssora05l.jssora05ldn      (mousedown)
+  .jssora05r.jssora05rdn      (mousedown)
+  */
+  .jssora05l, .jssora05r {
+      display: block;
+      position: absolute;
+      /* size of arrow element */
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      background: url('img/a17.png') no-repeat;
+      overflow: hidden;
+  }
+  .jssora05l { background-position: -10px -40px; }
+  .jssora05r { background-position: -70px -40px; }
+  .jssora05l:hover { background-position: -130px -40px; }
+  .jssora05r:hover { background-position: -190px -40px; }
+  .jssora05l.jssora05ldn { background-position: -250px -40px; }
+  .jssora05r.jssora05rdn { background-position: -310px -40px; }
+
+  /* jssor slider thumbnail navigator skin 01 css */
+  /*
+  .jssort01 .p            (normal)
+  .jssort01 .p:hover      (normal mouseover)
+  .jssort01 .p.pav        (active)
+  .jssort01 .p.pdn        (mousedown)
+  */
+  .jssort01 .p {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 72px;
+      height: 72px;
+  }
+  
+  .jssort01 .t {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+  }
+  
+  .jssort01 .w {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      height: 100%;
+  }
+  
+  .jssort01 .c {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 68px;
+      height: 68px;
+      border: #000 2px solid;
+      box-sizing: content-box;
+      background: url('img/t01.png') -800px -800px no-repeat;
+      _background: none;
+  }
+  
+  .jssort01 .pav .c {
+      top: 2px;
+      _top: 0px;
+      left: 2px;
+      _left: 0px;
+      width: 68px;
+      height: 68px;
+      border: #000 0px solid;
+      _border: #fff 2px solid;
+      background-position: 50% 50%;
+  }
+  
+  .jssort01 .p:hover .c {
+      top: 0px;
+      left: 0px;
+      width: 70px;
+      height: 70px;
+      border: #fff 1px solid;
+      background-position: 50% 50%;
+  }
+  
+  .jssort01 .p.pdn .c {
+      background-position: 50% 50%;
+      width: 68px;
+      height: 68px;
+      border: #000 2px solid;
+  }
+  
+  * html .jssort01 .c, * html .jssort01 .pdn .c, * html .jssort01 .pav .c {
+      /* ie quirks mode adjust */
+      width /**/: 72px;
+      height /**/: 72px;
+  }
+
+.container.noo-mainbody
+  .noo-mainbody-inner
+    .row.clearfix
+      / START MAIN CONTENT
+      .noo-content.col-xs-12.col-md-8
+        / START ARTICLE PROPERTY
+        %article.property
+          .row
+            .col-md-12
+              .row
+                .col-md-12
+                  %h1.property-title
+                    %small
+                    = link_to "Voltar para listagem", :back, class: 'btn btn-primary'
+              .row
+                .col-md-6{style: 'margin-top: 25px; font-size: 45px'}
+                  %div{class: "starfav_#{@property.id}"}= star_fav(@property.id)
+                
+              .row
+                .col-md-6
+                  %small
+                    %h4= " #{@property.address_name}"
+                    %h5
+                      %i= @property.project 
+          .property-featured.clearfix
+            #jssor_1{:style => "position: relative; margin: 0 auto; top: 0px; left: 0px; width: 800px; height: 456px; overflow: hidden; visibility: hidden; background-color: #24262e;"}
+              / Loading Screen
+              %div{"data-u" => "loading", :style => "position: absolute; top: 0px; left: 0px;"}
+                %div{:style => "filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"}
+                %div{:style => "position:absolute;display:block;background:url('img/loading.gif') no-repeat center center;top:0px;left:0px;width:100%;height:100%;"}
+              %div{"data-u" => "slides", :style => "cursor: default; position: relative; top: 0px; left: 0px; width: 800px; height: 356px; overflow: hidden;"}
+                - if @property.images.present?
+                  - @property.images.order(:order).each do |image|
+                    %div{"data-p" => "144.50", :style => "display: none;"}
+                      %img{"data-u" => "image", :src => "#{image.image.url}"}/
+                      %img{"data-u" => "thumb", :src => "#{image.image.url}"}/
+                - else
+                  %div{"data-p" => "144.50", :style => "display: none;"}
+                    %img{"data-u" => "image", :src => "/images/icon/image404.png"}/
+                    %img{"data-u" => "thumb", :src => "/images/icon/image404.png"}/
+              .jssort01{"data-autocenter" => "1", "data-u" => "thumbnavigator", :style => "position:absolute;left:0px;bottom:0px;width:800px;height:100px;"}
+                / Thumbnail Item Skin Begin
+                %div{"data-u" => "slides", :style => "cursor: default;"}
+                  .p{"data-u" => "prototype"}
+                    .w
+                      .t{"data-u" => "thumbnailtemplate"}
+                    .c
+     
+          .property-summary
+            .row
+              .col-md-12.col-xs-12
+                .property-desc
+                  %h4.property-detail-title Descrição do Imóvel
+                  %p
+                    = @property.description
+            %hr/
+            .row
+              .col-md-4.col-xs-4
+                - if touch_device?
+                  = link_to image_tag("contact.png", width: 80), property_telephone_path(@property), remote: true
+                - else
+                  = link_to image_tag("contact.png"), property_telephone_path(@property), remote: true
+              .col-md-4.col-xs-4
+                - if touch_device?
+                  = link_to image_tag("message.png", width: 80), new_property_message_path(@property), remote: true
+                - else
+                  = link_to image_tag("message.png"), new_property_message_path(@property), remote: true
+              .col-md-4.col-xs-4
+                - if touch_device?
+                  = link_to image_tag("tour.png", width: 80), @property.block.tour_360.to_s, target: '_blank'
+                - else
+                  = link_to image_tag("tour.png"), @property.block.tour_360.to_s, target: '_blank'
+          .property-feature
+            %h4.property-feature-title Atributos do Imóvel
+            .property-feature-content.clearfix
+              - Attribute.where(id: @property.property_attributes_id).each do |attribute|
+                .has
+                  %i.fa.fa-check-circle
+                  = attribute.name
+          - if @property.companies.count > 0 
+            .property-feature
+              %h4.property-feature-title Construção
+              .property-feature-content.clearfix
+                - @property.companies.each do |company|
+                  = image_tag company.logo_path.url, size: '100x100' if company.logo_path.present?
+          .property-feature
+            %h4.property-feature-title Venda
+            .property-feature-content.clearfix
+              = image_tag @property.customer.logo_path, size: '100x100' if @property.customer.logo_path.present?
+
+      / START SIDEBAR
+      .noo-sidebar.noo-sidebar-right.col-xs-12.col-md-4
+        .noo-sidebar-inner
+          / START FIND PROPERTY
+          .block-sidebar.find-property
+            .property
+              .property-detail
+                %h4.property-detail-title Detalhes do Imóvel
+                .property-detail-content
+                  .detail-field.row
+                    %span.col-xs-6.col-md-5.detail-field-label Situação
+                    %span.col-xs-6.col-md-7.detail-field-value= "#{@property.situation.humanize}"
+                  .detail-field.row
+                    %span.col-xs-6.col-md-5.detail-field-label Tipo
+                    %span.col-xs-6.col-md-7.detail-field-value= @property.type_property.humanize
+                  .detail-field.row
+                    %span.col-xs-6.col-md-5.detail-field-label= @property.residencial? ? 'Unidade' : 'Loja' 
+                    %span.col-xs-6.col-md-7.detail-field-value= @property.unit
+                  .detail-field.row
+                    %span.col-xs-6.col-md-5.detail-field-label Quartos
+                    %span.col-xs-6.col-md-7.detail-field-value= @property.rooms
+                  .detail-field.row
+                    %span.col-xs-6.col-md-5.detail-field-label= @property.residencial? ? 'Suites' : 'Banheiros'
+                    %span.col-xs-6.col-md-7.detail-field-value= @property.suit
+                  .detail-field.row
+                    %span.col-xs-6.col-md-5.detail-field-label Vagas
+                    %span.col-xs-6.col-md-7.detail-field-value= @property.parking_spaces
+                  .detail-field.row
+                    %span.col-xs-6.col-md-5.detail-field-label Elevador
+                    %span.col-xs-6.col-md-7.detail-field-value= @property.elevator ? 'Sim' : 'Não'
+                  .detail-field.row
+                    %span.col-xs-6.col-md-5.detail-field-label Andar
+                    %span.col-xs-6.col-md-7.detail-field-value= (@property.floor == 0) ? "térreo" : "#{@property.floor} º"
+                  .detail-field.row
+                    %span.col-xs-6.col-md-5.detail-field-label Valor M²
+                    %span.col-xs-6.col-md-7.detail-field-value= @property.value_m2
+                  - if @property.aluguel?
+                    .detail-field.row
+                      %span.col-xs-6.col-md-5.detail-field-label Valor do Aluguel
+                      %span.col-xs-6.col-md-7.detail-field-value
+                        %span.amount
+                          = number_to_currency @property.value_rent
+                  - else
+                    .detail-field.row
+                      %span.col-xs-6.col-md-5.detail-field-label Valor
+                      %span.col-xs-6.col-md-7.detail-field-value
+                        %span.amount
+                          - if @property.value.to_s.empty? || @property.value == 0.0
+                            Sob consulta
+                          - else
+                            = number_to_currency @property.value
+                  - if !@property.lançamento?
+                    .detail-field.row
+                      %span.col-xs-6.col-md-5.detail-field-label Valor do condomínio
+                      %span.col-xs-6.col-md-7.detail-field-value
+                        - if @property.project_value.to_s.empty?
+                          Sob consulta
+                        - else
+                          = number_to_currency @property.project_value
+                  - if !@property.pronto?
+                    .detail-field.row
+                      %span.col-xs-6.col-md-5.detail-field-label Previsão de entrega
+                      %span.col-xs-6.col-md-7.detail-field-value= @property.prediction.strftime('%d/%m/%Y') if @property.prediction.present?
+                  .detail-field.row
+                    %span.col-xs-6.col-md-5.detail-field-label Posição do sol
+                    %span.col-xs-6.col-md-7.detail-field-value= @property.sun_position
+                  .detail-field.row
+                    %span.col-xs-6.col-md-5.detail-field-label Tour
+                    %span.col-xs-6.col-md-7.detail-field-value
+                      %a{:href => "#{@property.block.tour_360}", :target => "_blank"} Confira Aqui
+                  - if @property.customer.present?
+                    .detail-field.row
+                      %span.col-xs-6.col-md-5.detail-field-label Creci
+                      %span.col-xs-6.col-md-7.detail-field-value= @property.customer.creci
+          / END FIND PROPERTY
+          / START RECENT PROPERTY
+          .block-sidebar.recent-property
+            %h3.title-block-sidebar Imóveis Recentes
+            .featured-property
+              %ul
+                - Property.where(status: true).limit(6).order('id DESC').each do |property|
+                  %li
+                    .featured-image
+                      %a{:href => "#{property_path(property)}"}
+                        - if property.images.order(:order).present?
+                          %img.thumb-featured{:alt => "", :src => "#{property.images.order(:order).first.image}"}/
+                        - else
+                          %img.thumb-featured{:alt => "", :src => "/images/patterns/az_subtle.png"}/
+                    .featured-decs
+                      %span.featured-status
+                        = "#{property.situation.humanize} - #{property.commercial_situation.humanize}"
+                      %h4.featured-title
+                        %a{:href => "#{property_path(property)}", :title => "Imóvel"}
+                          = "#{property.general_address} #{property.unit_formated}"
+          / END RECENT PROPERTY
+      / END SIDEBAR
+
+:javascript
+  $(document).ready(function() {
+    $('.bxslider').bxSlider({
+      pagerCustom: '#bx-pager'
+    });
+  })

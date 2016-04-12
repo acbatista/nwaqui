@@ -6,12 +6,21 @@
 .modal-body
   %br/
   %br/
-
-  .row
-    .col-md-6{style: 'text-align: center'}
-      = link_to "<i class='fa fa-facebook'></i> | Acessar usando o Facebook".html_safe, '/auth/facebook', class: 'btn btn-facebook'
-    .col-md-6{style: 'text-align: center'}
-      = link_to "<i class='fa fa-google-plus'></i> | Acessar usando a conta Google".html_safe, '/auth/google_oauth2', class: 'btn btn-google-plus'
+  - if touch_device?
+    .row
+      .col-md-6.col-xs-12{style: 'text-align: center'}
+        = link_to "<i class='fa fa-facebook'></i> | Acessar usando o Facebook".html_safe, '/auth/facebook', class: 'btn btn-facebook'
+    %hr/
+    .row
+      .col-md-6.col-xs-12{style: 'text-align: center'}
+        = link_to "<i class='fa fa-google-plus'></i> | Acessar usando a conta Google".html_safe, '/auth/google_oauth2', class: 'btn btn-google-plus'
+  - else
+    .row
+      .col-md-6.col-xs-12{style: 'text-align: center'}
+        = link_to "<i class='fa fa-facebook'></i> | Acessar usando o Facebook".html_safe, '/auth/facebook', class: 'btn btn-facebook'
+     
+      .col-md-6.col-xs-12{style: 'text-align: center'}
+        = link_to "<i class='fa fa-google-plus'></i> | Acessar usando a conta Google".html_safe, '/auth/google_oauth2', class: 'btn btn-google-plus'
 
   %br/
   %hr/

@@ -29,33 +29,10 @@
           - else
             %h3 Imóveis Destaques
         .recent-properties-content
-          .row
-            .col-md-12
-              .property-row
-                - current_domain.specials.includes(:property).all.order(:order).each do |special|
-                  - if special.property.present?
-                    .col-md-3.col-xs-12
-                      %article.hentry.has-featured.mod1_home
-                        .property-featured
-                          %a.content-thumb{:href => "#{property_path(special.property)}"}
-                            - if special.property.images.present?
-                              %img.attachment-property-thumb.featured-thumb-home{:alt => "", :src => "#{special.property.images.order(:order).first.image_url}"}/
-                            - else
-                              %img.attachment-property-thumb.featured-thumb-home{:alt => "", :src => "https://nwaqui.s3.amazonaws.com/uploads/c0f5d31336b1d3c5c450cefebd261156.jpg"}/
-                            %span.property-category.new_name
-                              = "#{special.property.address_name} #{special.property.project_formated}"
-                          .property-detail.mod-detail
-                            .size
-                              %span
-                                = special.property.area
-                            .bedrooms
-                              %span
-                                = special.property.rooms
-                            .bathrooms
-                              %span
-                                = special.property.suit
-                            .size{class: "starfav_#{special.property.id}"}
-                              = star_fav(special.property)
+          - if touch_device?
+            = render 'special_mobile'
+          - else
+            = render 'special_desktop'
 %br/
 %br/
 - if touch_device?

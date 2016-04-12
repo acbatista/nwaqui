@@ -1,3 +1,18 @@
+.gsearch-action-mobile input {
+  margin-left: 16px;
+  height: 40px;
+    width: 90px;
+}
+.gsearch-wrap-mobile  {
+  padding-top: 20px;
+      border: 1px #CCCCCC solid;
+}
+.gsearch-mobile .form-control {
+  font-size: 8px;
+  height: 40px !important;
+  background-color: #EFEFEF;
+}
+
 .property .property-detail-content .detail-field { 
   border-bottom: 1px solid #DCDCDC;
 }
