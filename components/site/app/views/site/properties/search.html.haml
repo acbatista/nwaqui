@@ -14,12 +14,18 @@
               .col-md-4{style: 'padding-top: 20px;'}
                 %span.label.label-primary{style: 'margin-top: 10px; font-size: 100%'}
                   Ordenar por
+                %span{style: 'margin-left: 20px;', class: (params[:filter_order] == 'value') ? 'bold' : ''}
+                  = link_to "Valor", params.merge({:filter_order => 'value'})
+                %span{style: 'margin-left: 20px;', class: (params[:filter_order] == 'address') ? 'bold' : ''}
+                  = link_to "Endereço", params.merge({:filter_order => 'address'})
+                %span{style: 'margin-left: 20px;', class: (params[:filter_order] == 'meter') ? 'bold' : ''}
+                  = link_to "M²", params.merge({:filter_order => 'meter'})
             %br
             %br
             %br
             %br
             .properties-content
-              - @properties.order([:id, :customer_id]).each do |property|
+              - @properties.each do |property|
                 %article.hentry
                   .property-featured
                     %a.content-thumb{:href => "#{property_path(property)}"}

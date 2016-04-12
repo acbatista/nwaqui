@@ -7,8 +7,6 @@ class Property < ActiveRecord::Base
   belongs_to :group
   belongs_to :block
 
-  default_scope {order(:id)}
-
   has_many :images, class_name: "PropertyImage", dependent: :destroy
   
   scope :by_customer, -> customer {where(customer_id: customer)}

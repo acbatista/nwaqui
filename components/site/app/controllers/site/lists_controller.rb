@@ -12,6 +12,17 @@ module Site
 
     def index
       @properties = apply_scopes(::Property).where(status: true, address_id: current_domain.addresses)
+      
+      case params[:filter_order]
+      when 'value'
+        @properties = @properties.order([:value, :value_rent])
+      when 'address'
+        @properties = @properties.includes(:group).order('groups.name ASC')
+      when 'meter'
+        @properties = @properties.order('area ASC')
+      else
+        @properties = @properties.order([:customer_id, :id])
+      end
     end
 
   end

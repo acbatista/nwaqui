@@ -1,3 +1,7 @@
+.bold {
+  font-weight: bold;
+  font-size: 18px;
+}
 .gsearch-action-mobile input {
   margin-left: 16px;
   height: 40px;

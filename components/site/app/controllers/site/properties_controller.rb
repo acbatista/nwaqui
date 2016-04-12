@@ -11,7 +11,6 @@ module Site
     has_scope :by_block
     has_scope :by_situation
     has_scope :by_room
-    has_scope :by_order
     
 
     def index
@@ -23,6 +22,17 @@ module Site
 
     def search
       @properties = apply_scopes(Property).where(status: true, address_id: current_domain.addresses)
+
+      case params[:filter_order]
+      when 'value'
+        @properties = @properties.order([:value, :value_rent])
+      when 'address'
+        @properties = @properties.includes(:group).order('groups.name ASC')
+      when 'meter'
+        @properties = @properties.order('area ASC')
+      else
+        @properties = @properties.order([:customer_id, :id])
+      end
     end
 
     def telephone
