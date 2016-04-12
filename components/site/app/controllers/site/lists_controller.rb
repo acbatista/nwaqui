@@ -11,7 +11,7 @@ module Site
     has_scope :by_commercial
 
     def index
-      @properties = apply_scopes(::Property).all
+      @properties = apply_scopes(::Property).where(status: true, address_id: current_domain.addresses)
     end
 
   end
