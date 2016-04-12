@@ -203,8 +203,10 @@
                     %div{"data-p" => "144.50", :style => "display: none;"}
                       %img{"data-u" => "image", :src => "#{image.image.url}"}/
                       %img{"data-u" => "thumb", :src => "#{image.image.url}"}/
-                %a{"data-u" => "ad", :href => "http://www.jssor.com", :style => "display:none"} jQuery Slider
-              / Thumbnail Navigator
+                - else
+                  %div{"data-p" => "144.50", :style => "display: none;"}
+                    %img{"data-u" => "image", :src => "/images/icon/image404.png"}/
+                    %img{"data-u" => "thumb", :src => "/images/icon/image404.png"}/
               .jssort01{"data-autocenter" => "1", "data-u" => "thumbnavigator", :style => "position:absolute;left:0px;bottom:0px;width:800px;height:100px;"}
                 / Thumbnail Item Skin Begin
                 %div{"data-u" => "slides", :style => "cursor: default;"}
@@ -212,10 +214,7 @@
                     .w
                       .t{"data-u" => "thumbnailtemplate"}
                     .c
-                / Thumbnail Item Skin End
-              / Arrow Navigator
-              %span.jssora05l{"data-u" => "arrowleft", :style => "top:158px;left:8px;width:40px;height:40px;"}
-              %span.jssora05r{"data-u" => "arrowright", :style => "top:158px;right:8px;width:40px;height:40px;"}
+     
           .property-summary
             .row
               .col-md-12
