@@ -7,7 +7,7 @@
     .container
       .section-title
         %h3 Busca Exclusiva
-    - Button.where(publish: true).order(:order).each do |button|
+    - current_domain.buttons.where(publish: true).order(:order).each do |button|
       .col-md-2
         = link_to image_tag(button.image), button.link.to_s
 
@@ -23,7 +23,7 @@
           %ul
             %li
               .property-row
-                - Special.includes(:property).all.order(:order).each do |special|
+                - current_domain.specials.includes(:property).all.order(:order).each do |special|
                   - if special.property.present?
                     %article.hentry.has-featured.mod1_home
                       .property-featured

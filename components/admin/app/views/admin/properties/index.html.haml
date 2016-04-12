@@ -39,7 +39,7 @@
             %tr
               %td.col-md-1= property.id
               %td.col-md-1= property.customer_id
-              %td.col-md-1= property.address.name
+              %td.col-md-1= property.address.name if property.address.present?
               %td.col-md-2= property.general_address
               %td.col-md-1= property.situation.humanize
               %td.col-md-2= property.type_property.humanize

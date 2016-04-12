@@ -18,15 +18,15 @@ module Site
     end
     
     def show
-      @property = Property.where(status: true).find(params[:id])
+      @property = Property.where(status: true, address_id: current_domain.addresses).find(params[:id])
     end
 
     def search
-      @properties = apply_scopes(Property).all
+      @properties = apply_scopes(Property).where(status: true, address_id: current_domain.addresses)
     end
 
     def telephone
-      @property = Property.where(status: true).find(params[:property_id])
+      @property = Property.where(status: true, address_id: current_domain.addresses).find(params[:property_id])
     end
 
     def group
