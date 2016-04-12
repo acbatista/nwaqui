@@ -131,10 +131,11 @@ span.new_name, span.new_name a{
   font-size:12px;
 }
 span.new_name{
-  margin-left: 35px;
+    width: 100%;
     margin-top: -15px;
-    border-bottom-left-radius: 1em;
-    border-bottom-right-radius: 1em;
+    /* border-bottom-left-radius: 1em; */
+    /* border-bottom-right-radius: 1em; */
+    font-weight: bold;
 }
 .mod1_home{
   display: block;

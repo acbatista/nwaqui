@@ -47,10 +47,14 @@ class Property < ActiveRecord::Base
   def companies; Customer.where(id: self.company_id); end;
 
   def address_name
-    "#{self.group.name.upcase} Bloco #{self.block.name} 
-     #{self.unit} - #{self.commercial_situation.humanize}"
+    "#{self.commercial_situation.humanize} - #{self.group.name.upcase} Bloco #{self.block.name} 
+     #{self.unit} #{project_formated}"
   end
 
+  def project_formated
+    "- #{project}"
+  end
+  
   def unit_formated
     self.unit.present? ? " - Nº #{self.unit}" : ""
   end
