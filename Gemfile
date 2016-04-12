@@ -7,6 +7,7 @@ gem 'rails', '4.2.5.1'
 gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'turbolinks'
+gem 'sass-rails'
 
 gem 'simple_form'
 gem 'haml-rails'
@@ -20,7 +21,7 @@ gem 'bootstrap-wysihtml5-rails'
 
 gem 'has_scope'
 gem 'remotipart', '~> 1.2'
-
+gem 'shareable'
 gem 'tinymce-rails'
 gem 'tinymce-rails-langs'
 

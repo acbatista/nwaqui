@@ -1,12 +1,12 @@
 %header
   .main-nav-wrap.container
     .row
-      .col-xs-6{style: 'margin-top: 10px; margin-bottom: 10px;'}
+      .col-xs-6{style: 'margin-top: 10px; margin-bottom: 14px;'}
         = link_to image_tag('/images/logo/logo_full.png', size: '130x50'), site.root_path
       .col-xs-6
-        .fav-buttons{style: 'font-size: 10px'}
+        .fav-buttons{style: 'font-size: 13px'}
           - if bookmark_user.present?
-            = link_to "<i class='glyphicon glyphicon-star'></i> Meus favoritos".html_safe, bookmarks_path, class: 'fav-button btn btn-primary'
+            = link_to "<i class='glyphicon glyphicon-star'></i> Meus favoritos".html_safe, bookmarks_path, class: 'fav-button btn btn-primary pull-right'
           - else
-            = link_to "<i class='glyphicon glyphicon-star'></i> Acessar favoritos".html_safe, new_session_path,  remote: true, class: 'fav-button'
+            = link_to "<i class='glyphicon glyphicon-star'></i> Acessar favoritos".html_safe, new_session_path,  remote: true, class: 'fav-button  pull-right'
           

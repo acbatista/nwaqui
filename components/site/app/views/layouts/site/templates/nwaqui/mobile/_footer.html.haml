@@ -7,7 +7,8 @@
             %h4.ft-col-title Anuncie
             %hr/
             %ul.detail-contact-info
-              = image_tag('/images/icon/logo_white.png')
+              %div{style: 'text-align: center'}
+                = image_tag('/images/icon/logo_white.png')
               %li
                 %i.fa.fa-map-marker>
                  Brasília
@@ -15,7 +16,7 @@
                 %i.fa.fa-envelope-o>
                 %a{:href => "mailto:dfaqui@dfaqui.com"} contato@dfaqui.com
         .col-md-3
-          .ft-about-us
+          .ft-about-us{style: 'text-align: justify'}
             %h4.ft-col-title= ::Page.dfaqui_title.html_safe
             %hr/
             .text-block

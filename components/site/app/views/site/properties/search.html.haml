@@ -4,26 +4,48 @@
       .noo-content.col-xs-12
         .recent-properties
           .properties.list
-            .properties-header
-              .col-md-4{style: 'padding-top: 20px;'}
-                %h1.page-title Imóveis
-              .col-md-3
-                %div
-                  %span{style: 'color: #004869; font-size: 35px; font-weight: bold; margin-top: 10px'}= @properties.count
-                  %span Imóveis encontrados
-              .col-md-4{style: 'padding-top: 20px;'}
-                %span.label.label-primary{style: 'margin-top: 10px; font-size: 100%'}
-                  Ordenar por
-                %span{style: 'margin-left: 20px;', class: (params[:filter_order] == 'value') ? 'bold' : ''}
-                  = link_to "Valor", params.merge({:filter_order => 'value'})
-                %span{style: 'margin-left: 20px;', class: (params[:filter_order] == 'address') ? 'bold' : ''}
-                  = link_to "Endereço", params.merge({:filter_order => 'address'})
-                %span{style: 'margin-left: 20px;', class: (params[:filter_order] == 'meter') ? 'bold' : ''}
-                  = link_to "M²", params.merge({:filter_order => 'meter'})
-            %br
-            %br
-            %br
-            %br
+            - if touch_device?
+              .properties-header
+                .col-md-4{style: 'padding-top: 20px;'}
+                  %h1.page-title Imóveis
+                .col-md-3
+                  %div
+                    %span{style: 'color: #004869; font-size: 35px; font-weight: bold; margin-top: 10px'}= @properties.count
+                    %span Imóveis encontrados
+                .col-md-4{style: 'padding-top: 20px;'}
+                  %span.label.label-primary{style: 'margin-top: 10px; font-size: 100%'}
+                    Ordenar por
+                  %span{style: 'margin-left: 20px;', class: (params[:filter_order] == 'value') ? 'bold' : ''}
+                    = link_to "Valor", params.merge({:filter_order => 'value'})
+                  %span{style: 'margin-left: 20px;', class: (params[:filter_order] == 'address') ? 'bold' : ''}
+                    = link_to "Endereço", params.merge({:filter_order => 'address'})
+                  %span{style: 'margin-left: 20px;', class: (params[:filter_order] == 'meter') ? 'bold' : ''}
+                    = link_to "M²", params.merge({:filter_order => 'meter'})
+              %br
+              %br
+              %br
+              %br
+            - else 
+              .properties-header
+                .col-md-4{style: 'padding-top: 20px;'}
+                  %h1.page-title Imóveis
+                .col-md-3
+                  %div
+                    %span{style: 'color: #004869; font-size: 35px; font-weight: bold; margin-top: 10px'}= @properties.count
+                    %span Imóveis encontrados
+                .col-md-4{style: 'padding-top: 20px;'}
+                  %span.label.label-primary{style: 'margin-top: 10px; font-size: 100%'}
+                    Ordenar por
+                  %span{style: 'margin-left: 20px;', class: (params[:filter_order] == 'value') ? 'bold' : ''}
+                    = link_to "Valor", params.merge({:filter_order => 'value'})
+                  %span{style: 'margin-left: 20px;', class: (params[:filter_order] == 'address') ? 'bold' : ''}
+                    = link_to "Endereço", params.merge({:filter_order => 'address'})
+                  %span{style: 'margin-left: 20px;', class: (params[:filter_order] == 'meter') ? 'bold' : ''}
+                    = link_to "M²", params.merge({:filter_order => 'meter'})
+              %br
+              %br
+              %br
+              %br
             .properties-content
               - @properties.each do |property|
                 %article.hentry

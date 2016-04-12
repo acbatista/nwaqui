@@ -1,8 +1,8 @@
 .noo-wrapper
   %section#search-box.wrap.search-box
-    .gsearch{style: 'padding-top: 0px; height: 190px;margin-bottom: 130px;'}
+    .gsearch{style: 'padding-top: 0px; height: 190px; margin-bottom: 20px;'}
       .container
-        .gsearch-info
+        .gsearch-info.gsearch-info-mobile
           .gsearch-info-content
             - if touch_device?
               %h6{style: 'color: white; font-weight: bold'} O NOROESTE TODO. AQUI.
@@ -15,10 +15,10 @@
           = simple_form_for :search, url: search_path, method: :get do |f|
             .gsearch-content.gsearch-mobile
               .col-xs-4
-                = f.input :by_commercial, as: :select, label: false, collection: Property.commercial_situations.map { |k,v| [k.humanize, v]},selected: params[:by_commercial], include_blank: "Você procura por", input_html: { name: 'by_commercial', id: 'by_commercial'}
+                = f.input :by_commercial, as: :select, label: false, collection: Property.commercial_situations.map { |k,v| [k.humanize, v]},selected: params[:by_commercial], include_blank: "Tipo", input_html: { name: 'by_commercial', id: 'by_commercial'}
                 
               .col-xs-4
-                = f.input :by_type, as: :select, label: false, collection: Property.type_properties.map { |k,v| [k.humanize, v]},selected: params[:by_type], include_blank: "Tipo de imóvel", input_html: { name: 'by_type', id: 'by_type'}
+                = f.input :by_type, as: :select, label: false, collection: Property.type_properties.map { |k,v| [k.humanize, v]},selected: params[:by_type], include_blank: "Situação", input_html: { name: 'by_type', id: 'by_type'}
                 
               .col-xs-4
                 = f.input :empty,label: false, as: :select, selected: params[:empty_one], include_blank: "selecione...",collection: [], input_html: { id: 'empty_one', name: 'option_one'}

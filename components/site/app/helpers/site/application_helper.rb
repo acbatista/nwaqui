@@ -24,5 +24,9 @@ module Site
         end
       end
     end
+
+    def whatsapp_button
+      link_to image_tag('/images/icon/whatsapp.png', size: '21x21'), "http://whatsapp:"
+    end
   end
 end
