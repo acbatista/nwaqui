@@ -22,7 +22,8 @@
       = f.input :type_property, as: :select, include_blank: false, collection: Property.type_properties.map {|k,v| [k.humanize, k]}
   .row
     .col-md-12
-      = f.input :description, input_html: { placeholder: "Descreva o imóvel", maxLength: 500}
+      = f.input :description, input_html: { placeholder: "Descreva o imóvel", maxLength: 500,style: 'min-height: 200px'}
+      .chars.pull-right
   %hr/
   .row
     .col-md-12
@@ -113,6 +114,22 @@
 :javascript
   $(document).ready(function() {
 
+    $("#property_description").on('keyup',function(){
+
+    var limit = 500;
+    var print = $(this).val().length;
+    var empty = limit - print;
+
+    $(".chars").text("caracteres restantes: " + empty);
+    });
+
+    $("#property_commercial_situation").on('change', function() {
+      if($(this).val() == "lançamento") {
+        $('.prediction').show()
+      } else {
+        $('.prediction').hide()
+      }
+    })
       
     $(".chosen-select").chosen({
       placeholder: "selecione...",
