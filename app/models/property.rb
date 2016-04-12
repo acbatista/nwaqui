@@ -44,6 +44,14 @@ class Property < ActiveRecord::Base
 
   def companies; Customer.where(id: self.company_id); end;
 
+
+  def calc_m2_value
+    value = self.value  ||= 0
+    area  = self.area   ||= 0
+
+    value / area
+  end
+
   def address_name
     "#{self.commercial_situation.humanize} - #{self.group.name.upcase} Bloco #{self.block.name} 
      #{self.unit}"

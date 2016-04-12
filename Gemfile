@@ -21,6 +21,9 @@ gem 'bootstrap-wysihtml5-rails'
 gem 'has_scope'
 gem 'remotipart', '~> 1.2'
 
+gem 'tinymce-rails'
+gem 'tinymce-rails-langs'
+
 gem 'fog'
 gem 'carrierwave',  '~> 0.10.0'
 

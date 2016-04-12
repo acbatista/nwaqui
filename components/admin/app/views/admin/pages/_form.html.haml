@@ -6,7 +6,7 @@
       = f.input :code, placeholder: "Digite um código"
   .row
     .col-md-12
-      = f.input :content, input_html: { class: 'wysihtml5'}
+      = f.input :content, input_html: { class: 'tinymce', rows: 20, cols: 80}
   .row
     .col-md-2
       = f.input :publish, as: :select

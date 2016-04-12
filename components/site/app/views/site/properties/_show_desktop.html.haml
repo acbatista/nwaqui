@@ -279,7 +279,7 @@
                     %span.col-xs-6.col-md-5.detail-field-label= @property.residencial? ? 'Unidade' : 'Loja' 
                     %span.col-xs-6.col-md-7.detail-field-value= @property.unit
                   .detail-field.row
-                    %span.col-xs-6.col-md-5.detail-field-label Quartos
+                    %span.col-xs-6.col-md-5.detail-field-label= @property.residencial? ? 'Quartos' : 'Salas'
                     %span.col-xs-6.col-md-7.detail-field-value= @property.rooms
                   .detail-field.row
                     %span.col-xs-6.col-md-5.detail-field-label= @property.residencial? ? 'Suites' : 'Banheiros'
@@ -293,32 +293,29 @@
                   .detail-field.row
                     %span.col-xs-6.col-md-5.detail-field-label Andar
                     %span.col-xs-6.col-md-7.detail-field-value= (@property.floor == 0) ? "térreo" : "#{@property.floor} º"
-                  .detail-field.row
-                    %span.col-xs-6.col-md-5.detail-field-label Valor M²
-                    %span.col-xs-6.col-md-7.detail-field-value= @property.value_m2
+
                   - if @property.aluguel?
                     .detail-field.row
                       %span.col-xs-6.col-md-5.detail-field-label Valor do Aluguel
                       %span.col-xs-6.col-md-7.detail-field-value
                         %span.amount
-                          = number_to_currency @property.value_rent
+                          = number_to_currency @property.value_rent  ||= "Sob consulta"
                   - else
                     .detail-field.row
                       %span.col-xs-6.col-md-5.detail-field-label Valor
                       %span.col-xs-6.col-md-7.detail-field-value
-                        %span.amount
-                          - if @property.value.to_s.empty? || @property.value == 0.0
-                            Sob consulta
-                          - else
-                            = number_to_currency @property.value
+                        %span.amount= number_to_currency @property.value ||= "Sob consulta"
+                  .detail-field.row
+                    %span.col-xs-6.col-md-5.detail-field-label Area(m2)
+                    %span.col-xs-6.col-md-7.detail-field-value= @property.area.to_i ||= "Sob consulta"
+                  - if !@property.aluguel?
+                    .detail-field.row
+                      %span.col-xs-6.col-md-5.detail-field-label Valor M²
+                      %span.col-xs-6.col-md-7.detail-field-value= number_to_currency @property.calc_m2_value
                   - if !@property.lançamento?
                     .detail-field.row
                       %span.col-xs-6.col-md-5.detail-field-label Valor do condomínio
-                      %span.col-xs-6.col-md-7.detail-field-value
-                        - if @property.project_value.to_s.empty?
-                          Sob consulta
-                        - else
-                          = number_to_currency @property.project_value
+                      %span.col-xs-6.col-md-7.detail-field-value= number_to_currency @property.project_value ||= "Sob consulta"
                   - if !@property.pronto?
                     .detail-field.row
                       %span.col-xs-6.col-md-5.detail-field-label Previsão de entrega
@@ -333,7 +330,7 @@
                   - if @property.customer.present?
                     .detail-field.row
                       %span.col-xs-6.col-md-5.detail-field-label Creci
-                      %span.col-xs-6.col-md-7.detail-field-value= @property.customer.creci
+                      %span.col-xs-6.col-md-7.detail-field-value= @property.customer.creci if @property.customer.present?
           / END FIND PROPERTY
           / START RECENT PROPERTY
           .block-sidebar.recent-property
