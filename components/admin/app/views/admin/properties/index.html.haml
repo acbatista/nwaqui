@@ -37,14 +37,14 @@
         %tbody
           - @properties.each do |property|
             %tr
-              %td.col-md-1= property.id
-              %td.col-md-1= property.customer_id
-              %td.col-md-1= property.address.name if property.address.present?
-              %td.col-md-2= property.general_address
-              %td.col-md-2= property.situation.humanize
-              %td.col-md-2= property.type_property.humanize
-              %td.col-md-1= property.status ? "Sim" : "Não"
-              %td.col-md-1
+              %td{style: 'width: 1%'}= property.id
+              %td{style: 'width: 1%'}= property.customer_id
+              %td{style: 'width: 10%'}= property.address.name if property.address.present?
+              %td{style: 'width: 30%'}= property.address_name
+              %td{style: 'width: 10%'}= property.situation.humanize
+              %td{style: 'width: 1%'}= property.type_property.humanize
+              %td{style: 'width: 1%'}= property.status ? "Sim" : "Não"
+              %td{style: 'width: 1%'}
                 .btn-group
                   %button.btn.btn-primary.dropdown-toggle.glyphicon.btn-xs.glyphicon-cog{'data-toggle' => 'dropdown', 'aria-haspopup' => 'true', 'aria-expanded' => false}
                   %ul.dropdown-menu
