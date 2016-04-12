@@ -6,10 +6,16 @@
   %section
     .container
       .section-title
-        %h3 Busca Exclusiva
+        - if touch_device?
+          %h6 Busca Exclusiva
+        - else
+          %h3 Busca Exclusiva
     - current_domain.buttons.where(publish: true).order(:order).each do |button|
-      .col-md-2
-        = link_to image_tag(button.image), button.link.to_s
+      .col-md-2.col-xs-4
+        - if touch_device?
+          = link_to image_tag(button.image, size: '80x80'), button.link.to_s
+        - else
+          = link_to image_tag(button.image), button.link.to_s
 
   %section#recent-.wrap.recent-properties
     .container
@@ -18,39 +24,45 @@
           %br/
           %br/
           %br/
-          %h3 Imóveis Destaques
+          - if touch_device?
+            %h6 Imóveis Destaques
+          - else
+            %h3 Imóveis Destaques
         .recent-properties-content
-          %ul
-            %li
+          .row
+            .col-md-12
               .property-row
                 - current_domain.specials.includes(:property).all.order(:order).each do |special|
                   - if special.property.present?
-                    %article.hentry.has-featured.mod1_home
-                      .property-featured
-                        %a.content-thumb{:href => "#{property_path(special.property)}"}
-                          - if special.property.images.present?
-                            %img.attachment-property-thumb.featured-thumb-home{:alt => "", :src => "#{special.property.images.order(:order).first.image_url}"}/
-                          - else
-                            %img.attachment-property-thumb.featured-thumb-home{:alt => "", :src => "https://nwaqui.s3.amazonaws.com/uploads/c0f5d31336b1d3c5c450cefebd261156.jpg"}/
-                          %span.property-category.new_name
-                            = "#{special.property.address_name} #{special.property.project_formated}"
-                        .property-detail.mod-detail
-                          .size
-                            %span
-                              = special.property.area
-                          .bedrooms
-                            %span
-                              = special.property.rooms
-                          .bathrooms
-                            %span
-                              = special.property.suit
-                          .size{class: "starfav_#{special.property.id}"}
-                            = star_fav(special.property)
+                    .col-md-3.col-xs-12
+                      %article.hentry.has-featured.mod1_home
+                        .property-featured
+                          %a.content-thumb{:href => "#{property_path(special.property)}"}
+                            - if special.property.images.present?
+                              %img.attachment-property-thumb.featured-thumb-home{:alt => "", :src => "#{special.property.images.order(:order).first.image_url}"}/
+                            - else
+                              %img.attachment-property-thumb.featured-thumb-home{:alt => "", :src => "https://nwaqui.s3.amazonaws.com/uploads/c0f5d31336b1d3c5c450cefebd261156.jpg"}/
+                            %span.property-category.new_name
+                              = "#{special.property.address_name} #{special.property.project_formated}"
+                          .property-detail.mod-detail
+                            .size
+                              %span
+                                = special.property.area
+                            .bedrooms
+                              %span
+                                = special.property.rooms
+                            .bathrooms
+                              %span
+                                = special.property.suit
+                            .size{class: "starfav_#{special.property.id}"}
+                              = star_fav(special.property)
 %br/
 %br/
-.container-fluid{style:'text-align: center; background-color: #18A3BE;'}
-  = image_tag '/images/fullbanner_body.png'
-  %br/
-.row
-  .col-md-12{style:'text-align: center; margin: 25px 0 25px 0'}
-    = image_tag '/images/responsive.png'
+- if touch_device?
+- else
+  .container-fluid{style:'text-align: center; background-color: #18A3BE;'}
+    = image_tag '/images/fullbanner_body.png'
+    %br/
+  .row
+    .col-md-12{style:'text-align: center; margin: 25px 0 25px 0'}
+      = image_tag '/images/responsive.png'

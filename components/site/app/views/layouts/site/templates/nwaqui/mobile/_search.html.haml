@@ -1,14 +1,16 @@
 .noo-wrapper
   %section#search-box.wrap.search-box
-    .gsearch
+    .gsearch{style: 'padding-top: 0px'}
       .container
         .gsearch-info
           .gsearch-info-content
-            %h1
+            - if touch_device?
+              %h6{style: 'color: white; font-weight: bold'} O NOROESTE TODO. AQUI.
+            - else 
               O NOROESTE TODO. AQUI.
-            %br/
-            %br/
-            %br/
+              %br/
+              %br/
+              %br/
         .gsearch-wrap 
           = simple_form_for :search, url: search_path, method: :get do |f|
             .gsearch-content
@@ -25,6 +27,7 @@
               .gsearch-action
                 .gsubmit
                   %input.btn.btn-deault{type: 'submit', value: 'Buscar'}
+    }
 
 :javascript
 

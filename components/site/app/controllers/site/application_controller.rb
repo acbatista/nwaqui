@@ -34,7 +34,12 @@ module Site
 
     def set_layout
       layout = domain?
-      "site/templates/#{layout}/application"
+
+      if touch_device?
+        "site/templates/#{layout}/mobile"
+      else
+        "site/templates/#{layout}/application"
+      end
     end
 
     helper_method :domain?

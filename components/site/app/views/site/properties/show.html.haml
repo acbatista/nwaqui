@@ -217,19 +217,28 @@
      
           .property-summary
             .row
-              .col-md-12
+              .col-md-12.col-xs-12
                 .property-desc
                   %h4.property-detail-title Descrição do Imóvel
                   %p
                     = @property.description
             %hr/
             .row
-              .col-md-4
-                = link_to image_tag("contact.png"), property_telephone_path(@property), remote: true
-              .col-md-4
-                = link_to image_tag("message.png"), new_property_message_path(@property), remote: true
-              .col-md-4
-                = link_to image_tag("tour.png"), @property.block.tour_360.to_s, target: '_blank'
+              .col-md-4.col-xs-4
+                - if touch_device?
+                  = link_to image_tag("contact.png", width: 80), property_telephone_path(@property), remote: true
+                - else
+                  = link_to image_tag("contact.png"), property_telephone_path(@property), remote: true
+              .col-md-4.col-xs-4
+                - if touch_device?
+                  = link_to image_tag("message.png", width: 80), new_property_message_path(@property), remote: true
+                - else
+                  = link_to image_tag("message.png"), new_property_message_path(@property), remote: true
+              .col-md-4.col-xs-4
+                - if touch_device?
+                  = link_to image_tag("tour.png", width: 80), @property.block.tour_360.to_s, target: '_blank'
+                - else
+                  = link_to image_tag("tour.png"), @property.block.tour_360.to_s, target: '_blank'
           .property-feature
             %h4.property-feature-title Atributos do Imóvel
             .property-feature-content.clearfix
