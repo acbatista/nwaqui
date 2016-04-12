@@ -4,6 +4,7 @@
       %td= special.order
       %td= special.property_id
       %td= special.property.address_name
+      %td= special.region_scope.name if special.region_scope.present?
       %td= special.status ? "sim" : "não"
       %td
         = link_to "", edit_special_path(special), remote: true, class: 'btn btn-success btn-xs glyphicon glyphicon-pencil'

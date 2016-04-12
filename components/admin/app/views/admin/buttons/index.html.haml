@@ -18,6 +18,7 @@
             %td Ordem
             %td Nome
             %td Imagem
+            %td Domínio
             %td Publicado?
             %td Ações
         %tbody 
@@ -26,6 +27,7 @@
               %td.col-md-1= "#{image.order} º"
               %td.col-md-8= image.name
               %td.col-md-l=link_to "visualizar", image.image.to_s, target: '_blank'
+              %td.col-md-l= image.region_scope.name if image.region_scope.present?
               %td.col-md-l= image.publish ? "Sim" : "Não"
               %td.col-md-2
                 = link_to "editar", edit_button_path(image), remote: true, class: 'btn btn-success btn-xs'

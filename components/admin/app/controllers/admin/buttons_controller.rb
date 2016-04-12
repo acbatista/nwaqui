@@ -33,7 +33,7 @@ module Admin
     private
 
     def set_params
-      params.require(:button).permit(:name, :image, :publish, :order, :link)
+      params.require(:button).permit(:name, :image, :publish, :order, :link, :region_scope_id)
     end
 
     def set_button

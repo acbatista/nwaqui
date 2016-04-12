@@ -35,7 +35,7 @@ module Admin
     end
 
     def set_params
-      params.require(:special).permit(:order, :property_id, :status)
+      params.require(:special).permit(:order, :property_id, :status, :region_scope_id)
     end
 
     def set_specials

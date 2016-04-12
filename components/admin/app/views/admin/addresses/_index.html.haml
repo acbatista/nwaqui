@@ -3,6 +3,7 @@
     %td.col-md-1= address.id
     %td= address.name
     %td= address.region
+    %td= address.region_scope.name if address.region_scope.present?
     %td.col-md-2
       = link_to "", address_groups_path(address), class: 'btn btn-success btn-xs glyphicon glyphicon-share-alt'
       = link_to "", edit_address_path(address), remote: true, class: 'btn btn-primary btn-xs glyphicon glyphicon-pencil'

@@ -8,8 +8,10 @@
     .col-md-12
       = f.input :link
   .row
-    .col-md-12
+    .col-md-6
       = f.input :image, as: :file
+    .col-md-6
+      = f.association :region_scope, label: "Domínio", include_blank: false
   %hr/
   .row
     .col-md-3

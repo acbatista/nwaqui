@@ -1,6 +1,6 @@
 module Site
   class ApplicationController < ActionController::Base
-    layout :domain?
+    layout :set_layout
 
     DOMAINS = %w(nwaqui asaaqui gamaaaqui)
 
@@ -19,20 +19,27 @@ module Site
 
     def domain?
 
-      @layout = "site/templates/dfaqui/application"
+      @domain = "dfaqui"
       
       DOMAINS.each do |domain|
-        @layout = "site/templates/#{domain}/application" if request.url.include? domain 
+        @domain = domain if request.url.include? domain 
       end    
 
-      return @layout
+      @domain
+    end
+
+    def current_domain
+      ::RegionScope.find_by_domain(domain?)
+    end
+
+    def set_layout
+      layout = domain?
+      "site/templates/#{layout}/application"
     end
 
     helper_method :domain?
+    helper_method :current_domain
 
-    #def set_layout
-    #  touch_device? ? 'site/mobile' : 'site/application'
-    #end
 
     def validate_session!
       if !session[:external_user_id].present? and !session_controller?

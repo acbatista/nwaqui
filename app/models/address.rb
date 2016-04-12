@@ -1,4 +1,6 @@
 class Address < ActiveRecord::Base
+  belongs_to :region_scope
+  
   has_many :blocks
   has_many :groups
   

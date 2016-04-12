@@ -1,4 +1,6 @@
 class Button < ActiveRecord::Base
+  belongs_to :region_scope
+  
   validates :name, :order, :link, :image, presence: true
   validates :order, numericality: true
 

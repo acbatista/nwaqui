@@ -6,6 +6,9 @@
       = f.association :property, label: "Nº imóvel", label_method: :id, include_blank: false
     .col-md-3
       = f.input :status,label: "Ativo?", as: :select, include_blank: false
+  .row
+    .col-md-12
+      = f.association :region_scope, label: "Domínio", include_blank: false
   %hr/
   .row
     .col-md-12

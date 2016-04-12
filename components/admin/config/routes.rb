@@ -3,6 +3,7 @@ Admin::Engine.routes.draw do
   root 'pages#home'
   
   resources :pages 
+  resources :region_scopes 
     
   resources :sessions do 
     collection do 

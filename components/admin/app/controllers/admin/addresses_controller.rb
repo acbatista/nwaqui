@@ -51,7 +51,7 @@ module Admin
     private
 
     def set_params
-      params.require(:address).permit(:name, :region)
+      params.require(:address).permit(:name, :region, :region_scope_id)
     end
 
     def set_address

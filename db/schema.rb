@@ -11,18 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160401180520) do
+ActiveRecord::Schema.define(version: 20160412121204) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "addresses", force: :cascade do |t|
     t.string   "name"
-    t.boolean  "status",     default: true
+    t.boolean  "status",          default: true
     t.string   "region"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.integer  "region_scope_id"
   end
+
+  add_index "addresses", ["region_scope_id"], name: "index_addresses_on_region_scope_id", using: :btree
 
   create_table "attributes", force: :cascade do |t|
     t.string   "name"
@@ -69,9 +72,12 @@ ActiveRecord::Schema.define(version: 20160401180520) do
     t.string   "name"
     t.boolean  "publish"
     t.string   "link"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "region_scope_id"
   end
+
+  add_index "buttons", ["region_scope_id"], name: "index_buttons_on_region_scope_id", using: :btree
 
   create_table "customers", force: :cascade do |t|
     t.string   "creci"
@@ -214,15 +220,24 @@ ActiveRecord::Schema.define(version: 20160401180520) do
 
   add_index "property_images", ["property_id"], name: "index_property_images_on_property_id", using: :btree
 
+  create_table "region_scopes", force: :cascade do |t|
+    t.string   "domain"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "specials", force: :cascade do |t|
     t.integer  "property_id"
     t.integer  "order"
     t.boolean  "status"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "region_scope_id"
   end
 
   add_index "specials", ["property_id"], name: "index_specials_on_property_id", using: :btree
+  add_index "specials", ["region_scope_id"], name: "index_specials_on_region_scope_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -248,4 +263,5 @@ ActiveRecord::Schema.define(version: 20160401180520) do
 
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
+  add_foreign_key "specials", "properties"
 end
