@@ -22,7 +22,7 @@ module Site
     end
 
     def search
-      @properties = apply_scopes(Property).all.order(:general_address)
+      @properties = apply_scopes(Property).all
     end
 
     def telephone
