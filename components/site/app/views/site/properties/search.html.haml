@@ -65,11 +65,9 @@
                           %span
                             %span.amount
                               - if property.aluguel?
-                                = number_to_currency property.value_rent
-                              - elsif property.value.to_s.empty?
-                                Sob consulta
+                                = number_to_currency property.value_rent ||=  "Sob consulta"
                               - else
-                                = number_to_currency property.value
+                                = number_to_currency property.value ||=  "Sob consulta"
                         .property-action
                           .property-links
                             %a{:href => "#{property_path(property)}"} Mais Detalhes
