@@ -29,9 +29,11 @@
   %hr/
   .row
     .col-md-3
-      = f.input :contact_email, input_html: { placeholder: "contato@"}
+      = f.input :contact_email, input_html: { placeholder: "somente números"}
     .col-md-3
       = f.input :telephone, input_html: { placeholder: "somente números"}
+    .col-md-3
+      = f.input :telephone_optional, input_html: { placeholder: "somente números"}
     .col-md-3
       = f.input :celphone, input_html: { placeholder: "somente números"}
   %hr/

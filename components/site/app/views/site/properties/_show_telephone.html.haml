@@ -7,10 +7,10 @@
   .row
     .col-md-4
       %label Telefone
-      %p= @property.customer.telephone
+      %p= @property.customer.telephone ||= "não informado"
     .col-md-4
       %label Telefone Secundário
-      %p= @property.customer.telephone
+      %p= @property.customer.telephone_optional ||= "não informado"
     .col-md-4
       %label Celular
-      %p= @property.customer.celphone
+      %p= @property.customer.celphone ||= "não informado"

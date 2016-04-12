@@ -17,11 +17,7 @@ module Admin
 
     def create
       @customer = Customer.new(set_params)
-      
-      unless params[:customer][:password].present?
-        params[:customer].delete :password
-        params[:customer].delete :password_confirm
-      end
+
 
       if @customer.save
         flash[:success] = t :success
@@ -36,6 +32,12 @@ module Admin
 
     def update
 
+      if params[:customer][:password].blank? && params[:customer][:password_confirmation].blank?
+        params[:customer].delete(:password)
+        params[:customer].delete(:password_confirmation)
+      else
+        @customer.password_change = true
+      end
 
       if @customer.update(set_params)
         flash[:success] = t :success
@@ -62,7 +64,7 @@ module Admin
                                        :cnpj, :cpf, :type_client, :username, :password,
                                        :password_confirm, :address, :cep, :uf, :creci,
                                        :city, :contact_email, :cadastre_email, :telephone,
-                                       :celphone, :responsible_telephone, :responsible_name)
+                                       :celphone, :responsible_telephone, :telephone_optional, :responsible_name)
     end
 
   end

@@ -6,12 +6,12 @@ class Customer < ActiveRecord::Base
   
   default_scope {order(:id)}
 
-  attr_accessor :password_confirm
+  attr_accessor :password_confirm, :password_change
 
   validates :type_client, :creci, presence: true
   validates :cep, :uf, :city, :address, :fantasy_name, :responsible_name, presence: true
   validates :telephone, :responsible_telephone, numericality: true, presence: true
-  validates :celphone, numericality: true, allow_blank: true
+  validates :celphone, :telephone_optional, numericality: true, allow_blank: true
   validates :uf, length: {maximum: 2, minimum: 2}
   validates :contact_email, :cadastre_email, email: true, presence: true
 
@@ -22,13 +22,14 @@ class Customer < ActiveRecord::Base
   validates :username, uniqueness: true, presence: true
   validates :password, :password_confirm, presence: true, length: { minimum: 6, maximum: 28}, on: :create
 
-  validate  :password_valid?, on: :create
+  validate  :password_valid?, if: :password_update?
 
   validates :logo_path, file_size: { less_than_or_equal_to: 10.megabytes.to_i,
                                  message: "Arquivo não pode exceder 10 MB" }
 
   validates :logo_path, file_content_type: { allow: ['image/jpeg', 'image/png'],
                                          message: 'Somente arquivos .jpg ou .png' }
+
 
   mount_uploader :logo_path, ::ImageUploader 
 
@@ -41,6 +42,10 @@ class Customer < ActiveRecord::Base
   end
   
   private
+
+  def password_update?
+    self.password_change.present?
+  end
 
   def password_valid?
     errors.add(:password, 'Senhas não são iguais') if self.password != self.password_confirm

@@ -23,3 +23,4 @@ pt-BR:
         username: "Credencial"
         password: "Senha"
         password_confirm: "Repita a senha"
+        telephone_optional: "Telefone opcional"
