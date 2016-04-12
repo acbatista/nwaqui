@@ -19,7 +19,7 @@
             %br
             %br
             .properties-content
-              - @properties.each do |property|
+              - @properties.order([:id, :customer_id]).each do |property|
                 %article.hentry
                   .property-featured
                     %a.content-thumb{:href => "#{property_path(property)}"}
