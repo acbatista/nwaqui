@@ -4,7 +4,10 @@
       .recent-properties-inner
         .section-title{style: 'text-align: center'}
           %br/
-          %h3 Lista de imóveis
+          %br/
+          %br/
+          %h3
+            Lista de imóveis
           %b Link de compartilhamento
           = text_field :link, 'link', value: "#{request.original_url}", class: 'col-md-12'
       %br/
@@ -29,4 +32,4 @@
                 %td= bookmark.property.situation.humanize
                 %td= bookmark.property.commercial_situation.humanize
                 %td= bookmark.property.address_name
-                %td= link_to "Acessar", property_path(bookmark.property), class: 'btn btn-success btn-xs'
+                %td= link_to "Acessar", "http://#{bookmark.property.address.region_scope.domain}.com/site/imoveis/#{bookmark.property_id}", class: 'btn btn-success btn-xs'
