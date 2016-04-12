@@ -5,8 +5,10 @@
         .recent-properties
           .properties.list
             .properties-header
-              .col-md-4{style: 'padding-top: 20px;'}
-                %h1.page-title Imóveis
+              .col-md-5{style: 'padding-top: 20px;'}
+                %h1.page-title
+                  %b Listagem Imóveis
+                %h6= link_to "Voltar", :back
               .col-md-3
                 %div
                   %span{style: 'color: #004869; font-size: 35px; font-weight: bold; margin-top: 10px'}= @properties.count
@@ -14,6 +16,10 @@
               .col-md-4{style: 'padding-top: 20px;'}
                 %span.label.label-primary{style: 'margin-top: 10px; font-size: 100%'}
                   Ordenar por
+                %span{style: 'margin-left: 20px;'}
+                  = link_to "valor", '#'
+                %span{style: 'margin-left: 20px;'}
+                  = link_to "endereço", '#'
             %br
             %br
             %br
@@ -29,15 +35,15 @@
                         %img.thumb-list{:alt => "", :src => "/images/icon/image404.png"}/
                     %span.property-label
                       = property.commercial_situation
-                    %span.property-category
-                      %a{:href => "#{property_path(property)}", :target => '_blank'}
-                        = property.address_name
                   .property-wrap
                     %h2.property-title
-                      %a{:href => "#{property_path(property)}", :title => "#{property.name}", :target => '_blank'}
+                      %a{:href => "#{property_path(property)}", :title => "#{property.name}"}
                         = property.address_name
                         %span.pull-right
                           %img{:alt => "", :src => "#{property.customer.logo_path.url}", :width => "80", style: "border: 1px solid #D8D4D4;"}
+                      %small
+                        %br/
+                        %p{style: 'margin-top: 10px'}= property.project
                     .property-excerpt
                       %p
                         = property.description
@@ -88,6 +94,9 @@
                         .bedrooms
                           %span
                             = property.rooms
+                        .bathrooms
+                          %span
+                            = "#{property.suit}"
 
                   .property-action.property-fullwidth-action
                     .property-links

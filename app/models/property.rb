@@ -48,7 +48,7 @@ class Property < ActiveRecord::Base
 
   def address_name
     "#{self.commercial_situation.humanize} - #{self.group.name.upcase} Bloco #{self.block.name} 
-     #{self.unit} #{project_formated}"
+     #{self.unit}"
   end
 
   def project_formated
