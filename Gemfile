@@ -7,7 +7,6 @@ gem 'rails', '4.2.5.1'
 gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'turbolinks'
-gem 'sass-rails'
 
 gem 'simple_form'
 gem 'haml-rails'
