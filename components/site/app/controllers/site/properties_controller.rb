@@ -31,7 +31,7 @@ module Site
       when 'meter'
         @properties = @properties.order('area ASC')
       else
-        @properties = @properties.order([:customer_id, :id])
+        @properties = @properties.order('RANDOM()')
       end
     end
 

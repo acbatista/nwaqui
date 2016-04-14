@@ -29,6 +29,8 @@
               .properties-header
                 .col-md-4{style: 'padding-top: 20px;'}
                   %h1.page-title Imóveis
+                  %br/
+                  = link_to "Voltar", site.root_path, class: 'btn btn-primary'
                 .col-md-3
                   %div
                     %span{style: 'color: #004869; font-size: 35px; font-weight: bold; margin-top: 10px'}= @properties.count
@@ -83,13 +85,6 @@
                           %span
                             = "#{property.suit}"
                       .property-info
-                        .property-price
-                          %span
-                            %span.amount
-                              - if property.aluguel?
-                                = number_to_currency property.value_rent ||=  "Sob consulta"
-                              - else
-                                = number_to_currency property.value ||=  "Sob consulta"
                         .property-action
                           .property-links
                             %a{:href => "#{property_path(property)}"} Mais Detalhes
@@ -102,11 +97,15 @@
                           %span
                             %span.amount
                               - if property.aluguel?
-                                = number_to_currency property.value_rent
-                              - elsif property.value.to_s.empty?
-                                Sob consulta
+                                - if property.value_rent.to_s.empty? || property.value_rent == 0
+                                  Sob consulta
+                                - else
+                                  = number_to_currency(property.value_rent)
                               - else
-                                = number_to_currency property.value
+                                - if property.value.to_s.empty? || property.value == 0
+                                  Sob consulta
+                                - else
+                                  = number_to_currency(property.value)
                         .size
                           %span
                             = property.area

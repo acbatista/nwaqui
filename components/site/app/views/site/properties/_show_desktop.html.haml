@@ -185,8 +185,8 @@
                     %small
                     = link_to "Voltar para listagem", :back, class: 'btn btn-primary'
               .row
-                .col-md-6{style: 'margin-top: 25px; font-size: 45px'}
-                  %div{class: "starfav_#{@property.id}"}= star_fav(@property.id)
+                .col-md-12{style: 'margin-top: 25px; font-size: 45px'}
+                  %div{class: "starfav_#{@property.id} pull-right"}= star_fav(@property.id)
                 
               .row
                 .col-md-6
@@ -195,7 +195,7 @@
                     %h5
                       %i= @property.project 
           .property-featured.clearfix
-            #jssor_1{:style => "position: relative; margin: 0 auto; top: 0px; left: 0px; width: 800px; height: 456px; overflow: hidden; visibility: hidden; background-color: #24262e;"}
+            #jssor_1{:style => "position: relative; margin: 0 auto; top: 0px; left: 0px; width: 800px; height: 456px; overflow: hidden; visibility: hidden; background-color: #eaeaea;"}
               / Loading Screen
               %div{"data-u" => "loading", :style => "position: absolute; top: 0px; left: 0px;"}
                 %div{:style => "filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"}
@@ -306,11 +306,11 @@
                       %span.col-xs-6.col-md-7.detail-field-value
                         %span.amount= number_to_currency @property.value ||= "Sob consulta"
                   .detail-field.row
-                    %span.col-xs-6.col-md-5.detail-field-label Area(m2)
+                    %span.col-xs-6.col-md-5.detail-field-label Área(m²)
                     %span.col-xs-6.col-md-7.detail-field-value= @property.area.to_i ||= "Sob consulta"
                   - if !@property.aluguel?
                     .detail-field.row
-                      %span.col-xs-6.col-md-5.detail-field-label Valor M²
+                      %span.col-xs-6.col-md-5.detail-field-label Valor(m²)
                       %span.col-xs-6.col-md-7.detail-field-value= number_to_currency @property.calc_m2_value
                   - if !@property.lançamento?
                     .detail-field.row
