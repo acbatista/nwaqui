@@ -38,12 +38,14 @@
       = f.input :celphone, input_html: { placeholder: "somente números"}
   %hr/
   .row
-    .col-md-4
+    .col-md-3
       = f.input :responsible_name, input_html: { placeholder: "Digite o nome do responsável"}
-    .col-md-4
+    .col-md-3
       = f.input :cadastre_email, input_html: { placeholder: "Digite o e-mail do responsável"}
     .col-md-3
       = f.input :responsible_telephone, input_html: { placeholder: "somente números"}
+    .col-md-3
+      = f.input :responsible_celphone, label: "Celular do responsável", input_html: { placeholder: "somente números"}
   %hr/
   .row
     .col-md-6

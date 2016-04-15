@@ -63,7 +63,7 @@ module Admin
       params.require(:customer).permit(:logo_path, :social_reason, :fantasy_name,
                                        :cnpj, :cpf, :type_client, :username, :password,
                                        :password_confirm, :address, :cep, :uf, :creci,
-                                       :city, :contact_email, :cadastre_email, :telephone,
+                                       :city, :responsible_celphone, :contact_email, :cadastre_email, :telephone,
                                        :celphone, :responsible_telephone, :telephone_optional, :responsible_name)
     end
 
