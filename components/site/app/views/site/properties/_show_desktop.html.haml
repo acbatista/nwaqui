@@ -317,7 +317,11 @@
                   - if !@property.lançamento?
                     .detail-field.row
                       %span.col-xs-6.col-md-5.detail-field-label Valor do condomínio
-                      %span.col-xs-6.col-md-7.detail-field-value= number_to_currency @property.project_value ||= "Sob consulta"
+                      %span.col-xs-6.col-md-7.detail-field-value 
+                        - if @property.project_value.to_i > 0
+                          number_to_currency @property.project_value
+                        - else
+                          Sob consulta
                   - if !@property.pronto?
                     .detail-field.row
                       %span.col-xs-6.col-md-5.detail-field-label Previsão de entrega
