@@ -5,7 +5,7 @@ class Page < ActiveRecord::Base
   validates :title, presence: true, uniqueness: true
 
   def self.dfaqui_title
-    "DF Aqui"
+    self.find_by_code('df_aqui').title rescue ""
   end
 
   def self.dfaqui_content
