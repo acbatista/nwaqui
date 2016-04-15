@@ -13,7 +13,7 @@ class Customer < ActiveRecord::Base
   validates :telephone, :responsible_telephone, numericality: true, presence: true
   validates :celphone, :telephone_optional, numericality: true, allow_blank: true
   validates :uf, length: {maximum: 2, minimum: 2}
-  validates :contact_email, :cadastre_email, email: true, presence: true
+  validates :contact_email, :cadastre_email, :contact_email_optional,email: true, presence: true
 
   validates :cpf, cpf: true, presence: true, if: :is_cpf?
   validates :cnpj, cnpj: true, presence: true, if: :is_cnpj?

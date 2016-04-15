@@ -16,6 +16,8 @@
           .col-md-3
             = f.input :by_type, label: 'Tipo', as: :select, collection: Property.type_properties.map {|k,v| [k.humanize, v]}, input_html: { name: 'by_type'}, include_blank: "Todos", selected: params[:by_type]
           .col-md-3
+            = f.input :by_commercial, label: 'Estado', as: :select, collection: Property.commercial_situations.map {|k,v| [k.humanize, v]}, input_html: { name: 'by_commercial'}, include_blank: "Todos", selected: params[:by_commercial]
+          .col-md-3
             = f.submit "Filtrar lista", name: nil, class: 'btn btn-primary', style: "margin-top: 24px", data: { disable_with: t(:disable_with)}
 
   %hr/ 
@@ -28,6 +30,7 @@
             %th Cidade/Região
             %th Endereço
             %th Situação
+            %th Empreendimento
             %th Tipo
             %th Ativo?
             %th Ação
@@ -38,6 +41,7 @@
               %td.col-md-1= property.address.name if property.address.present?
               %td.col-md-2= property.general_address
               %td.col-md-2= property.situation.humanize
+              %td.col-md-2= property.project
               %td.col-md-2= property.type_property.humanize
               %td.col-md-1= property.status ? "Sim" : "Não"
               %td.col-md-1

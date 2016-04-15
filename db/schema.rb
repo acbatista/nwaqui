@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 20160415114324) do
     t.string   "fantasy_name"
     t.string   "cnpj"
     t.string   "cpf"
-    t.integer  "type_client",           default: 0
+    t.integer  "type_client",            default: 0
     t.string   "address"
     t.string   "cep"
     t.string   "uf"
@@ -100,13 +100,14 @@ ActiveRecord::Schema.define(version: 20160415114324) do
     t.string   "username"
     t.string   "password"
     t.string   "token"
-    t.boolean  "token_status",          default: true
+    t.boolean  "token_status",           default: true
     t.date     "last_signed"
-    t.boolean  "status",                default: true
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.boolean  "status",                 default: true
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.string   "telephone_optional"
     t.string   "responsible_celphone"
+    t.string   "contact_email_optional"
   end
 
   add_index "customers", ["username"], name: "index_customers_on_username", unique: true, using: :btree

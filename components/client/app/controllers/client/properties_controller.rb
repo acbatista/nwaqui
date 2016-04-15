@@ -6,7 +6,9 @@ module Client
 
     has_scope :by_type
     has_scope :by_situation
-
+    has_scope :by_situation
+    has_scope :by_commercial
+    
 
     def index
       @properties = apply_scopes(Property).where(customer_id: current_user.id).order('id DESC')

@@ -7,6 +7,7 @@ module Admin
     has_scope :by_customer
     has_scope :by_type
     has_scope :by_situation
+    has_scope :by_commercial
     
     def index
       @properties = apply_scopes(Property).all.order('id DESC')
