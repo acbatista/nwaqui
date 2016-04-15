@@ -12,7 +12,13 @@
                   - else
                     %img.attachment-property-thumb.featured-thumb-home{:alt => "", :src => "https://nwaqui.s3.amazonaws.com/uploads/c0f5d31336b1d3c5c450cefebd261156.jpg"}/
                   %span.property-category.new_name
-                    = "#{special.property.address_name} #{special.property.project_formated}"
+                    %div{class: special.property.commercial_situation, style:'text-align: center'}
+                      = "#{special.property.address_name_less}"
+                    %div{style:'text-align: center'}
+                      - if special.property.project.empty?
+                        = "#{special.property.project.humanize} Bloco #{special.property.block.name}  #{special.property.unit}"
+                      - else
+                        = special.property.project.humanize
                 .property-detail.mod-detail
                   .size
                     %span

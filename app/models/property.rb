@@ -57,6 +57,10 @@ class Property < ActiveRecord::Base
      #{self.unit}"
   end
 
+  def address_name_less
+    "#{self.commercial_situation.humanize} - #{self.group.name.upcase}"
+  end
+
   def project_formated
     "- #{project}"
   end
