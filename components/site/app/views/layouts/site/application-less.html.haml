@@ -13,3 +13,6 @@
     .site
       = render "layouts/site/templates/#{domain?}/desktop/header"
       = yield
+    #modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "modal", :role => "dialog", :tabindex => "-1", :style => 'z-index: 9999;'}
+      .modal-dialog
+        .modal-content
