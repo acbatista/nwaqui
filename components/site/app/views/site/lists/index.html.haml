@@ -5,7 +5,7 @@
         .recent-properties
           .properties.list
             .properties-header
-              .col-md-5{style: 'padding-top: 20px;'}
+              .col-md-4{style: 'padding-top: 20px;'}
                 %h1.page-title
                   %b Listagem Imóveis
                 %h6= link_to "Voltar", :back, class: 'btn btn-primary'
@@ -13,7 +13,7 @@
                 %div
                   %span{style: 'color: #004869; font-size: 35px; font-weight: bold; margin-top: 10px'}= @properties.count
                   %span Imóveis encontrados
-              .col-md-4{style: 'padding-top: 20px;'}
+              .col-md-5{style: 'padding-top: 20px;'}
                 %span.label.label-primary{style: 'margin-top: 10px; font-size: 100%'}
                   Ordenar por
                 %span{style: 'margin-left: 20px;', class: (params[:filter_order] == 'value') ? 'bold' : ''}
@@ -22,6 +22,15 @@
                   = link_to "Endereço", params.merge({:filter_order => 'address'})
                 %span{style: 'margin-left: 20px;', class: (params[:filter_order] == 'meter') ? 'bold' : ''}
                   = link_to "M²", params.merge({:filter_order => 'meter'})
+              .col-md-5{style: 'padding-top: 20px;'}
+                %span.label.label-primary{style: 'margin-top: 10px; font-size: 100%'}
+                  Filtrar por
+                %span{style: 'margin-left: 20px;', class: (params[:by_commercial] == '0') ? 'bold' : ''}
+                  = link_to "Lançamento", params.merge({:by_commercial => 0})
+                %span{style: 'margin-left: 20px;', class: (params[:by_commercial] == '1') ? 'bold' : ''}
+                  = link_to "Venda", params.merge({:by_commercial => 1})
+                %span{style: 'margin-left: 20px;', class: (params[:by_commercial] == '2') ? 'bold' : ''}
+                  = link_to "Aluguel", params.merge({:by_commercial => 2})
             %br
             %br
             %br
