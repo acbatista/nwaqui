@@ -10,8 +10,7 @@ class Customer < ActiveRecord::Base
 
   validates :type_client, :creci, presence: true
   validates :cep, :uf, :city, :address, :fantasy_name, :responsible_name, presence: true
-  validates :telephone, :responsible_telephone, numericality: true, presence: true
-  validates :celphone, :telephone_optional, numericality: true, allow_blank: true
+  validates :telephone, :responsible_telephone, presence: true
   validates :uf, length: {maximum: 2, minimum: 2}
   validates :contact_email, :cadastre_email, :contact_email_optional,email: true, presence: true
 
@@ -40,6 +39,7 @@ class Customer < ActiveRecord::Base
   def email
     self.cadastre_email
   end
+  
   
   private
 

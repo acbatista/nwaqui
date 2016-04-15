@@ -65,6 +65,7 @@ class Property < ActiveRecord::Base
     self.unit.present? ? " - Nº #{self.unit}" : ""
   end
 
+
   private
 
   def is_lançamento?
