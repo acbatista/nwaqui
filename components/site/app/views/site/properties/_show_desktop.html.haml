@@ -185,15 +185,13 @@
                     %small
                     = link_to "Voltar para listagem", :back, class: 'btn btn-primary'
               .row
-                .col-md-12{style: 'margin-top: 25px; font-size: 45px'}
-                  %div{class: "starfav_#{@property.id} pull-right"}= star_fav(@property.id)
-                
-              .row
-                .col-md-6
+                .col-md-10
                   %small
                     %h4= " #{@property.address_name}"
                     %h5
                       %i= @property.project 
+                .col-md-2{style: 'margin-top: 25px; font-size: 45px'}
+                  %div{class: "starfav_#{@property.id} pull-right"}= star_fav(@property.id)
           .property-featured.clearfix
             #jssor_1{:style => "position: relative; margin: 0 auto; top: 0px; left: 0px; width: 800px; height: 456px; overflow: hidden; visibility: hidden; background-color: #eaeaea;"}
               / Loading Screen
