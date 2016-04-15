@@ -309,19 +309,16 @@
                             Sob consulta
                   .detail-field.row
                     %span.col-xs-6.col-md-5.detail-field-label Área (m²)
-                    %span.col-xs-6.col-md-7.detail-field-value=
+                    %span.col-xs-6.col-md-7.detail-field-value
                       - if @property.area.to_i > 0
-                        @property.area.to_i
+                        = @property.area.to_i
                       - else 
                         Sob consulta
                   - if !@property.aluguel?
                     .detail-field.row
                       %span.col-xs-6.col-md-5.detail-field-label Valor (m²)
                       %span.col-xs-6.col-md-7.detail-field-value
-                        - if @property.calc_m2_value.to_i > 0
-                          = number_to_currency @property.calc_m2_value
-                        - else
-                          Sob consulta
+                        Sob consulta
                   - if !@property.lançamento?
                     .detail-field.row
                       %span.col-xs-6.col-md-5.detail-field-label Valor do condomínio
