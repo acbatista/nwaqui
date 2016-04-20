@@ -266,4 +266,5 @@ ActiveRecord::Schema.define(version: 20160415114324) do
 
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
+  add_foreign_key "specials", "properties"
 end

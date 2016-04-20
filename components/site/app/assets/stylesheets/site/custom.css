@@ -1,18 +1,32 @@
+
+.properties .hentry .property-featured .property-label {
+  width: 100% !important;
+  text-align: center !important;
+}
+
+.label-down {
+  top: 32px !important;
+}
+.label-top{
+  top: 0px !important;
+}
+
 .bold {
+
   font-weight: bold;
   font-size: 18px;
 }
 
 .aluguel {
-  background-color: #229780;
+  background-color: #229780 !important;
 }
 
 .lançamento {
-  background-color: #74528a;
+  background-color: #74528a !important;
 }
 
 .venda {
-  background-color: #bf9632;
+  background-color: #bf9632 !important;
 }
 
 .gsearch-info-mobile {
@@ -69,9 +83,7 @@
 .property-category div {
   padding: 5px !important;
 }
-.properties .hentry .property-featured .property-label{
-  top: 1px !important;
-}
+
 .gsearch-info-content h1 {
   color:white;
   font-weight: bold;

@@ -49,7 +49,7 @@
               %br
               %br
             .properties-content
-              - @properties.each do |property|
+              - @properties.each do |property|  
                 %article.hentry
                   .property-featured
                     %a.content-thumb{:href => "#{property_path(property)}"}
@@ -57,8 +57,13 @@
                         %img.thumb-list{:alt => "", :src => "#{property.images.order(:order).first.image}"}/
                       - else
                         %img.thumb-list{:alt => "", :src => "/images/icon/image404.png"}/
-                    %span.property-label
-                      = property.commercial_situation
+                    %span.property-label.label-top{class: property.commercial_situation}
+                      = property.address_name_less
+                    %span.property-label.label-down
+                      - if property.project.empty?
+                        = "#{property.project.humanize} Bloco #{property.block.name}  #{property.unit}"
+                      - else
+                        = property.project.humanize
                   .property-wrap
                     %h2.property-title
                       %a{:href => "#{property_path(property)}", :title => "#{property.name}"}
