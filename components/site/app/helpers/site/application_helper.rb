@@ -25,8 +25,9 @@ module Site
       end
     end
 
-    def whatsapp_button
-      link_to image_tag('/images/icon/whatsapp.png', size: '21x21'), "http://whatsapp:"
+    def whatsapp_button(address)
+      link = property_url(address.id)
+      link_to image_tag('/images/icon/whatsapp.png', size: '21x21'), "whatsapp://send?text=#{address.address_name} - Acesse #{link}"
     end
   end
 end

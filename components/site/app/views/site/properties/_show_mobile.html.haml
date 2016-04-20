@@ -185,15 +185,12 @@
               %br/
               .row
                 .col-md-12.col-xs-12{style: 'margin-top: 25px; font-size: 45px'}
-                  %div{class: "starfav_#{@property.id}"}= star_fav(@property.id)
 
               .row
                 .col-xs-1
-                  = whatsapp_button
-                .col-xs-3
-                  = facebook_button
-                .col-xs-2{style: 'padding-top: 4px'}
-                  = google_plus_button
+                  %div{class: "starfav_#{@property.id}"}= star_fav(@property.id)
+                .col-xs-1
+                  = whatsapp_button(@property)
               .row
                 .col-md-12.col-xs-12
                   %small
