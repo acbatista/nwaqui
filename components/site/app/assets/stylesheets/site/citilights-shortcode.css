@@ -826,9 +826,11 @@
 	font-size: 14px;
 }
 
+/*
 .recent-properties .recent-properties-content .property-row .hentry .property-detail > div.size {
 	width: 50%;
 }
+*/
 
 .recent-properties .recent-properties-content .property-row .hentry .property-detail > div.bathrooms {
 	border-right: 1px solid #e5e5e5;

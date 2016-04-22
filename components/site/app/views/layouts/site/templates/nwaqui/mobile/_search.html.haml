@@ -22,13 +22,13 @@
                 
               .col-xs-4
                 = f.input :empty,label: false, as: :select, selected: params[:empty_one], include_blank: "selecione...",collection: [], input_html: { id: 'empty_one', name: 'option_one'}
-
+            .gsearch-content.gsearch-mobile
               .col-xs-4
                 = f.input :empty,label: false, as: :select,  selected: params[:by_group], include_blank: "selecione...",collection: [], input_html: { id: 'by_group', name: 'by_group'}
               .col-xs-4
                 = f.input :by_detail_group,label: false, as: :select,  selected: params[:by_detail_group], include_blank: "selecione...",collection: [], input_html: { id: 'by_detail_group', name: 'by_detail_group'}
-              .gsearch-action.gsearch-action-mobile
-                %input.btn.btn-primary{type: 'submit', value: 'Buscar'}
+              %div{style: 'display: block;vertical-align: top; padding: 0 0px 40px;'}
+                %input.btn.btn-primary{type: 'submit', value: 'Buscar', style: "margin-left: 15px;  height: 30px; font-weigth: bold"}
 
 :javascript
 

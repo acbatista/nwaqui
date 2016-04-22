@@ -3,7 +3,7 @@
     .property-row
       - current_domain.specials.includes(:property).all.order(:order).each do |special|
         - if special.property.present?
-          .col-md-3.col-xs-12
+          .col-xs-12{style: 'padding-left: 0px;'}
             %article.hentry.has-featured.mod1_home
               .property-featured
                 %a.content-thumb{:href => "#{property_path(special.property)}"}
