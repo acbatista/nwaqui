@@ -36,16 +36,21 @@
             %br
             %br
             .properties-content
-              - @properties.each do |property|
+               - @properties.each do |property|  
                 %article.hentry
                   .property-featured
-                    %a.content-thumb{:href => "#{property_path(property)}", :target => '_blank'}
+                    %a.content-thumb{:href => "#{property_path(property)}"}
                       - if property.images.present?
-                        %img.thumb-list{:alt => "", :src => "#{property.images.first.image}"}/
+                        %img.thumb-list{:alt => "", :src => "#{property.images.order(:order).first.image}"}/
                       - else
                         %img.thumb-list{:alt => "", :src => "/images/icon/image404.png"}/
-                    %span.property-label
-                      = property.commercial_situation
+                    %span.property-label.label-top{class: property.commercial_situation}
+                      = property.address_name_less
+                    %span.property-label.label-down
+                      - if property.project.empty?
+                        = "#{property.project.humanize} Bloco #{property.block.name}  #{property.unit}"
+                      - else
+                        = property.project.humanize
                   .property-wrap
                     %h2.property-title
                       %a{:href => "#{property_path(property)}", :title => "#{property.name}"}
@@ -72,15 +77,6 @@
                           %span
                             = "#{property.suit}"
                       .property-info
-                        .property-price
-                          %span
-                            %span.amount
-                              - if property.aluguel?
-                                = number_to_currency property.value_rent
-                              - elsif property.value.to_s.empty?
-                                Sob consulta
-                              - else
-                                = number_to_currency property.value
                         .property-action
                           .property-links
                             %a{:href => "#{property_path(property)}"} Mais Detalhes
@@ -92,12 +88,16 @@
                         .property-price
                           %span
                             %span.amount
-                              - if property.aluguel? 
-                                = number_to_currency property.value_rent
-                              - elsif property.value.to_s.empty?
-                                Sob consulta
+                              - if property.aluguel?
+                                - if property.value_rent.to_s.empty? || property.value_rent == 0
+                                  Sob consulta
+                                - else
+                                  = number_to_currency(property.value_rent)
                               - else
-                                = number_to_currency property.value
+                                - if property.value.to_s.empty? || property.value == 0
+                                  Sob consulta
+                                - else
+                                  = number_to_currency(property.value)
                         .size
                           %span
                             = property.area
@@ -107,11 +107,12 @@
                             = property.rooms
                         .bathrooms
                           %span
-                            = "#{property.suit}"
-
+                            = property.suit
+                        .size{class: "starfav_#{property.id}"}
+                          = star_fav(property.id)
                   .property-action.property-fullwidth-action
                     .property-links
                       %a{:href => "#{property_path(property)}"} Mais Detalhes
                     .property-links.property-invese-link-mod
-                      %a{:href => "#{property.block.tour_360}", :target => '_blank'}
+                      %a{:href => "#{property.block.tour_360}"}
                         %img{:alt => "", :src => "/images/icon/icon-360.png"}/
