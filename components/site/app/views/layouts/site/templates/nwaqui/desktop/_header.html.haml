@@ -3,8 +3,8 @@
     .row{style: 'padding: 8px;'}
       .col-md-8
         = link_to image_tag('/images/icon/botoes_topo_segmentos_03.png', width: '300x100'), site.root_path, style: 'margin-right: 30px;'
-        = link_to image_tag('/images/icon/botoes_topo_segmentos_05.png', width: '67'), '#'
-        = link_to image_tag('/images/icon/botoes_topo_segmentos_07.png', width: '67'), '#'
+        = link_to image_tag('/images/icon/botoes_topo_segmentos_05.png', width: '67'), '#', title: 'Em breve delivery'
+        = link_to image_tag('/images/icon/botoes_topo_segmentos_07.png', width: '67'), '#', title: 'Em breve comércio'
       .col-md-4
         - if bookmark_user.present?
           = link_to "<i class='glyphicon glyphicon-star'></i> Meus favoritos".html_safe, bookmarks_path, class: 'fav-button btn btn-primary'
